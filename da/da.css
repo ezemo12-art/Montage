@@ -1,0 +1,18 @@
+/* DA — compte enquêtes criminelles. Copier dans assets/da.css de chaque vidéo.
+   Référence humaine : DA.md à la racine du repo. */
+:root {
+  --ground: #0b0b0c;   /* fond */
+  --ink: #efe9e1;      /* texte */
+  --accent: #c1121f;   /* un seul élément à la fois */
+  --ink-soft: rgba(239, 233, 225, 0.85);
+  --font-display: "Oswald";
+  --font-mono: "IBM Plex Mono";
+  --safe-left: 150px;
+  --safe-width: 740px;
+}
+.da-tag     { font-family: var(--font-mono); font-size: 32px; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; }
+.da-title   { font-family: var(--font-display); font-size: 128px; line-height: 1.08; font-weight: 700; text-transform: uppercase; color: var(--ink); }
+.da-meta    { font-family: var(--font-mono); font-size: 40px; letter-spacing: 0.08em; color: var(--ink-soft); text-transform: uppercase; }
+.da-rule    { height: 6px; background: var(--accent); transform-origin: left center; }
+.da-caption { font-family: var(--font-display); font-size: 72px; font-weight: 600; line-height: 1.1; text-transform: uppercase; color: var(--ink); text-align: center; }
+.da-caption em { font-style: normal; color: var(--accent); }

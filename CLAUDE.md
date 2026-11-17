@@ -16,14 +16,13 @@ Run these checks before the first video, and install whatever is missing:
 
 Shortcut used below: `H="node $PWD/.claude/skills/hyperframes/scripts/plugin-cli.mjs"`.
 
-## Style phrase (art direction of the account)
+## Art direction — MANDATORY
 
-> Dark, documentary, serious. Background near-black `#0b0b0c`, text off-white `#efe9e1`,
-> a single accent blood red `#c1121f` (key word, rule, case number).
-> Fonts: **Oswald** (titles, uppercase) + **IBM Plex Mono** (dates, places, case numbers,
-> "typewritten police report" feel). Movement: slow, soft (ease-in-out, expo, fades,
-> blur → sharp, slow push-in). **Forbidden**: bounces, shakes, flashes, sudden zooms,
-> cartoon sound effects, more than 3 colors, gory or sensationalist imagery.
+**`DA.md` is the account's art direction. Read it before every video and follow it
+for every video the user asks for**, unless the brief explicitly asks for an exception.
+Its technical values live in `da/da.css`: copy it to `assets/da.css` of each new video
+and link it (`<link rel="stylesheet" href="assets/da.css">`). If the user changes the DA,
+update `DA.md` and `da/da.css` together.
 
 ## Method (always in this order)
 

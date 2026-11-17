@@ -2,7 +2,9 @@
 
 Instagram videos on criminal investigations, created with Claude + HyperFrames.
 
-- `CLAUDE.md` — the account's style, the method, the rules (read by Claude in each session)
+- `DA.md` — the account's art direction (applied to every video)
+- `da/da.css` — the DA's colors, fonts and sizes, for the videos
+- `CLAUDE.md` — the method and rules (read by Claude in each session)
 - `BRIEF.md` — the form to fill in before each video
 - `rush/` — your raw videos (not saved to git)
 - `videos/` — one folder per video

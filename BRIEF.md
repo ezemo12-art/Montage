@@ -8,7 +8,7 @@ Copy this file, fill it in, then paste it to Claude along with your rush (put th
 
 **Sources of the facts:** (articles, rulings, documentaries)
 
-**My style:** see the style phrase in `CLAUDE.md` (or specify a variation)
+**My style:** see `DA.md` (or specify an exception)
 
 **Key moment 1 · the word + the effect:**
 
