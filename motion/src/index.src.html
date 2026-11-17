@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <!-- DA inline (copie de da/da.css, générée par build_motion.py) : le moteur de rendu y repère les polices. -->
+    <style id="da-inline">
+{{DA_CSS}}
+    </style>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--charbon); }
+      #root { position: relative; width: 100%; height: 100%; }
+      /* Texture DOSSIER 00 : grain léger + vignettage, fixes, au-dessus de tout. */
+      #fx-vignette { position: absolute; inset: 0; z-index: 50; pointer-events: none;
+        background: radial-gradient(ellipse 80% 70% at 50% 45%, rgba(16, 17, 19, 0) 55%, rgba(16, 17, 19, 0.7) 100%); }
+      #fx-grain { position: absolute; inset: 0; z-index: 51; pointer-events: none; opacity: 0.07;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    </style>
+  </head>
+  <body>
+    <!-- Bande démo du système graphique DOSSIER 00 : les 9 compositions à la suite. -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="{{TOTAL}}" data-width="1080" data-height="1920">
+{{HOSTS}}
+      <div id="fx-vignette" data-layout-ignore></div>
+      <div id="fx-grain" data-layout-ignore></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -97,9 +97,9 @@ La 1re image (0 s) doit déjà montrer le titre ou l'Archiviste : c'est la minia
 
 ## 8. Mise en page (Reels / TikTok)
 
-- Textes entre **x = 150 et x = 890 px** ; zone utile **y = 250 à 1450 px**.
+- Textes entre **x = 150 et x = 890 px** ; zone utile **y = 280 à 1230 px** (sous 1230 px, l'interface Reels peut cacher le texte).
 - Rien d'important dans les 20 % du bas ni sur le bord droit.
-- Titres en haut (~300–650 px), sous-titres au milieu (~950–1150 px).
+- Titres en haut (~300–650 px), sous-titres au milieu (~900–1150 px).
 
 ## 9. Éthique (fait partie de la DA)
 

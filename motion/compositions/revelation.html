@@ -1,0 +1,32 @@
+<template>
+  <link rel="stylesheet" href="assets/da.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: var(--charbon); }
+    #re-glow { position: absolute; left: 90px; top: 560px; width: 900px; height: 520px;
+      background: radial-gradient(ellipse at center, rgba(214, 166, 74, 0.22), rgba(214, 166, 74, 0) 70%); opacity: 0; }
+    #re-word { position: absolute; left: 150px; top: 700px; width: 740px; text-align: center; font-family: var(--font-display);
+      font-weight: 700; font-size: 150px; line-height: 1.16; text-transform: uppercase; color: var(--ambre); white-space: nowrap; }
+    #re-rule { position: absolute; left: 390px; top: 950px; width: 300px; }
+    #re-sub { position: absolute; left: 150px; top: 990px; width: 740px; text-align: center; }
+  </style>
+  <div id="root" data-composition-id="revelation" data-width="1080" data-height="1920"
+    data-composition-variables='[
+      {"id":"mot","type":"string","label":"Mot révélé (8 lettres max)","default":"Mensonge","maxLength":10},
+      {"id":"sous_titre","type":"string","label":"Sous-titre","default":"Le détail qui change tout"}
+    ]'>
+    <div id="re-glow"></div>
+    <div id="re-word" data-var-text="mot">Mensonge</div>
+    <div id="re-rule" class="da-rule"></div>
+    <div id="re-sub" class="da-meta" data-var-text="sous_titre">Le détail qui change tout</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#re-glow", { opacity: 0 }, { opacity: 1, duration: 1.4, ease: "power2.inOut" }, 0.1);
+    tl.fromTo("#re-word", { opacity: 0, scale: 1.12, filter: "blur(24px)" },
+      { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.6, ease: "expo.out" }, 0.3);
+    tl.fromTo("#re-rule", { scaleX: 0, transformOrigin: "center center" }, { scaleX: 1, duration: 0.7, ease: "power3.inOut" }, 2.0);
+    tl.fromTo("#re-sub", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 2.6);
+    tl.to("#root > *", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 4.4);
+    window.__timelines["revelation"] = tl;
+  </script>
+</template>

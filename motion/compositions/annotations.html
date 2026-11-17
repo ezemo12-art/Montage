@@ -1,0 +1,51 @@
+<template>
+  <link rel="stylesheet" href="assets/da.css" />
+  <style>
+    #root { position: absolute; inset: 0; }
+    /* Fond de démonstration : à passer en "transparent" au-dessus d'une image ou d'un plan 3D. */
+    #an-bg { position: absolute; inset: 0; background:
+      radial-gradient(ellipse 70% 45% at 50% 45%, var(--archive), var(--charbon) 75%); }
+    #an-bg-label { position: absolute; left: 150px; top: 1180px; font-size: 28px; opacity: 0.45; }
+    #an-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .an-stroke { fill: none; stroke: var(--ambre); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+    #an-cross { stroke: var(--ivoire); stroke-width: 2; opacity: 0; }
+    #an-note { position: absolute; left: 150px; top: 380px; width: 600px; }
+    #an-text { font-family: var(--font-mono); font-size: 40px; line-height: 1.3; letter-spacing: 0.05em; color: var(--ivoire);
+      text-transform: uppercase; display: inline-block; }
+    #an-coord { margin-top: 12px; font-size: 30px; display: inline-block; }
+  </style>
+  <div id="root" data-composition-id="annotations" data-width="1080" data-height="1920"
+    data-composition-variables='[
+      {"id":"note","type":"string","label":"Annotation","default":"Sortie de secours — 23H40"},
+      {"id":"coord","type":"string","label":"Coordonnées / détail","default":"45°45′50″N  4°50′08″E"},
+      {"id":"fond","type":"enum","label":"Fond","default":"demo","options":[{"value":"demo","label":"Démo (fond sombre)"},{"value":"transparent","label":"Transparent (sur une image)"}]}
+    ]'>
+    <div id="an-bg"><div id="an-bg-label" class="da-meta">[ IMAGE OU PLAN 3D ]</div></div>
+    <svg id="an-svg" viewBox="0 0 1080 1920">
+      <g id="an-cross">
+        <line x1="640" y1="820" x2="640" y2="1180" /><line x1="460" y1="1000" x2="820" y2="1000" />
+      </g>
+      <ellipse id="an-circle" class="an-stroke" pathLength="1" cx="640" cy="1000" rx="130" ry="110" transform="rotate(-8 640 1000)" />
+      <path id="an-arrow" class="an-stroke" pathLength="1" d="M300 560 C 330 760, 420 880, 520 935" />
+      <path id="an-head" class="an-stroke" pathLength="1" d="M478 940 L522 936 L500 898" />
+    </svg>
+    <div id="an-note">
+      <div id="an-text" data-var-text="note">Sortie de secours — 23H40</div><br />
+      <div id="an-coord" class="da-meta" data-var-text="coord">45°45′50″N  4°50′08″E</div>
+    </div>
+  </div>
+  <script>
+    const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+    if (vars.fond === "transparent") document.querySelector("#an-bg").style.display = "none";
+
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#an-cross", { opacity: 0 }, { opacity: 0.35, duration: 0.6, ease: "power2.out" }, 0.2);
+    tl.fromTo("#an-circle", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 0.8);
+    tl.fromTo("#an-text", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 1.0, ease: "steps(26)" }, 1.9);
+    tl.fromTo("#an-arrow", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 3.1);
+    tl.fromTo("#an-head", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 3.85);
+    tl.fromTo("#an-coord", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 4.4);
+    tl.to("#root > *", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 7.6);
+    window.__timelines["annotations"] = tl;
+  </script>
+</template>

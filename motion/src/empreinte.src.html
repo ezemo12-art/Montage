@@ -1,0 +1,69 @@
+<template>
+  <link rel="stylesheet" href="assets/da.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: var(--charbon); }
+    #em-tag { position: absolute; left: 150px; top: 300px; }
+    #em-box { position: absolute; left: 280px; top: 410px; width: 520px; height: 640px; }
+    #em-print { position: absolute; inset: 0; }
+    #em-svg { width: 100%; height: 100%; }
+    .em-ridge { fill: none; stroke: var(--ivoire); stroke-width: 3.2; stroke-linecap: round; opacity: 0.82; }
+    .em-corner { position: absolute; width: 46px; height: 46px; border-color: var(--ivoire-doux); border-style: solid; border-width: 0; }
+    #em-c1 { left: -30px; top: -30px; border-left-width: 3px; border-top-width: 3px; }
+    #em-c2 { right: -30px; top: -30px; border-right-width: 3px; border-top-width: 3px; }
+    #em-c3 { left: -30px; bottom: -30px; border-left-width: 3px; border-bottom-width: 3px; }
+    #em-c4 { right: -30px; bottom: -30px; border-right-width: 3px; border-bottom-width: 3px; }
+    #em-scan { position: absolute; left: -40px; top: 0; width: 600px; height: 4px; background: var(--ambre);
+      box-shadow: 0 0 24px 6px rgba(214, 166, 74, 0.45); opacity: 0; }
+    .em-pt { position: absolute; width: 44px; height: 44px; margin: -22px 0 0 -22px; border: 3px solid var(--ambre); border-radius: 50%; opacity: 0; }
+    #em-p1 { left: 210px; top: 250px; } #em-p2 { left: 330px; top: 360px; } #em-p3 { left: 250px; top: 470px; }
+    #em-result { position: absolute; left: 150px; top: 1130px; width: 740px; }
+    #em-statut { display: inline-block; }
+    #em-value { margin-top: 6px; font-family: var(--font-display); font-weight: 700; font-size: 150px; line-height: 1.1; color: var(--ambre); }
+    #em-label { margin-top: 8px; font-size: 32px; }
+  </style>
+  <div id="root" data-composition-id="empreinte" data-width="1080" data-height="1920"
+    data-composition-variables='[
+      {"id":"titre","type":"string","label":"Titre","default":"ANALYSE — EMPREINTE"},
+      {"id":"statut","type":"string","label":"Résultat (texte)","default":"CORRESPONDANCE"},
+      {"id":"resultat","type":"number","label":"Résultat (%)","default":87,"min":0,"max":100,"step":1},
+      {"id":"label","type":"string","label":"Légende","default":"SCELLÉ N°12 — EMPREINTE PARTIELLE"}
+    ]'>
+    <div id="em-tag" class="da-tag" data-var-text="titre">ANALYSE — EMPREINTE</div>
+    <div id="em-box">
+      <div id="em-print">
+        <svg id="em-svg" viewBox="0 0 520 640">
+          <defs><clipPath id="em-clip"><ellipse cx="260" cy="330" rx="235" ry="300" /></clipPath></defs>
+          <g clip-path="url(#em-clip)">{{RIDGES}}</g>
+        </svg>
+      </div>
+      <div id="em-c1" class="em-corner"></div><div id="em-c2" class="em-corner"></div>
+      <div id="em-c3" class="em-corner"></div><div id="em-c4" class="em-corner"></div>
+      <div id="em-p1" class="em-pt"></div><div id="em-p2" class="em-pt"></div><div id="em-p3" class="em-pt"></div>
+      <div id="em-scan"></div>
+    </div>
+    <div id="em-result">
+      <div id="em-statut" class="da-meta" data-var-text="statut">CORRESPONDANCE</div>
+      <div id="em-value"><span id="em-num">0</span> %</div>
+      <div id="em-label" class="da-meta" data-var-text="label">SCELLÉ N°12 — EMPREINTE PARTIELLE</div>
+    </div>
+  </div>
+  <script>
+    const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+    const target = Math.max(0, Math.min(100, Math.round(Number(vars.resultat ?? 87))));
+
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#em-tag", { opacity: 0.35 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
+    tl.fromTo(".em-corner", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.2);
+    tl.fromTo("#em-scan", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.6);
+    tl.fromTo("#em-scan", { y: 0 }, { y: 640, duration: 2.2, ease: "power1.inOut" }, 0.6);
+    tl.fromTo("#em-print", { clipPath: "inset(0 0 100% 0)" }, { clipPath: "inset(0 0 0% 0)", duration: 2.2, ease: "power1.inOut" }, 0.6);
+    tl.to("#em-scan", { opacity: 0, duration: 0.3 }, 2.8);
+    ["#em-p1", "#em-p2", "#em-p3"].forEach((p, i) => {
+      tl.fromTo(p, { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power2.out" }, 3.0 + i * 0.4);
+    });
+    tl.fromTo("#em-result", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 4.1);
+    tl.fromTo("#em-num", { innerText: 0 }, { innerText: target, snap: { innerText: 1 }, duration: 1.2, ease: "power2.out" }, 4.2);
+    tl.to("#root > *", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 6.6);
+    window.__timelines["empreinte"] = tl;
+  </script>
+</template>

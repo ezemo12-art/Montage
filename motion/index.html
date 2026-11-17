@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <!-- DA inline (copie de da/da.css, générée par build_motion.py) : le moteur de rendu y repère les polices. -->
+    <style id="da-inline">
+/* DOSSIER 00 — valeurs officielles. Copier dans assets/da.css de chaque vidéo.
+   Référence humaine : DA.md. Ne pas modifier sans mettre DA.md à jour. */
+:root {
+  --charbon: #101113;  /* fond */
+  --archive: #29292b;  /* surfaces : dossiers, cartes, documents */
+  --ivoire:  #e5ddcb;  /* texte */
+  --ambre:   #d6a64a;  /* accent principal : œil, indices, mot clé */
+  --rouge:   #9e2929;  /* alerte, rare : crime, révélation, tampon */
+  --ivoire-doux: rgba(229, 221, 203, 0.8);
+
+  /* alias génériques */
+  --ground: var(--charbon);
+  --ink: var(--ivoire);
+  --accent: var(--ambre);
+
+  --font-display: "Oswald";
+  --font-mono: "IBM Plex Mono";
+  --safe-left: 150px;
+  --safe-width: 740px;
+}
+.da-tag     { font-family: var(--font-mono); font-size: 32px; letter-spacing: 0.2em; color: var(--ambre); text-transform: uppercase; }
+.da-title   { font-family: var(--font-display); font-size: 128px; line-height: 1.16; font-weight: 700; text-transform: uppercase; color: var(--ivoire); }
+.da-meta    { font-family: var(--font-mono); font-size: 40px; letter-spacing: 0.08em; color: var(--ivoire-doux); text-transform: uppercase; }
+.da-rule    { height: 4px; background: var(--ambre); transform-origin: left center; }
+.da-card    { background: var(--archive); color: var(--ivoire); }
+.da-stamp   { font-family: var(--font-display); color: var(--rouge); border: 6px solid var(--rouge); text-transform: uppercase; letter-spacing: 0.1em; }
+.da-caption { font-family: var(--font-display); font-size: 72px; font-weight: 600; line-height: 1.18; text-transform: uppercase; color: var(--ivoire); text-align: center; }
+.da-caption em { font-style: normal; color: var(--ambre); }
+.da-caption strong { font-weight: inherit; color: var(--rouge); } /* moment fort uniquement */
+
+    </style>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--charbon); }
+      #root { position: relative; width: 100%; height: 100%; }
+      /* Texture DOSSIER 00 : grain léger + vignettage, fixes, au-dessus de tout. */
+      #fx-vignette { position: absolute; inset: 0; z-index: 50; pointer-events: none;
+        background: radial-gradient(ellipse 80% 70% at 50% 45%, rgba(16, 17, 19, 0) 55%, rgba(16, 17, 19, 0.7) 100%); }
+      #fx-grain { position: absolute; inset: 0; z-index: 51; pointer-events: none; opacity: 0.07;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    </style>
+  </head>
+  <body>
+    <!-- Bande démo du système graphique DOSSIER 00 : les 9 compositions à la suite. -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="61.0" data-width="1080" data-height="1920">
+      <div id="ouverture-dossier" data-composition-id="ouverture-dossier" data-composition-src="compositions/ouverture-dossier.html"
+        data-start="0.0" data-duration="6.1" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="chronologie" data-composition-id="chronologie" data-composition-src="compositions/chronologie.html"
+        data-start="6.1" data-duration="7.1" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="carte" data-composition-id="carte" data-composition-src="compositions/carte.html"
+        data-start="13.2" data-duration="7.1" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="empreinte" data-composition-id="empreinte" data-composition-src="compositions/empreinte.html"
+        data-start="20.3" data-duration="7.1" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="document" data-composition-id="document" data-composition-src="compositions/document.html"
+        data-start="27.4" data-duration="7.1" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="suspects" data-composition-id="suspects" data-composition-src="compositions/suspects.html"
+        data-start="34.5" data-duration="7.1" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="annotations" data-composition-id="annotations" data-composition-src="compositions/annotations.html"
+        data-start="41.6" data-duration="8.1" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="revelation" data-composition-id="revelation" data-composition-src="compositions/revelation.html"
+        data-start="49.7" data-duration="4.9" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="cloture" data-composition-id="cloture" data-composition-src="compositions/cloture.html"
+        data-start="54.6" data-duration="6.4" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="fx-vignette" data-layout-ignore></div>
+      <div id="fx-grain" data-layout-ignore></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

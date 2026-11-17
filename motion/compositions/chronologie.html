@@ -1,0 +1,57 @@
+<template>
+  <link rel="stylesheet" href="assets/da.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: var(--charbon); }
+    #ch-tag { position: absolute; left: 150px; top: 300px; }
+    #ch-line { position: absolute; left: 228px; top: 430px; width: 3px; height: 900px; background: var(--ivoire); opacity: 0.5; transform-origin: top center; }
+    .ch-ev { position: absolute; left: 150px; width: 740px; height: 200px; }
+    .ch-dot { position: absolute; left: 66px; top: 8px; width: 28px; height: 28px; border-radius: 50%;
+      border: 3px solid var(--ivoire); background: var(--charbon); }
+    .ch-txt { position: absolute; left: 140px; top: 0; width: 600px; }
+    .ch-date { font-family: var(--font-mono); font-size: 34px; letter-spacing: 0.08em; color: var(--ivoire-doux); }
+    .ch-label { margin-top: 10px; font-family: var(--font-display); font-weight: 600; font-size: 50px; line-height: 1.18;
+      text-transform: uppercase; color: var(--ivoire); }
+    .ch-ev.cle .ch-dot { background: var(--ambre); border-color: var(--ambre); }
+    .ch-ev.cle .ch-date, .ch-ev.cle .ch-label { color: var(--ambre); }
+    .ch-glow { position: absolute; left: 50px; top: -8px; width: 60px; height: 60px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(214, 166, 74, 0.55), rgba(214, 166, 74, 0) 70%); opacity: 0; }
+    #ch-e1 { top: 430px; } #ch-e2 { top: 660px; } #ch-e3 { top: 890px; } #ch-e4 { top: 1120px; }
+  </style>
+  <div id="root" data-composition-id="chronologie" data-width="1080" data-height="1920"
+    data-composition-variables='[
+      {"id":"titre","type":"string","label":"Titre","default":"CHRONOLOGIE"},
+      {"id":"d1","type":"string","label":"Date 1","default":"13.03.1998 — 22H10"},
+      {"id":"e1","type":"string","label":"Fait 1","default":"Dernier appel téléphonique"},
+      {"id":"d2","type":"string","label":"Date 2","default":"14.03.1998 — 07H30"},
+      {"id":"e2","type":"string","label":"Fait 2","default":"Absence constatée au travail"},
+      {"id":"d3","type":"string","label":"Date 3","default":"16.03.1998"},
+      {"id":"e3","type":"string","label":"Fait 3","default":"La voiture est retrouvée"},
+      {"id":"d4","type":"string","label":"Date 4","default":"2018"},
+      {"id":"e4","type":"string","label":"Fait 4","default":"Le dossier est rouvert"},
+      {"id":"cle","type":"number","label":"Fait clé (1 à 4)","default":3,"min":1,"max":4,"step":1}
+    ]'>
+    <div id="ch-tag" class="da-tag" data-var-text="titre">CHRONOLOGIE</div>
+    <div id="ch-line"></div>
+    <div id="ch-e1" class="ch-ev"><div class="ch-glow"></div><div class="ch-dot"></div><div class="ch-txt"><div class="ch-date" data-var-text="d1">13.03.1998 — 22H10</div><div class="ch-label" data-var-text="e1">Dernier appel téléphonique</div></div></div>
+    <div id="ch-e2" class="ch-ev"><div class="ch-glow"></div><div class="ch-dot"></div><div class="ch-txt"><div class="ch-date" data-var-text="d2">14.03.1998 — 07H30</div><div class="ch-label" data-var-text="e2">Absence constatée au travail</div></div></div>
+    <div id="ch-e3" class="ch-ev"><div class="ch-glow"></div><div class="ch-dot"></div><div class="ch-txt"><div class="ch-date" data-var-text="d3">16.03.1998</div><div class="ch-label" data-var-text="e3">La voiture est retrouvée</div></div></div>
+    <div id="ch-e4" class="ch-ev"><div class="ch-glow"></div><div class="ch-dot"></div><div class="ch-txt"><div class="ch-date" data-var-text="d4">2018</div><div class="ch-label" data-var-text="e4">Le dossier est rouvert</div></div></div>
+  </div>
+  <script>
+    const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+    const cle = Math.min(4, Math.max(1, Math.round(Number(vars.cle) || 3)));
+    document.querySelector("#ch-e" + cle).classList.add("cle");
+
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#ch-tag", { opacity: 0.35 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
+    tl.fromTo("#ch-line", { scaleY: 0 }, { scaleY: 1, duration: 1.2, ease: "power2.inOut" }, 0.3);
+    [1, 2, 3, 4].forEach((i, k) => {
+      const t = 1.3 + k * 1.05;
+      tl.fromTo("#ch-e" + i + " .ch-dot", { scale: 0 }, { scale: 1, duration: 0.4, ease: "power2.out" }, t);
+      tl.fromTo("#ch-e" + i + " .ch-txt", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, t + 0.15);
+    });
+    tl.fromTo("#ch-e" + cle + " .ch-glow", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.inOut" }, 5.6);
+    tl.to("#root > *", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 6.6);
+    window.__timelines["chronologie"] = tl;
+  </script>
+</template>

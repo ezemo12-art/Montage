@@ -19,11 +19,11 @@
   --safe-width: 740px;
 }
 .da-tag     { font-family: var(--font-mono); font-size: 32px; letter-spacing: 0.2em; color: var(--ambre); text-transform: uppercase; }
-.da-title   { font-family: var(--font-display); font-size: 128px; line-height: 1.08; font-weight: 700; text-transform: uppercase; color: var(--ivoire); }
+.da-title   { font-family: var(--font-display); font-size: 128px; line-height: 1.16; font-weight: 700; text-transform: uppercase; color: var(--ivoire); }
 .da-meta    { font-family: var(--font-mono); font-size: 40px; letter-spacing: 0.08em; color: var(--ivoire-doux); text-transform: uppercase; }
 .da-rule    { height: 4px; background: var(--ambre); transform-origin: left center; }
 .da-card    { background: var(--archive); color: var(--ivoire); }
 .da-stamp   { font-family: var(--font-display); color: var(--rouge); border: 6px solid var(--rouge); text-transform: uppercase; letter-spacing: 0.1em; }
-.da-caption { font-family: var(--font-display); font-size: 72px; font-weight: 600; line-height: 1.1; text-transform: uppercase; color: var(--ivoire); text-align: center; }
+.da-caption { font-family: var(--font-display); font-size: 72px; font-weight: 600; line-height: 1.18; text-transform: uppercase; color: var(--ivoire); text-align: center; }
 .da-caption em { font-style: normal; color: var(--ambre); }
 .da-caption strong { font-weight: inherit; color: var(--rouge); } /* moment fort uniquement */

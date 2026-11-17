@@ -40,6 +40,17 @@ link it (`<link rel="stylesheet" href="assets/da.css">`). If the user changes th
   `references/`. Never replace an official reference without the user's written validation.
 - QC every image/shot against the reference (`CHARACTER.md` §7); significant drift → regenerate.
 
+## Motion design system — MANDATORY
+
+- Reusable compositions live in `motion/compositions/` (catalogue + variables: `motion/README.md`).
+  Always reuse them in episodes (`scripts/add_motion.sh <episode-project> <names…>`) instead of
+  hand-building a new opening, timeline, map, fingerprint, document, suspects board, annotation,
+  reveal or closing.
+- **Inline `da/da.css` in a `<style>` in every video's `index.html`** (a `<link>` alone makes the
+  renderer fall back to a default serif font). Always check decoded MP4 frames, not only snapshots.
+- `carte.html`, `empreinte.html` and the demo `index.html` are generated from `motion/src/`
+  by `python3 -I scripts/build_motion.py`.
+
 ## Episodes
 
 - One folder per episode: `scripts/new_episode.sh <num> "<titre>"` → `dossiers/DOSSIER-<num>/`

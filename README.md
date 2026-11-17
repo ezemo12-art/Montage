@@ -11,6 +11,8 @@ Système de production de DOSSIER 00 : épisodes d'enquêtes criminelles en vid�
 | `DA.md` · `da/da.css` | Direction artistique officielle (palette, polices, mouvements, structure) |
 | `archiviste/` | Bible du personnage + références officielles + candidats à valider |
 | `prompts/archiviste.md` | Prompts verrouillés du personnage et des références à créer |
+| `motion/` | Système graphique permanent : 9 compositions réutilisables + bande démo |
+| `scripts/add_motion.sh` | Ajoute des compositions du système graphique à un épisode |
 | `scripts/gen_image.py` | Génération d'images avec références (OpenAI GPT Image) |
 | `scripts/new_episode.sh` | Crée `dossiers/DOSSIER-XXX/` à partir du modèle |
 | `templates/episode/` | Modèle d'épisode + fiche contrôle qualité |

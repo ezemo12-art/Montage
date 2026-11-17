@@ -1,0 +1,58 @@
+<template>
+  <link rel="stylesheet" href="assets/da.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: var(--charbon); }
+    #do-sheet { position: absolute; left: 160px; top: 360px; width: 760px; height: 980px; background: var(--ivoire);
+      border-radius: 6px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55); }
+    #do-head { position: absolute; left: 60px; top: 60px; width: 640px; }
+    #do-title { font-family: var(--font-display); font-weight: 700; font-size: 58px; line-height: 1.16; text-transform: uppercase; color: var(--charbon); }
+    #do-ref { margin-top: 10px; font-family: var(--font-mono); font-size: 28px; letter-spacing: 0.08em; color: var(--archive); }
+    #do-hr { margin-top: 28px; height: 3px; background: var(--charbon); opacity: 0.8; }
+    #do-body { position: absolute; left: 60px; top: 300px; width: 640px; }
+    .do-line { position: relative; margin-bottom: 30px; font-family: var(--font-mono); font-size: 31px; line-height: 1.4; color: var(--charbon); }
+    .do-mark { position: absolute; left: -8px; right: -8px; top: 2px; bottom: 2px; background: var(--ambre); opacity: 0.55; transform-origin: left center; transform: scaleX(0); }
+    .do-txt { position: relative; }
+    #do-stamp { position: absolute; left: 250px; top: 790px; padding: 10px 28px; font-size: 60px; font-weight: 700; }
+  </style>
+  <div id="root" data-composition-id="document" data-width="1080" data-height="1920"
+    data-composition-variables='[
+      {"id":"titre","type":"string","label":"Titre du document","default":"Rapport d’enquête"},
+      {"id":"reference","type":"string","label":"Référence","default":"RÉF. 1998/0314 — ILLUSTRATION"},
+      {"id":"l1","type":"string","label":"Ligne 1","default":"Véhicule retrouvé le 16 mars."},
+      {"id":"l2","type":"string","label":"Ligne 2","default":"Portières verrouillées."},
+      {"id":"l3","type":"string","label":"Ligne 3","default":"Aucune trace d’effraction."},
+      {"id":"l4","type":"string","label":"Ligne 4","default":"Clés absentes du véhicule."},
+      {"id":"cle","type":"number","label":"Ligne clé (1 à 4)","default":3,"min":1,"max":4,"step":1},
+      {"id":"tampon","type":"string","label":"Tampon","default":"CONFIDENTIEL"}
+    ]'>
+    <div id="do-sheet">
+      <div id="do-head">
+        <div id="do-title" data-var-text="titre">Rapport d’enquête</div>
+        <div id="do-ref" data-var-text="reference">RÉF. 1998/0314 — ILLUSTRATION</div>
+        <div id="do-hr"></div>
+      </div>
+      <div id="do-body">
+        <div id="do-l1" class="do-line"><div class="do-mark"></div><span class="do-txt" data-var-text="l1">Véhicule retrouvé le 16 mars.</span></div>
+        <div id="do-l2" class="do-line"><div class="do-mark"></div><span class="do-txt" data-var-text="l2">Portières verrouillées.</span></div>
+        <div id="do-l3" class="do-line"><div class="do-mark"></div><span class="do-txt" data-var-text="l3">Aucune trace d’effraction.</span></div>
+        <div id="do-l4" class="do-line"><div class="do-mark"></div><span class="do-txt" data-var-text="l4">Clés absentes du véhicule.</span></div>
+      </div>
+      <div id="do-stamp" class="da-stamp" data-var-text="tampon">CONFIDENTIEL</div>
+    </div>
+  </div>
+  <script>
+    const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+    const cle = Math.min(4, Math.max(1, Math.round(Number(vars.cle) || 3)));
+
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#do-sheet", { y: 60, opacity: 0.0, rotation: 0 }, { y: 0, opacity: 1, rotation: -1.5, duration: 1.0, ease: "power3.out" }, 0);
+    tl.fromTo("#do-head", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.8);
+    [1, 2, 3, 4].forEach((i, k) => {
+      tl.fromTo("#do-l" + i + " .do-txt", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.55, ease: "steps(18)" }, 1.4 + k * 0.6);
+    });
+    tl.fromTo("#do-l" + cle + " .do-mark", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power2.inOut" }, 4.0);
+    tl.fromTo("#do-stamp", { opacity: 0, scale: 1.25, rotation: -12 }, { opacity: 0.92, scale: 1, rotation: -12, duration: 0.5, ease: "power2.out" }, 5.0);
+    tl.to("#root > *", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 6.6);
+    window.__timelines["document"] = tl;
+  </script>
+</template>

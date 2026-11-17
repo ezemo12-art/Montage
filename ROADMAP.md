@@ -17,10 +17,13 @@ Ce qui est en place ✅, ce qui manque ⏳ et ce qu'il faut pour le débloquer.
 - **Bloquant : clé API OpenAI** (GPT Image). Coût indicatif : quelques centimes par image en qualité haute
   (à confirmer sur la page tarifs OpenAI).
 
-## Phase 3 — Système de motion design permanent ⏳
-Compositions HyperFrames réutilisables dans `motion/` : ouverture dossier, chronologie, carte,
-empreinte digitale, document confidentiel, tableau des suspects, annotations, révélation typographique.
-- Rien de bloquant : faisable dès maintenant.
+## Phase 3 — Système de motion design permanent ✅
+- ✅ 9 compositions réutilisables dans `motion/` : ouverture dossier, chronologie, carte de France
+  (vraies frontières, placement GPS), empreinte digitale, document confidentiel, personnes citées,
+  annotations, révélation typographique, clôture + slogan. Catalogue : `motion/README.md`.
+- ✅ Bande démo exportée et vérifiée (61 s, 1080 × 1920, 30 im/s).
+- ✅ Réutilisation dans un épisode : `scripts/add_motion.sh`.
+- ⏳ Plus tard : sons de marque (papier, machine à écrire, nappe) — à poser épisode par épisode.
 
 ## Phase 4 — Voix officielle de l'Archiviste ⏳
 Voix française masculine grave et toujours identique. Options :
