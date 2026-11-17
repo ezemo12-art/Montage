@@ -8,8 +8,8 @@
 
 ### Selon la charte (texte)
 - Masque en **porcelaine ivoire**.
-- **Fine fissure près de la tempe gauche** (gauche du personnage).
-- **Un seul œil lumineux ambre** (`#D6A64A`).
+- ~~Fine fissure près de la tempe gauche~~ → non appliqué (l'image fait foi).
+- ~~Un seul œil lumineux ambre~~ → non appliqué (l'image fait foi).
 - Long **manteau noir**.
 - **Gants noirs**.
 - Silhouette élégante et mystérieuse.
@@ -24,24 +24,23 @@
 - Pose frontale, debout, immobile, très droite. Silhouette fine et allongée.
 - Fond : dégradé bleu nuit, éclairage doux par le haut.
 
-### ✅ Écarts tranchés (validé par l'utilisateur)
+### ✅ Règle : l'image officielle fait foi, exactement telle quelle
 
-| Point | Image v1 | Décision officielle |
+Décision de l'utilisateur : **garder exactement l'image fournie**. Aucune correction, aucune v2.
+Quand le texte de la charte et l'image diffèrent, **c'est l'image qui gagne** :
+
+| Point | Texte de la charte | Ce qu'on applique (= l'image) |
 | --- | --- | --- |
-| Fissure | Non visible | **Ajoutée** : fine fissure qui part de la tempe gauche du masque (gauche du personnage) vers l'orbite |
-| Œil | Deux yeux sombres rougeâtres | **Un seul œil ambre lumineux** `#D6A64A` (œil gauche du personnage, côté fissure) ; l'autre orbite reste dans l'ombre |
-| Cravate | Rouge vif | **Rouge sombre** `#9E2929` |
-| Fond | Bleu nuit | **Noir charbon** `#101113` avec halo ambre très discret derrière le personnage |
+| Fissure tempe gauche | Oui | **Pas de fissure** |
+| Œil | Un seul œil ambre | **Deux yeux** comme sur l'image (petits, sombres, reflets rougeâtres) |
+| Cravate | — | **Rouge vif**, comme sur l'image |
+| Fond de la référence | — | **Dégradé bleu nuit**, comme sur l'image |
 
-Tout le reste de la v1 est conservé à l'identique : masque à bec ivoire et ses coutures, fedora,
-manteau croisé, gants, canne dorée, pose, proportions.
-
-**Référence v2** (`Character_FullBody_v2`) : la v1 corrigée de ces 4 points, générée depuis la v1
-(`prompts/archiviste_v2.md`), puis validée par l'utilisateur. Après validation, la v2 devient la
-référence principale ; la v1 reste dans `references/` comme source de la silhouette.
+La palette officielle (DA.md) s'applique aux décors, au motion design et aux textes,
+**jamais pour modifier l'apparence de l'Archiviste**.
 
 ## 2. Accessoires fixes
-Fedora noir · cravate rouge sombre · canne au pommeau doré · gants noirs · manteau long noir.
+Fedora noir · cravate rouge vif · canne au pommeau doré · gants noirs · manteau long noir.
 Aucun accessoire ajouté ou retiré sans validation.
 
 ## 3. Proportions
@@ -51,7 +50,7 @@ manteau qui tombe jusqu'aux chevilles, canne tenue au centre, devant le corps.
 ## 4. Comportement à l'écran
 - Mouvements lents : tourne la tête, lève la main gantée, pose un dossier, ouvre un tiroir d'archives.
 - Ne court jamais, ne crie jamais, aucun geste brusque.
-- Son œil ambre « s'allume » au moment des révélations (signature visuelle).
+- Aux révélations, une lumière ambre l'éclaire (sans modifier son apparence).
 - Apparaît souvent dans la pénombre, éclairé par une lumière ambre latérale.
 
 ## 5. Voix
@@ -66,12 +65,11 @@ Les générations en attente vont dans `archiviste/candidats/`.
 
 | Référence | Fichier | Statut |
 | --- | --- | --- |
-| Character_FullBody | `Character_FullBody_v1.jpg` | ✅ Officielle (fournie par l'utilisateur, silhouette) |
-| Character_FullBody | `Character_FullBody_v2.png` | ⏳ À générer depuis v1 (corrections §1) puis valider |
+| Character_FullBody | `Character_FullBody_v1.jpg` | ✅ Officielle (fournie par l'utilisateur) — **référence maîtresse, intouchable** |
 | Character_Front | — | ⏳ À générer depuis FullBody |
 | Character_Profile | — | ⏳ À générer |
 | Character_Back | — | ⏳ À générer |
-| Character_Closeup | — | ⏳ À générer (masque, fissure, œil) |
+| Character_Closeup | — | ⏳ À générer (masque, bec, yeux, chapeau) |
 | Character_Expressions | — | ⏳ À générer (planche : neutre, attentif, menaçant, révélation…) |
 | Character_Poses | — | ⏳ À générer (planche : marche, dossier en main, désigne, assis…) |
 
@@ -82,12 +80,12 @@ Nommage : `Character_<Type>_v<N>.png`. Une nouvelle version n'efface jamais l'an
 Comparer côte à côte avec la référence officielle. **Rejeter et régénérer** si l'un des points échoue :
 
 - [ ] Masque : forme du bec, couleur ivoire, coutures identiques
-- [ ] Fine fissure à la tempe gauche du masque
-- [ ] Un seul œil ambre lumineux (côté fissure), l'autre dans l'ombre
-- [ ] Fedora, cravate rouge sombre, canne dorée, gants noirs présents
+- [ ] Aucune fissure ajoutée
+- [ ] Deux yeux comme sur l'image officielle
+- [ ] Fedora, cravate rouge vif, canne dorée, gants noirs présents
 - [ ] Manteau noir long à grands revers
 - [ ] Proportions élancées respectées
-- [ ] Couleurs dans la palette DOSSIER 00
+- [ ] Personnage identique à l'image officielle ; décor dans la palette DOSSIER 00
 - [ ] Style 3D stylisé cinématographique (pas photoréaliste, pas cartoon)
 - [ ] Format demandé (9:16 pour les scènes)
 

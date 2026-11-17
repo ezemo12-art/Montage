@@ -1,7 +1,6 @@
 # Prompts — L'Archiviste
 
-Toujours envoyer la référence principale (`Character_FullBody_v2.png` une fois validée, sinon
-`Character_FullBody_v1.jpg`) comme image de référence.
+Toujours envoyer `Character_FullBody_v1.jpg` (référence maîtresse, à reproduire exactement).
 Toujours commencer le prompt par le **bloc personnage** puis le **bloc style**, sans les modifier.
 
 ## Bloc personnage (verrouillé)
@@ -9,11 +8,10 @@ Toujours commencer le prompt par le **bloc personnage** puis le **bloc style**, 
 ```
 The Archivist, the same character as in the reference image, exactly identical: a tall, slender,
 elegant figure in a long black double-breasted overcoat with wide lapels reaching the ankles,
-black waistcoat and shirt, a dark red tie (#9E2929), black gloves, a black fedora hat, and an ivory porcelain
+black waistcoat and shirt, a bright red tie, black gloves, a black fedora hat, and an ivory porcelain
 plague-doctor mask with a long curved beak and stitched seams. Both gloved hands rest on the
-golden handle of a slim golden cane. A thin hairline crack runs from the mask's left temple toward
-the eye socket. Only one eye is visible: a single softly glowing amber eye (#D6A64A) on the cracked
-side; the other eye socket stays in deep shadow. Same proportions, same mask shape, same accessories
+golden handle of a slim golden cane. Two small dark eyes with a faint reddish glow behind the mask,
+exactly as in the reference. No crack, no added details. Same proportions, same mask shape, same accessories
 as the reference. Do not redesign the character.
 ```
 
@@ -22,7 +20,7 @@ as the reference. Do not redesign the character.
 ```
 Stylized cinematic 3D animation still, psychological thriller mood, dark and mysterious.
 Strict palette: charcoal black #101113, archive grey #29292B, ivory #E5DDCB, amber #D6A64A
-accents, dark red #9E2929 only for the tie. Charcoal background with a faint amber glow. Soft volumetric amber key light, deep shadows,
+accents. The character's own colors (bright red tie, golden cane) stay exactly as in the reference. Soft volumetric amber key light, deep shadows,
 subtle film grain, vignette. No text, no logo, no watermark. Not photorealistic, not cartoon.
 ```
 

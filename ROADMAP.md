@@ -12,8 +12,7 @@ Ce qui est en place ✅, ce qui manque ⏳ et ce qu'il faut pour le débloquer.
 - ✅ Montage motion design + voix + sous-titres + export MP4 (HyperFrames, testé)
 
 ## Phase 2 — Bibliothèque de l'Archiviste ⏳
-- ✅ 4 écarts charte / image tranchés (`archiviste/CHARACTER.md` §1)
-- ⏳ Générer la référence v2 corrigée (`prompts/archiviste_v2.md`) puis la valider (`archiviste/CHARACTER.md` §1)
+- ✅ Règle fixée : l'image fournie fait foi exactement (`archiviste/CHARACTER.md` §1)
 - ⏳ Générer Front, Profile, Back, Closeup, Expressions, Poses → `archiviste/candidats/` → validation → `references/`
 - **Bloquant : clé API OpenAI** (GPT Image). Coût indicatif : quelques centimes par image en qualité haute
   (à confirmer sur la page tarifs OpenAI).

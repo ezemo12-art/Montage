@@ -5,6 +5,7 @@ vertical 9:16 episodes (60–90 s) narrated by a permanent character, **the Arch
 shop of fictional investigation games in PDF (LES DOSSIERS CONFIDENTIELS).
 Videos are assembled with HyperFrames (HTML → MP4); skills are in `.claude/skills/`.
 Roadmap and what is blocked: `ROADMAP.md`.
+The user's original briefs, kept verbatim, are in `docs/` (source of truth with `DA.md`).
 Always respond in French.
 
 ## Start of session (cloud container = fresh environment)
@@ -30,6 +31,8 @@ link it (`<link rel="stylesheet" href="assets/da.css">`). If the user changes th
 ## The Archiviste — permanent character, MANDATORY
 
 - Bible: `archiviste/CHARACTER.md`. Official references: `archiviste/references/` (validated only).
+- **The official image `Character_FullBody_v1.jpg` is kept EXACTLY as given** (user decision): when
+  the text charter differs from it (crack, single amber eye), the image wins. Never "fix" it.
 - Never create a new character or redesign him. Always pass the official reference image(s) to any
   image/video engine that accepts them, and always start prompts with the locked blocks in
   `prompts/archiviste.md`.

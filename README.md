@@ -15,5 +15,6 @@ Système de production de DOSSIER 00 : épisodes d'enquêtes criminelles en vid�
 | `scripts/new_episode.sh` | Crée `dossiers/DOSSIER-XXX/` à partir du modèle |
 | `templates/episode/` | Modèle d'épisode + fiche contrôle qualité |
 | `ROADMAP.md` | Ce qui est prêt, ce qui manque, ce qui bloque |
+| `docs/` | Tes textes d'origine, conservés mot pour mot |
 | `CLAUDE.md` | Règles de travail lues par Claude à chaque session |
 | `exemple-enquete/` | Test technique (avant DOSSIER 00) |
