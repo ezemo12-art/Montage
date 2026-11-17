@@ -7,3 +7,5 @@ rush/*
 
 motion/export/
 motion/test-*.html
+dossiers/**/export/
+__pycache__/

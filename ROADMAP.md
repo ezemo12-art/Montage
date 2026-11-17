@@ -25,6 +25,19 @@ Ce qui est en place ✅, ce qui manque ⏳ et ce qu'il faut pour le débloquer.
 - ✅ Réutilisation dans un épisode : `scripts/add_motion.sh`.
 - ⏳ Plus tard : sons de marque (papier, machine à écrire, nappe) — à poser épisode par épisode.
 
+## Phase 3 bis — Moteur de motion design narratif ⏳ (en cours)
+Architecture : `docs/ARCHITECTURE_MOTION_NARRATIF.md` · mode d'emploi : `engine/README.md`.
+- ✅ Storyboard (personnages, lieux, plans, actions, caméra) validé + calé mot à mot sur la voix
+- ✅ Sous-titres fidèles au script (alignement script ↔ transcription)
+- ✅ Personnage articulé généré depuis une fiche (même apparence dans tous les plans) + bibliothèque persistante
+- ✅ Actions : marcher, courir, entrer, se retourner, téléphoner, apparaître, tomber ; portes, lumières, bruit
+- ✅ Décors : maison de nuit, couloir intérieur, voisinage ; caméra avec parallaxe
+- ✅ Démo complète rendue sur la narration d'exemple (5 plans, 10,6 s)
+- ⏳ Plus de décors (rue, voiture qui roule, forêt, poste de police, ruban, bureau) et de poses (vue de face, expressions)
+- ⏳ Style « illustration 2.5D IA » (clé OpenAI) : couches générées + détourage local + parallaxe
+- ⏳ Style « clip vidéo IA » (fournisseur vidéo à choisir)
+- ⏳ Analyse automatique du script via l'API Claude (aujourd'hui faite par Claude Code)
+
 ## Phase 4 — Voix officielle de l'Archiviste ⏳
 Voix française masculine grave et toujours identique. Options :
 1. **Voicebox** sur ton ordinateur (gratuit, local) : voix de synthèse ou ta propre voix clonée.

@@ -1,0 +1,11 @@
+{
+  "nom": "L'homme",
+  "genre": "homme",
+  "age": "adulte",
+  "taille_cm": 182,
+  "carrure": "normale",
+  "manteau": "court",
+  "chapeau": false,
+  "cheveux": "courts",
+  "description": "Homme d'environ 35 ans, veste noire courte, cheveux courts"
+}

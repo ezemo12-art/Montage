@@ -51,6 +51,16 @@ link it (`<link rel="stylesheet" href="assets/da.css">`). If the user changes th
 - `carte.html`, `empreinte.html` and the demo `index.html` are generated from `motion/src/`
   by `python3 -I scripts/build_motion.py`.
 
+## Narrative motion engine — MANDATORY for illustrating the story
+
+- To show what the narration tells (characters, places, objects, actions), use the engine in
+  `engine/` (doc: `engine/README.md`, architecture: `docs/ARCHITECTURE_MOTION_NARRATIF.md`):
+  analyse the script → write `storyboard.json` (one shot per visual idea, anchored on the spoken
+  words) → `python3 scripts/engine.py build <storyboard> <project> --check / --render`.
+- Pass the exact script as `"texte"` so captions use the script's words (Whisper only gives timings).
+- Reuse characters/places from `bibliotheque/`; never redesign a recurring character between shots.
+- Silhouettes stay anonymous for real cases (no real victim's face, no gore).
+
 ## Episodes
 
 - One folder per episode: `scripts/new_episode.sh <num> "<titre>"` → `dossiers/DOSSIER-<num>/`

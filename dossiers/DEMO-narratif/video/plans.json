@@ -1,0 +1,37 @@
+[
+  {
+    "id": "p1",
+    "debut": 0.0,
+    "duree": 1.6,
+    "decor": "maison_nuit",
+    "ancre": "À 23 heures"
+  },
+  {
+    "id": "p2",
+    "debut": 1.6,
+    "duree": 1.69,
+    "decor": "maison_nuit",
+    "ancre": "un homme entre discrètement"
+  },
+  {
+    "id": "p3",
+    "debut": 3.29,
+    "duree": 1.24,
+    "decor": "maison_nuit",
+    "ancre": "dans une maison"
+  },
+  {
+    "id": "p4",
+    "debut": 4.53,
+    "duree": 1.86,
+    "decor": "couloir",
+    "ancre": "Quelques minutes plus tard"
+  },
+  {
+    "id": "p5",
+    "debut": 6.39,
+    "duree": 4.22,
+    "decor": "voisinage",
+    "ancre": "les voisins entendent"
+  }
+]

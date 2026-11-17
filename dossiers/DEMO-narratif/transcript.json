@@ -1,0 +1,116 @@
+[
+  {
+    "text": "La",
+    "start": 0.08,
+    "end": 0.29,
+    "id": "w0"
+  },
+  {
+    "text": "23h,",
+    "start": 0.29,
+    "end": 1.44,
+    "id": "w1"
+  },
+  {
+    "text": "un",
+    "start": 1.72,
+    "end": 1.75,
+    "id": "w2"
+  },
+  {
+    "text": "homme",
+    "start": 1.75,
+    "end": 2.13,
+    "id": "w3"
+  },
+  {
+    "text": "entre",
+    "start": 2.13,
+    "end": 2.4,
+    "id": "w4"
+  },
+  {
+    "text": "discrètement",
+    "start": 2.52,
+    "end": 3.41,
+    "id": "w5"
+  },
+  {
+    "text": "dans",
+    "start": 3.41,
+    "end": 3.71,
+    "id": "w6"
+  },
+  {
+    "text": "une",
+    "start": 3.71,
+    "end": 3.93,
+    "id": "w7"
+  },
+  {
+    "text": "maison,",
+    "start": 3.93,
+    "end": 4.57,
+    "id": "w8"
+  },
+  {
+    "text": "quelques",
+    "start": 4.65,
+    "end": 5.2,
+    "id": "w9"
+  },
+  {
+    "text": "minutes",
+    "start": 5.2,
+    "end": 5.71,
+    "id": "w10"
+  },
+  {
+    "text": "plus",
+    "start": 5.87,
+    "end": 6.06,
+    "id": "w11"
+  },
+  {
+    "text": "tard,",
+    "start": 6.06,
+    "end": 6.47,
+    "id": "w12"
+  },
+  {
+    "text": "les",
+    "start": 6.51,
+    "end": 6.6,
+    "id": "w13"
+  },
+  {
+    "text": "voisins",
+    "start": 6.68,
+    "end": 7.09,
+    "id": "w14"
+  },
+  {
+    "text": "entendent",
+    "start": 7.09,
+    "end": 7.73,
+    "id": "w15"
+  },
+  {
+    "text": "d'un",
+    "start": 7.73,
+    "end": 8.01,
+    "id": "w16"
+  },
+  {
+    "text": "bruit",
+    "start": 8.01,
+    "end": 8.36,
+    "id": "w17"
+  },
+  {
+    "text": "étrange.",
+    "start": 8.36,
+    "end": 9.01,
+    "id": "w18"
+  }
+]
