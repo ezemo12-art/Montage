@@ -3,7 +3,7 @@
 > **Règle absolue** : chaque vidéo, image, couverture et PDF suit ce fichier.
 > Ne jamais modifier arbitrairement cette identité. Toute exception doit être demandée
 > explicitement. Valeurs techniques : `da/da.css` (à copier dans `assets/` de chaque vidéo).
-> Personnage : `archiviste/CHARACTER.md`.
+> Personnage : `archiviste/CHARACTER.md` — l'image officielle fait foi, exactement telle quelle.
 
 ## 1. Identité
 
