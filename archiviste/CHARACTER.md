@@ -24,21 +24,24 @@
 - Pose frontale, debout, immobile, très droite. Silhouette fine et allongée.
 - Fond : dégradé bleu nuit, éclairage doux par le haut.
 
-### ⚠️ Écarts à valider (avant toute génération)
+### ✅ Écarts tranchés (validé par l'utilisateur)
 
-| Point | Charte | Image officielle v1 | Décision |
-| --- | --- | --- | --- |
-| Fissure tempe gauche | Oui | Non visible | _à décider_ |
-| Œil | Un seul œil ambre lumineux | Deux yeux sombres rougeâtres | _à décider_ |
-| Rouge de la cravate | Rouge sombre `#9E2929` | Rouge vif | _à décider_ |
-| Fond | Noir charbon `#101113` | Bleu nuit | _à décider_ |
+| Point | Image v1 | Décision officielle |
+| --- | --- | --- |
+| Fissure | Non visible | **Ajoutée** : fine fissure qui part de la tempe gauche du masque (gauche du personnage) vers l'orbite |
+| Œil | Deux yeux sombres rougeâtres | **Un seul œil ambre lumineux** `#D6A64A` (œil gauche du personnage, côté fissure) ; l'autre orbite reste dans l'ombre |
+| Cravate | Rouge vif | **Rouge sombre** `#9E2929` |
+| Fond | Bleu nuit | **Noir charbon** `#101113` avec halo ambre très discret derrière le personnage |
 
-Tant que ces points ne sont pas tranchés, **l'image v1 fait foi** et aucune nouvelle référence
-n'est générée. Option recommandée : créer une **v2** fidèle à la v1 (même silhouette, bec,
-chapeau, canne) en ajoutant la fissure et l'œil ambre unique, puis la valider.
+Tout le reste de la v1 est conservé à l'identique : masque à bec ivoire et ses coutures, fedora,
+manteau croisé, gants, canne dorée, pose, proportions.
+
+**Référence v2** (`Character_FullBody_v2`) : la v1 corrigée de ces 4 points, générée depuis la v1
+(`prompts/archiviste_v2.md`), puis validée par l'utilisateur. Après validation, la v2 devient la
+référence principale ; la v1 reste dans `references/` comme source de la silhouette.
 
 ## 2. Accessoires fixes
-Fedora noir · cravate rouge · canne au pommeau doré · gants noirs · manteau long noir.
+Fedora noir · cravate rouge sombre · canne au pommeau doré · gants noirs · manteau long noir.
 Aucun accessoire ajouté ou retiré sans validation.
 
 ## 3. Proportions
@@ -63,7 +66,8 @@ Les générations en attente vont dans `archiviste/candidats/`.
 
 | Référence | Fichier | Statut |
 | --- | --- | --- |
-| Character_FullBody | `Character_FullBody_v1.jpg` | ✅ Officielle (fournie par l'utilisateur) |
+| Character_FullBody | `Character_FullBody_v1.jpg` | ✅ Officielle (fournie par l'utilisateur, silhouette) |
+| Character_FullBody | `Character_FullBody_v2.png` | ⏳ À générer depuis v1 (corrections §1) puis valider |
 | Character_Front | — | ⏳ À générer depuis FullBody |
 | Character_Profile | — | ⏳ À générer |
 | Character_Back | — | ⏳ À générer |
@@ -78,9 +82,9 @@ Nommage : `Character_<Type>_v<N>.png`. Une nouvelle version n'efface jamais l'an
 Comparer côte à côte avec la référence officielle. **Rejeter et régénérer** si l'un des points échoue :
 
 - [ ] Masque : forme du bec, couleur ivoire, coutures identiques
-- [ ] Fissure tempe gauche présente (une fois validée)
-- [ ] Œil : conforme à la décision du §1
-- [ ] Fedora, cravate rouge, canne dorée, gants noirs présents
+- [ ] Fine fissure à la tempe gauche du masque
+- [ ] Un seul œil ambre lumineux (côté fissure), l'autre dans l'ombre
+- [ ] Fedora, cravate rouge sombre, canne dorée, gants noirs présents
 - [ ] Manteau noir long à grands revers
 - [ ] Proportions élancées respectées
 - [ ] Couleurs dans la palette DOSSIER 00

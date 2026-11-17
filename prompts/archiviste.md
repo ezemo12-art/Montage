@@ -1,6 +1,7 @@
 # Prompts — L'Archiviste
 
-Toujours envoyer **au moins `Character_FullBody_v1.jpg`** comme image de référence.
+Toujours envoyer la référence principale (`Character_FullBody_v2.png` une fois validée, sinon
+`Character_FullBody_v1.jpg`) comme image de référence.
 Toujours commencer le prompt par le **bloc personnage** puis le **bloc style**, sans les modifier.
 
 ## Bloc personnage (verrouillé)
@@ -8,21 +9,20 @@ Toujours commencer le prompt par le **bloc personnage** puis le **bloc style**, 
 ```
 The Archivist, the same character as in the reference image, exactly identical: a tall, slender,
 elegant figure in a long black double-breasted overcoat with wide lapels reaching the ankles,
-black waistcoat and shirt, a red tie, black gloves, a black fedora hat, and an ivory porcelain
+black waistcoat and shirt, a dark red tie (#9E2929), black gloves, a black fedora hat, and an ivory porcelain
 plague-doctor mask with a long curved beak and stitched seams. Both gloved hands rest on the
-golden handle of a slim golden cane. Same proportions, same mask shape, same accessories as the
-reference. Do not redesign the character.
+golden handle of a slim golden cane. A thin hairline crack runs from the mask's left temple toward
+the eye socket. Only one eye is visible: a single softly glowing amber eye (#D6A64A) on the cracked
+side; the other eye socket stays in deep shadow. Same proportions, same mask shape, same accessories
+as the reference. Do not redesign the character.
 ```
-
-> Après validation des écarts (voir `archiviste/CHARACTER.md` §1), ajouter :
-> `A thin crack near the mask's left temple. A single glowing amber eye (#D6A64A) visible behind the mask.`
 
 ## Bloc style (verrouillé)
 
 ```
 Stylized cinematic 3D animation still, psychological thriller mood, dark and mysterious.
 Strict palette: charcoal black #101113, archive grey #29292B, ivory #E5DDCB, amber #D6A64A
-accents, dark red #9E2929 only for the tie. Soft volumetric amber key light, deep shadows,
+accents, dark red #9E2929 only for the tie. Charcoal background with a faint amber glow. Soft volumetric amber key light, deep shadows,
 subtle film grain, vignette. No text, no logo, no watermark. Not photorealistic, not cartoon.
 ```
 
