@@ -61,6 +61,15 @@ link it (`<link rel="stylesheet" href="assets/da.css">`). If the user changes th
 - Reuse characters/places from `bibliotheque/`; never redesign a recurring character between shots.
 - Silhouettes stay anonymous for real cases (no real victim's face, no gore).
 
+## Production queue, calendar, topic bank (from the Eigenflow guide)
+
+- `file/` = automated queue (Telegram → `claude -p` → result.json → Valider/À revoir/Rejeter). It runs on the
+  user's own machine, not in this cloud container; see `file/README.md`. Its instructions live in `file/consignes/`.
+- Before producing: `python3 scripts/sujets.py deja-fait "<case>"`; topic sheets in `BANQUE_SUJETS.md`.
+- Calendar: `python3 scripts/calendrier.py prochain|reserver|semaine` (8 h, 13 h, 18 h Europe/Paris).
+- QC tools: `python3 scripts/controle.py hook|planches|voix`; Telegram-size export: `scripts/export_leger.sh`.
+- Never publish, commit, create accounts or run third-party code during a queued production.
+
 ## Episodes
 
 - One folder per episode: `scripts/new_episode.sh <num> "<titre>"` → `dossiers/DOSSIER-<num>/`

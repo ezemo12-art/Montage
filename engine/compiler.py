@@ -129,7 +129,7 @@ def compiler_plan(pl: dict, sb: dict, ws: list[dict]) -> str:
     # caméra (sur toute la durée du plan)
     cam = camera(pl.get("camera"), sc)
     for k, (c0, c1) in cam.items():
-        tl.attr(f"#{P}-cam-{k}", c0, c1, 0, dur, "sine.inOut")
+        tl.attr(f"#{P}-cam-{k}", c0, c1, 0, dur, "none")  # mouvement constant : jamais d'image figée
 
     # incrustation (heure, lieu…)
     ov = ""

@@ -34,7 +34,7 @@
       "camera": {
         "type": "push_in",
         "focus": "porte",
-        "intensite": 1.1
+        "intensite": 1.35
       },
       "incrustation": {
         "texte": "23:00"
@@ -46,12 +46,13 @@
       "decor": "maison_nuit",
       "lieu": "maison1",
       "camera": {
-        "type": "cadrage",
-        "zoom": 1.25,
+        "type": "travelling",
+        "zoom": 1.3,
         "focus": [
           430,
           900
-        ]
+        ],
+        "pan": 90
       },
       "personnages": [
         {

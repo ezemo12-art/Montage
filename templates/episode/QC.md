@@ -22,6 +22,10 @@ Rien n'est « terminé » sans cette fiche remplie. Validation humaine obligatoi
 - [ ] Couleurs dans la palette, textes lisibles ≥ 1,5 s
 - [ ] Rien d'important en bas (20 %) ni sur le bord droit
 - [ ] Titre ou Archiviste visible à 0 s
+- [ ] Hook : impact qui remplit l'écran, aucun plan immobile > 0,5 s sur 0–4 s (`python3 scripts/controle.py hook export/final.mp4`)
+- [ ] Planches à 2 images/s regardées (`python3 scripts/controle.py planches export/final.mp4`) : rien de vide, figé ou trop lent
+- [ ] Voix relue par transcription et comparée au script (`python3 scripts/controle.py voix export/final.mp4 script.txt`)
+- [ ] Version légère < 48 Mo (`scripts/export_leger.sh export/final.mp4`)
 - [ ] Voix = voix officielle de l'Archiviste, sous-titres synchronisés
 - [ ] `check --json` propre, images clés regardées
 

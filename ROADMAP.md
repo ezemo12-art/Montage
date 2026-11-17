@@ -64,7 +64,13 @@ Jeux d'enquête **fictifs** en PDF : EXPRESS 4,90 € · CLASSIQUE 9,90 € · C
 - Mention « fiction » sur chaque document ; aucun faux document présenté comme authentique.
 - Plus tard : plateforme de vente (Gumroad, Payhip, Shopify…) — choix et compte à toi.
 
-## Phase 8 — Automatisation ⏳
+## Phase 8 — Automatisation ⏳ (file en place)
+- ✅ File de production `file/` : relais Telegram, routeur, consignes production / reprise / publication /
+  apprentissage, validation humaine obligatoire — testée hors ligne de bout en bout
+- ✅ Calendrier 8 h · 13 h · 18 h, banque de sujets + détection « déjà fait », contrôles hook / planches / voix,
+  version légère Telegram
+- ⏳ À installer sur ton ordinateur (bot Telegram, cron / launchd) : `file/README.md`
+- ⏳ Publication automatique (Buffer ou API des réseaux) : pas encore connectée
 Chaîne : affaire → recherche → sources → scénario → storyboard → images → vidéo → voix →
 montage → couverture → publication préparée → PDF → fiches produits → suivi des ventes.
 - **Validation humaine obligatoire** avant toute publication d'histoire vraie et toute mise en vente.

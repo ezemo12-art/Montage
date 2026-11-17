@@ -9,3 +9,13 @@ motion/export/
 motion/test-*.html
 dossiers/**/export/
 __pycache__/
+file/state.json
+file/*.jsonl
+file/offset.txt
+file/outbox/
+file/items/
+file/*.log
+file/.lock
+file/*.tmp
+**/export/planches/
+calendrier.tmp

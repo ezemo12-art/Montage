@@ -86,6 +86,11 @@ Texture : grain de film léger + vignettage sur les images 3D. Rien d'autre.
 | 7 | Conclusion + question au spectateur + slogan | 75–90 s |
 
 La 1re image (0 s) doit déjà montrer le titre ou l'Archiviste : c'est la miniature.
+**Hook** : un impact qui remplit l'écran dès 0 s ; aucun plan immobile de plus de 0,5 s dans les 4 premières
+secondes (contrôle : `scripts/controle.py hook`).
+
+**Calendrier** : 3 publications par jour, 8 h · 13 h · 18 h (Paris), Instagram + TikTok + YouTube Shorts,
+jamais deux sur un même créneau (`scripts/calendrier.py`).
 
 ## 7. Son
 
@@ -107,7 +112,11 @@ La 1re image (0 s) doit déjà montrer le titre ou l'Archiviste : c'est la minia
 - Vérifier le statut judiciaire ; présomption d'innocence : aucune personne non condamnée présentée comme coupable.
 - Jamais de preuve, témoignage ou document inventé dans une histoire vraie.
 - Reconstitutions : stylisées 3D, jamais de visage réaliste d'une vraie victime, pas de gore.
-- Contenus générés par IA : activer l'étiquette « IA » d'Instagram / TikTok.
+- Contenus générés par IA : mention IA cochée sur CHAQUE réseau, à chaque publication — Instagram « AI info »,
+  TikTok « AI-generated content », YouTube Shorts « contenu modifié ou synthétique » (revérifier dans YouTube
+  Studio : certains outils de programmation remettent la case à « non »).
+- Droit d'auteur (art. L122-4 CPI) : une vidéo de référence inspire le sujet, jamais le contenu ; on ne reprend
+  ni images, ni texte, ni montage d'autrui.
 
 ## 10. Phrase de style (à coller au début de chaque demande)
 

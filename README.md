@@ -20,5 +20,9 @@ Système de production de DOSSIER 00 : épisodes d'enquêtes criminelles en vid�
 | `templates/episode/` | Modèle d'épisode + fiche contrôle qualité |
 | `ROADMAP.md` | Ce qui est prêt, ce qui manque, ce qui bloque |
 | `docs/` | Tes textes d'origine, conservés mot pour mot |
+| `file/` | File de production automatique (Telegram → Claude Code → validation) |
+| `BANQUE_SUJETS.md` · `scripts/sujets.py` | Banque d'affaires + détection des doublons |
+| `scripts/calendrier.py` | Créneaux de publication 8 h · 13 h · 18 h |
+| `scripts/controle.py` · `scripts/export_leger.sh` | Contrôles hook / planches / voix, export < 48 Mo |
 | `CLAUDE.md` | Règles de travail lues par Claude à chaque session |
 | `exemple-enquete/` | Test technique (avant DOSSIER 00) |
