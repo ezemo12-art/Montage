@@ -1,7 +1,10 @@
-# Montage — Instagram videos on criminal investigations
+# DOSSIER 00 — true-crime brand (Instagram / TikTok) + investigation games shop
 
-This repo is used to produce vertical videos (Reels) with motion design, using
-HyperFrames (HTML → MP4). Skills are installed in `.claude/skills/`.
+This repo is the production system of DOSSIER 00 (slogan: « Chaque détail cache une vérité. »):
+vertical 9:16 episodes (60–90 s) narrated by a permanent character, **the Archiviste**, plus a
+shop of fictional investigation games in PDF (LES DOSSIERS CONFIDENTIELS).
+Videos are assembled with HyperFrames (HTML → MP4); skills are in `.claude/skills/`.
+Roadmap and what is blocked: `ROADMAP.md`.
 Always respond in French.
 
 ## Start of session (cloud container = fresh environment)
@@ -18,30 +21,54 @@ Shortcut used below: `H="node $PWD/.claude/skills/hyperframes/scripts/plugin-cli
 
 ## Art direction — MANDATORY
 
-**`DA.md` is the account's art direction. Read it before every video and follow it
-for every video the user asks for**, unless the brief explicitly asks for an exception.
-Its technical values live in `da/da.css`: copy it to `assets/da.css` of each new video
-and link it (`<link rel="stylesheet" href="assets/da.css">`). If the user changes the DA,
-update `DA.md` and `da/da.css` together.
+**`DA.md` is the official art direction. Read it before every production and follow it for every
+video, image, cover and PDF**, unless the user explicitly asks for an exception. Never change the
+identity on your own. Technical values: `da/da.css` — copy it to `assets/da.css` of each video and
+link it (`<link rel="stylesheet" href="assets/da.css">`). If the user changes the DA, update
+`DA.md` and `da/da.css` together.
+
+## The Archiviste — permanent character, MANDATORY
+
+- Bible: `archiviste/CHARACTER.md`. Official references: `archiviste/references/` (validated only).
+- Never create a new character or redesign him. Always pass the official reference image(s) to any
+  image/video engine that accepts them, and always start prompts with the locked blocks in
+  `prompts/archiviste.md`.
+- New generations go to `archiviste/candidats/` (or the episode folder), never straight into
+  `references/`. Never replace an official reference without the user's written validation.
+- QC every image/shot against the reference (`CHARACTER.md` §7); significant drift → regenerate.
+
+## Episodes
+
+- One folder per episode: `scripts/new_episode.sh <num> "<titre>"` → `dossiers/DOSSIER-<num>/`
+  (`EPISODE.md`, `QC.md`, `sources/ images/ video/ audio/ motion/ export/`).
+- Structure (DA.md §6): hook · affaire · Archiviste · reconstitution · indices · retournement · question.
+- Nothing is « done » until the file exists and `QC.md` is filled. Human validation before publishing.
+
+## APIs and keys
+
+- Images: `scripts/gen_image.py` (OpenAI GPT Image, `--dry-run` first). Video: no provider chosen
+  yet (OpenAI Sora API is shut down) — see `ROADMAP.md`. Verify an API exists and its price before use.
+- Keys only via environment / environment secrets (`request_credential`), never in files or git.
+- Avoid useless generations (cost); every call is logged in `generations.jsonl`.
 
 ## Method (always in this order)
 
 1. **Prepare the rush** (`rush/`): cut the silences/hesitations, show the list of cuts before applying them.
 2. **Transcribe, then storyboard** with a timestamped plan, **3 or 4 key moments max**.
    Build nothing before the user's OK.
-3. **Build** in `videos/<slug>/` (`$H init videos/<slug> --skip-skills --skill=hyperframes`),
+3. **Build** in `dossiers/DOSSIER-<num>/motion/` (`$H init <dir> --skip-skills --skill=hyperframes`),
    format **1080 × 1920, 30 fps**.
 4. **Iterate** (3 rounds max), then export:
-   `$H render --quality delivery -o videos/<slug>/export/final.mp4`.
+   `$H render --quality delivery -o dossiers/DOSSIER-<num>/export/final.mp4`.
 
 The `BRIEF.md` file is the brief template to fill in before each video.
-`exemple-enquete/` is a working reference project (voice + subtitles + title).
+`exemple-enquete/` is a technical test made before DOSSIER 00 (old palette — do not copy its style).
 
 ## Benchmarks
 
 - Big title: 0.8–1.2 s · word-by-word subtitle: 0.25–0.35 s/word · widget/card: 0.6–0.9 s
 - Minimum reading time: 1.5 s per text
-- A single thing moves at a time · 2 neutrals + 1 accent max
+- A single thing moves at a time · official palette only (amber accent, dark red rare)
 - Animations synced to the voice (transcribe before animating)
 
 ## Check before posting

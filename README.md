@@ -1,14 +1,19 @@
-# Montage
+# DOSSIER 00
 
-Instagram videos on criminal investigations, created with Claude + HyperFrames.
+*Chaque détail cache une vérité.*
 
-- `DA.md` — the account's art direction (applied to every video)
-- `da/da.css` — the DA's colors, fonts and sizes, for the videos
-- `CLAUDE.md` — the method and rules (read by Claude in each session)
-- `BRIEF.md` — the form to fill in before each video
-- `rush/` — your raw videos (not saved to git)
-- `videos/` — one folder per video
-- `exemple-enquete/` — test video (French AI voice-over + synced subtitles)
+Système de production de DOSSIER 00 : épisodes d'enquêtes criminelles en vidéo verticale
+(Instagram / TikTok) racontés par **l'Archiviste**, et boutique de jeux d'enquête PDF
+**LES DOSSIERS CONFIDENTIELS**.
 
-To start: fill in `BRIEF.md`, drop your rush in `rush/`, and ask Claude:
-« Here is my brief. Transcribe my video, then propose a timestamped storyboard with 3 key moments. Don't build anything before my OK. »
+| Fichier / dossier | Rôle |
+| --- | --- |
+| `DA.md` · `da/da.css` | Direction artistique officielle (palette, polices, mouvements, structure) |
+| `archiviste/` | Bible du personnage + références officielles + candidats à valider |
+| `prompts/archiviste.md` | Prompts verrouillés du personnage et des références à créer |
+| `scripts/gen_image.py` | Génération d'images avec références (OpenAI GPT Image) |
+| `scripts/new_episode.sh` | Crée `dossiers/DOSSIER-XXX/` à partir du modèle |
+| `templates/episode/` | Modèle d'épisode + fiche contrôle qualité |
+| `ROADMAP.md` | Ce qui est prêt, ce qui manque, ce qui bloque |
+| `CLAUDE.md` | Règles de travail lues par Claude à chaque session |
+| `exemple-enquete/` | Test technique (avant DOSSIER 00) |
