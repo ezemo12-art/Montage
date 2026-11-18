@@ -58,10 +58,10 @@ Règles :
 
 | Type | Valeurs |
 | --- | --- |
-| Décors | `maison_nuit` (maison à étage, porte qui s'ouvre, 4 fenêtres allumables, applique, lampadaire) · `couloir` (intérieur en perspective, lampe, porte du fond) · `voisinage` (maison du récit au loin + maison des voisins, ondes sonores, voisin à la fenêtre) |
+| Décors | `archiviste` (plan narrateur : image officielle de l'Archiviste telle quelle, il sort de l'ombre, lumière ambre, caméra sur son visage) · `maison_nuit` (maison à étage, porte qui s'ouvre, 4 fenêtres allumables, applique, lampadaire) · `couloir` (intérieur en perspective, lampe, porte du fond) · `voisinage` (maison du récit au loin + maison des voisins, ondes sonores, voisin à la fenêtre) |
 | Actions personnage | `marche`, `court`, `entre`, `regarde_derriere`, `telephone`, `apparait`, `disparait`, `tombe` |
-| Actions décor | `ouvre_porte`, `ferme_porte`, `lumieres`, `eteint`, `bruit`, `voisin_regarde` |
-| Caméra | `push_in` (+ `intensite`), `cadrage` (+ `zoom`, `focus`), `travelling` (+ `pan`), `recul`, `fixe` ; `focus` : `porte`, `son` ou `[x, y]` |
+| Actions décor | `ouvre_porte`, `ferme_porte`, `lumieres`, `eteint`, `bruit`, `voisin_regarde` · plan archiviste : `sort_de_l_ombre`, `lumiere_ambre` |
+| Caméra | `push_in` (+ `intensite`), `cadrage` (+ `zoom`, `focus`), `travelling` (+ `pan`), `recul`, `fixe` ; `focus` : `porte`, `son`, `visage` ou `[x, y]` |
 | Personnage (fiche) | `genre` homme/femme · `age` adulte/enfant · `taille_cm` · `carrure` mince/normale/forte · `manteau` long/court/aucun · `chapeau` · `cheveux` courts/longs/chignon/chauve · `description` (pour les images IA) |
 
 Bibliothèque persistante (réutilisée d'une vidéo à l'autre) : `bibliotheque/personnages/`, `bibliotheque/lieux/`.

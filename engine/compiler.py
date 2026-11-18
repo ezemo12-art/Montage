@@ -22,6 +22,8 @@ def _focus(spec, sc: D.Scene):
         return float(spec[0]), float(spec[1])
     if spec == "porte":
         return a["porte_x"], a["porte_haut"] + 90
+    if spec == "visage" and "visage" in a:
+        return a["visage"]
     if spec == "son" and "son" in a:
         return a["son"]
     return 540.0, sc.sol_y - 300
@@ -123,6 +125,10 @@ def compiler_plan(pl: dict, sb: dict, ws: list[dict]) -> str:
                     t = t0 + rep * 1.1 + i * 0.32
                     tl.attr(f"#{P}-onde{i}", "scale(0.3)", "scale(1.9)", t, 1.3, "power1.out")
                     tl.prop(f"#{P}-onde{i}", {"opacity": 0.95}, {"opacity": 0}, t, 1.3, "power1.in")
+        elif typ == "sort_de_l_ombre":
+            tl.prop(f"#{P}-ombre", {"opacity": float(lieu.get("ombre_initiale", 0.9))}, {"opacity": 0}, t0, max(0.8, t1 - t0), "power2.inOut")
+        elif typ == "lumiere_ambre":
+            tl.prop(f"#{P}-lumiere", {"opacity": 0}, {"opacity": 1}, t0, max(0.6, t1 - t0), "power2.inOut")
         elif typ == "voisin_regarde":
             tl.prop(f"#{P}-voisin", {"opacity": 0}, {"opacity": 1}, t0, 0.8)
 
@@ -171,13 +177,23 @@ def compiler_plan(pl: dict, sb: dict, ws: list[dict]) -> str:
 # ---------------------------------------------------------------- sous-titres
 def sous_titres(ws: list[dict], fin: float, mots_cles: list[str]) -> tuple[str, str]:
     cles = {_norm(m) for m in mots_cles}
-    groupes, cur = [], []
+    # Découpe par proposition (ponctuation), puis groupes équilibrés de 4 mots au plus :
+    # « Chaque détail / cache une vérité. » plutôt que « Chaque détail cache une / vérité. »
+    props, cur = [], []
     for i, w in enumerate(ws):
         cur.append(w)
-        fin_phrase = w["t"].rstrip().endswith((".", ",", "?", "!", ";", ":"))
-        if len(cur) >= 4 or (fin_phrase and len(cur) >= 2) or i == len(ws) - 1:
-            groupes.append(cur)
+        if w["t"].rstrip().endswith((".", ",", "?", "!", ";", ":")) or i == len(ws) - 1:
+            props.append(cur)
             cur = []
+    groupes = []
+    for pr in props:
+        n = -(-len(pr) // 4)
+        base, reste = divmod(len(pr), n)
+        tailles = [base] * (n - reste) + [base + 1] * reste  # les groupes les plus longs à la fin
+        k = 0
+        for t in tailles:
+            groupes.append(pr[k:k + t])
+            k += t
     divs, js = [], []
     for k, g in enumerate(groupes):
         s = g[0]["s"]
@@ -200,6 +216,8 @@ def compiler(sb: dict, sb_dir: pathlib.Path, out: pathlib.Path) -> dict:
     (out / "compositions").mkdir(parents=True, exist_ok=True)
     (out / "assets").mkdir(exist_ok=True)
     shutil.copyfile(voix, out / "assets" / ("voix" + voix.suffix))
+    if any(p.get("decor") == "archiviste" for p in sb["plans"]):  # image officielle, copiée telle quelle
+        shutil.copyfile(D.ROOT_DEPOT / "archiviste" / "references" / "Character_FullBody_v1.jpg", out / D.ARCHIVISTE_ASSET)
     (out / "assets" / "da.css").write_text(DA_CSS)
     hosts = []
     for pl in plans:

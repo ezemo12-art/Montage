@@ -6,9 +6,10 @@ import pathlib
 import re
 import unicodedata
 
-DECORS_CONNUS = {"maison_nuit", "couloir", "voisinage"}
+DECORS_CONNUS = {"maison_nuit", "couloir", "voisinage", "archiviste"}
 ACTIONS_CONNUES = {"marche", "court", "entre", "regarde_derriere", "telephone", "apparait", "disparait",
-                   "tombe", "ouvre_porte", "ferme_porte", "lumieres", "eteint", "bruit", "voisin_regarde"}
+                   "tombe", "ouvre_porte", "ferme_porte", "lumieres", "eteint", "bruit", "voisin_regarde",
+                   "sort_de_l_ombre", "lumiere_ambre"}
 
 
 class ErreurStoryboard(ValueError):

@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from .style import PALETTE as C
+from .style import PALETTE as C, ROOT as ROOT_DEPOT
 
 W, H = 1080, 1920
 
@@ -180,4 +180,37 @@ def voisinage(p: str, lieu: dict, voisin: dict) -> Scene:
     return sc
 
 
-DECORS = {"maison_nuit": maison_nuit, "couloir": couloir, "voisinage": voisinage}
+# L'Archiviste : image officielle EXACTE (archiviste/references/Character_FullBody_v1.jpg), jamais redessinée.
+ARCHIVISTE_IMG = (1206, 1162)       # taille de l'image officielle
+ARCHIVISTE_ASSET = "assets/archiviste.jpg"
+
+
+def archiviste(p: str, lieu: dict) -> Scene:
+    """Plan narrateur : l'Archiviste sort de l'ombre, une lumière ambre l'éclaire.
+    Le mouvement vient de la mise en scène (ombre, lumière, caméra) : son apparence n'est jamais modifiée."""
+    w0, h0 = ARCHIVISTE_IMG
+    w = W
+    h = h0 * w / w0
+    y = 1220 - h  # le bas de l'image s'arrête à la limite de la zone sûre
+    sc = Scene(sol_y=1220)
+    sc.defs.append(f'<linearGradient id="{p}-haut" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{C["charbon"]}"/>'
+                   f'<stop offset="1" stop-color="{C["charbon"]}" stop-opacity="0"/></linearGradient>'
+                   f'<linearGradient id="{p}-bas" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{C["charbon"]}" stop-opacity="0"/>'
+                   f'<stop offset="1" stop-color="{C["charbon"]}"/></linearGradient>'
+                   f'<radialGradient id="{p}-ambre"><stop offset="0" stop-color="{C["ambre"]}" stop-opacity="0.55"/>'
+                   f'<stop offset="1" stop-color="{C["ambre"]}" stop-opacity="0"/></radialGradient>')
+    sc.bg.append(f'<rect x="-300" y="-300" width="{W+600}" height="{H+600}" fill="{C["charbon"]}"/>'
+                 f'<image href="{ARCHIVISTE_ASSET}" x="0" y="{y:.1f}" width="{w}" height="{h:.1f}" preserveAspectRatio="none"/>'
+                 # raccords haut / bas de l'image avec le noir du cadre (habillage, l'image n'est pas modifiée)
+                 f'<rect x="-300" y="{y-2:.1f}" width="{W+600}" height="160" fill="url(#{p}-haut)"/>'
+                 f'<rect x="-300" y="{y+h-160:.1f}" width="{W+600}" height="162" fill="url(#{p}-bas)"/>'
+                 f'<rect x="-300" y="{y+h:.1f}" width="{W+600}" height="{H}" fill="{C["charbon"]}"/>')
+    sc.mid.append(f'<ellipse id="{p}-lumiere" cx="760" cy="{y + h*0.42:.1f}" rx="430" ry="560" fill="url(#{p}-ambre)" '
+                  f'opacity="0" style="mix-blend-mode:screen"/>')
+    sc.fg.append(f'<rect id="{p}-ombre" x="-300" y="-300" width="{W+600}" height="{H+600}" fill="{C["charbon"]}" '
+                 f'opacity="{float(lieu.get("ombre_initiale", 0.9))}"/>')
+    sc.ancres = {"visage": (W / 2, y + h * 0.30), "gauche": -200, "droite": W + 200}
+    return sc
+
+
+DECORS = {"maison_nuit": maison_nuit, "couloir": couloir, "voisinage": voisinage, "archiviste": archiviste}

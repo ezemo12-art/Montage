@@ -32,7 +32,9 @@ Architecture : `docs/ARCHITECTURE_MOTION_NARRATIF.md` · mode d'emploi : `engine
 - ✅ Personnage articulé généré depuis une fiche (même apparence dans tous les plans) + bibliothèque persistante
 - ✅ Actions : marcher, courir, entrer, se retourner, téléphoner, apparaître, tomber ; portes, lumières, bruit
 - ✅ Décors : maison de nuit, couloir intérieur, voisinage ; caméra avec parallaxe
-- ✅ Démo complète rendue sur la narration d'exemple (5 plans, 10,6 s)
+- ✅ Démo complète rendue sur la narration d'exemple (6 plans, 13,2 s), avec l'Archiviste en narrateur
+- ✅ Plan « Archiviste » : image officielle telle quelle, sortie de l'ombre, lumière ambre, caméra
+- ✅ Sous-titres découpés par proposition, groupes équilibrés
 - ⏳ Plus de décors (rue, voiture qui roule, forêt, poste de police, ruban, bureau) et de poses (vue de face, expressions)
 - ⏳ Style « illustration 2.5D IA » (clé OpenAI) : couches générées + détourage local + parallaxe
 - ⏳ Style « clip vidéo IA » (fournisseur vidéo à choisir)

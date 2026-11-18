@@ -1,116 +1,152 @@
 [
   {
     "text": "La",
-    "start": 0.08,
-    "end": 0.29,
+    "start": 0.13,
+    "end": 0.18,
     "id": "w0"
   },
   {
-    "text": "23h,",
-    "start": 0.29,
-    "end": 1.44,
+    "text": "vingt-trois",
+    "start": 0.18,
+    "end": 1.17,
     "id": "w1"
   },
   {
-    "text": "un",
-    "start": 1.72,
-    "end": 1.75,
+    "text": "heures,",
+    "start": 1.17,
+    "end": 1.84,
     "id": "w2"
   },
   {
-    "text": "homme",
-    "start": 1.75,
-    "end": 2.13,
+    "text": "un",
+    "start": 1.84,
+    "end": 1.96,
     "id": "w3"
   },
   {
-    "text": "entre",
-    "start": 2.13,
-    "end": 2.4,
+    "text": "homme",
+    "start": 1.96,
+    "end": 2.27,
     "id": "w4"
   },
   {
-    "text": "discrètement",
-    "start": 2.52,
-    "end": 3.41,
+    "text": "entre",
+    "start": 2.27,
+    "end": 2.47,
     "id": "w5"
   },
   {
-    "text": "dans",
-    "start": 3.41,
-    "end": 3.71,
+    "text": "discrètement",
+    "start": 2.6,
+    "end": 3.38,
     "id": "w6"
+  },
+  {
+    "text": "dans",
+    "start": 3.38,
+    "end": 3.71,
+    "id": "w7"
   },
   {
     "text": "une",
     "start": 3.71,
-    "end": 3.93,
-    "id": "w7"
-  },
-  {
-    "text": "maison,",
-    "start": 3.93,
-    "end": 4.57,
+    "end": 3.95,
     "id": "w8"
   },
   {
-    "text": "quelques",
-    "start": 4.65,
-    "end": 5.2,
+    "text": "maison.",
+    "start": 3.95,
+    "end": 4.49,
     "id": "w9"
   },
   {
-    "text": "minutes",
-    "start": 5.2,
-    "end": 5.71,
+    "text": "Quelques",
+    "start": 4.63,
+    "end": 5.12,
     "id": "w10"
   },
   {
-    "text": "plus",
-    "start": 5.87,
-    "end": 6.06,
+    "text": "minutes",
+    "start": 5.33,
+    "end": 5.68,
     "id": "w11"
   },
   {
-    "text": "tard,",
-    "start": 6.06,
-    "end": 6.47,
+    "text": "plus",
+    "start": 5.68,
+    "end": 6,
     "id": "w12"
   },
   {
-    "text": "les",
-    "start": 6.51,
-    "end": 6.6,
+    "text": "tard,",
+    "start": 6,
+    "end": 6.5,
     "id": "w13"
   },
   {
-    "text": "voisins",
-    "start": 6.68,
-    "end": 7.09,
+    "text": "les",
+    "start": 6.5,
+    "end": 6.7,
     "id": "w14"
   },
   {
-    "text": "entendent",
-    "start": 7.09,
-    "end": 7.73,
+    "text": "voisins",
+    "start": 6.7,
+    "end": 7.17,
     "id": "w15"
   },
   {
-    "text": "d'un",
-    "start": 7.73,
-    "end": 8.01,
+    "text": "entendent",
+    "start": 7.17,
+    "end": 7.82,
     "id": "w16"
   },
   {
-    "text": "bruit",
-    "start": 8.01,
-    "end": 8.36,
+    "text": "d'un",
+    "start": 7.82,
+    "end": 8.11,
     "id": "w17"
   },
   {
-    "text": "étrange.",
-    "start": 8.36,
-    "end": 9.01,
+    "text": "bruit",
+    "start": 8.11,
+    "end": 8.49,
     "id": "w18"
+  },
+  {
+    "text": "étrange.",
+    "start": 8.49,
+    "end": 9.32,
+    "id": "w19"
+  },
+  {
+    "text": "Chaque",
+    "start": 9.45,
+    "end": 9.78,
+    "id": "w20"
+  },
+  {
+    "text": "détail",
+    "start": 9.78,
+    "end": 10.24,
+    "id": "w21"
+  },
+  {
+    "text": "cache",
+    "start": 10.24,
+    "end": 10.63,
+    "id": "w22"
+  },
+  {
+    "text": "une",
+    "start": 10.63,
+    "end": 10.83,
+    "id": "w23"
+  },
+  {
+    "text": "vérité.",
+    "start": 11.11,
+    "end": 11.6,
+    "id": "w24"
   }
 ]

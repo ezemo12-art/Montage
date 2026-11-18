@@ -53,6 +53,14 @@ manteau qui tombe jusqu'aux chevilles, canne tenue au centre, devant le corps.
 - Aux révélations, une lumière ambre l'éclaire (sans modifier son apparence).
 - Apparaît souvent dans la pénombre, éclairé par une lumière ambre latérale.
 
+## 4 bis. Dans les vidéos (en attendant les clés de génération)
+
+Plan `archiviste` du moteur (`engine/README.md`) : l'**image officielle est utilisée telle quelle**, sans
+détourage ni retouche. Le mouvement vient uniquement de la mise en scène : il sort de l'ombre, une lumière
+ambre monte, la caméra avance vers son visage. Utilisé là où la structure le place (présentation, conclusion).
+Le détourage (pour le poser dans les décors) et l'animation de ses gestes attendent l'accord de l'utilisateur
+et les clés OpenAI / vidéo.
+
 ## 5. Voix
 Française, masculine, grave, posée, naturelle. Toujours la même voix pour toute la série.
 Statut : _voix à choisir et à figer_ (voir `ROADMAP.md`). Ne jamais cloner la voix d'une vraie
