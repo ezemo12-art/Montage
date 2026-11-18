@@ -151,8 +151,11 @@ def compiler_plan(pl: dict, sb: dict, ws: list[dict]) -> str:
         if inc.get("sous_texte"):
             tl.prop(f"#{P}-ov-s", {"opacity": 0}, {"opacity": 1}, 0.9, 0.5)
 
-    # fondu d'entrée
-    tl.prop(f"#{P}-noir", {"opacity": 1}, {"opacity": 0}, 0, 0.35, "power1.out")
+    # fondu d'entrée (sauf le tout premier plan : la 1re image est la miniature)
+    if pl["debut"] > 0:
+        tl.prop(f"#{P}-noir", {"opacity": 1}, {"opacity": 0}, 0, 0.35, "power1.out")
+    else:
+        tl.prop(f"#{P}-noir", {"opacity": 0}, {"opacity": 0}, 0, 0.01, "none")
 
     calques = {"bg": sc.bg, "mid": sc.mid + persos_svg, "fg": sc.fg}
     groupes = "".join(f'<g id="{P}-cam-{k}" transform="{cam[k][0]}">{"".join(v)}</g>' for k, v in calques.items())
@@ -200,6 +203,7 @@ def sous_titres(ws: list[dict], fin: float, mots_cles: list[str]) -> tuple[str, 
     for k, g in enumerate(groupes):
         s = g[0]["s"]
         e = groupes[k + 1][0]["s"] if k + 1 < len(groupes) else fin
+        e = min(e, g[-1]["e"] + 1.2)  # le sous-titre ne traîne pas après la phrase
         txt = " ".join(f"<em>{html.escape(w['t'])}</em>" if w["n"] in cles else html.escape(w["t"]) for w in g)
         divs.append(f'<div id="st{k}" class="clip st" data-start="{s:.2f}" data-duration="{max(0.4, e - s):.2f}" data-track-index="5">'
                     f'<span id="st{k}-t" class="da-caption" style="display:block">{txt}</span></div>')
@@ -223,6 +227,15 @@ def compiler(sb: dict, sb_dir: pathlib.Path, out: pathlib.Path) -> dict:
     (out / "assets" / "da.css").write_text(DA_CSS)
     hosts = []
     for pl in plans:
+        if pl.get("decor") == "motion":  # composition du système graphique (motion/), réutilisée telle quelle
+            nom = pl["composition"]
+            shutil.copyfile(D.ROOT_DEPOT / "motion" / "compositions" / f"{nom}.html", out / "compositions" / f"{nom}.html")
+            variables = {"fin": round(max(1.0, pl["duree"] - 0.5), 2)} | pl.get("variables", {})
+            vals = html.escape(json.dumps(variables, ensure_ascii=False), quote=True)
+            hosts.append(f'<div id="{nom}" data-composition-id="{nom}" data-composition-src="compositions/{nom}.html" '
+                         f'data-start="{pl["debut"]:.2f}" data-duration="{pl["duree"]:.2f}" data-track-index="1" '
+                         f'data-track-kind="graphics" data-width="1080" data-height="1920" data-variable-values="{vals}"></div>')
+            continue
         if pl.get("decor") == "illustration":  # image générée, copiée telle quelle
             src = (sb_dir / pl["image"]).resolve()
             (out / "assets" / "plans").mkdir(parents=True, exist_ok=True)
@@ -231,7 +244,8 @@ def compiler(sb: dict, sb_dir: pathlib.Path, out: pathlib.Path) -> dict:
         hosts.append(f'<div id="{pl["id"]}" data-composition-id="{pl["id"]}" data-composition-src="compositions/{pl["id"]}.html" '
                      f'data-start="{pl["debut"]:.2f}" data-duration="{pl["duree"]:.2f}" data-track-index="1" data-track-kind="graphics" '
                      f'data-width="1080" data-height="1920"></div>')
-    st_html, st_js = sous_titres(ws, total, sb.get("mots_cles", []))
+    muets = [(p["debut"], p["fin"]) for p in plans if p.get("sans_sous_titres")]
+    st_html, st_js = sous_titres([w for w in ws if not any(a <= w["s"] < b for a, b in muets)], total, sb.get("mots_cles", []))
     index = f"""<!doctype html>
 <html lang="fr">
   <head>

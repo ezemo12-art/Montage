@@ -1,0 +1,21 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #101113; overflow: hidden; }
+    #p7-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #p7-noir { position: absolute; inset: 0; background: #101113; }
+  </style>
+  <div id="root" data-composition-id="p7" data-width="1080" data-height="1920">
+    <svg id="p7-svg" viewBox="0 0 1080 1920" data-layout-ignore><defs><radialGradient id="p7-ambre"><stop offset="0" stop-color="#d6a64a" stop-opacity="0.6"/><stop offset="1" stop-color="#d6a64a" stop-opacity="0"/></radialGradient></defs><g id="p7-cam-bg" transform="translate(495.0 980.0) scale(1.0000) translate(-495.0 -980.0)"><rect x="-300" y="-300" width="1680" height="2520" fill="#101113"/><image href="assets/plans/p7.png" x="0" y="0" width="1080" height="1920" preserveAspectRatio="xMidYMid slice"/></g><g id="p7-cam-mid" transform="translate(495.0 980.0) scale(1.0000) translate(-495.0 -980.0)"><ellipse id="p7-lumiere" cx="652" cy="220" rx="260" ry="260" fill="url(#p7-ambre)" opacity="0" style="mix-blend-mode:screen"/></g><g id="p7-cam-fg" transform="translate(495.0 980.0) scale(1.0000) translate(-495.0 -980.0)"><g transform="translate(540 700)"><g id="p7-onde0" transform="scale(0.3)" opacity="0"><path d="M-60,-70 A92,92 0 0 0 -60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/><path d="M60,-70 A92,92 0 0 1 60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/></g></g><g transform="translate(540 700)"><g id="p7-onde1" transform="scale(0.3)" opacity="0"><path d="M-60,-70 A92,92 0 0 0 -60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/><path d="M60,-70 A92,92 0 0 1 60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/></g></g><g transform="translate(540 700)"><g id="p7-onde2" transform="scale(0.3)" opacity="0"><path d="M-60,-70 A92,92 0 0 0 -60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/><path d="M60,-70 A92,92 0 0 1 60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/></g></g><rect id="p7-ombre" x="-300" y="-300" width="1680" height="2520" fill="#101113" opacity="0.0"/></g></svg>
+    
+    <div id="p7-noir" data-layout-ignore></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#p7-lumiere", {"opacity": 0}, {"opacity": 1, "duration": 1.474, "ease": "power2.inOut"}, 0.134);
+    tl.fromTo("#p7-cam-bg", {attr: {transform: "translate(495.0 980.0) scale(1.0000) translate(-495.0 -980.0)"}}, {attr: {transform: "translate(495.0 980.0) scale(1.0875) translate(-495.0 -980.0)"}, duration: 2.680, ease: "none"}, 0.000);
+    tl.fromTo("#p7-cam-mid", {attr: {transform: "translate(495.0 980.0) scale(1.0000) translate(-495.0 -980.0)"}}, {attr: {transform: "translate(495.0 980.0) scale(1.2500) translate(-495.0 -980.0)"}, duration: 2.680, ease: "none"}, 0.000);
+    tl.fromTo("#p7-cam-fg", {attr: {transform: "translate(495.0 980.0) scale(1.0000) translate(-495.0 -980.0)"}}, {attr: {transform: "translate(495.0 980.0) scale(1.3125) translate(-495.0 -980.0)"}, duration: 2.680, ease: "none"}, 0.000);
+    tl.fromTo("#p7-noir", {"opacity": 1}, {"opacity": 0, "duration": 0.35, "ease": "power1.out"}, 0.000);
+    window.__timelines["p7"] = tl;
+  </script>
+</template>

@@ -1,0 +1,22 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #101113; overflow: hidden; }
+    #p4-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #p4-noir { position: absolute; inset: 0; background: #101113; }
+  </style>
+  <div id="root" data-composition-id="p4" data-width="1080" data-height="1920">
+    <svg id="p4-svg" viewBox="0 0 1080 1920" data-layout-ignore><defs><linearGradient id="p4-haut" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#101113"/><stop offset="1" stop-color="#101113" stop-opacity="0"/></linearGradient><linearGradient id="p4-bas" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#101113" stop-opacity="0"/><stop offset="1" stop-color="#101113"/></linearGradient><radialGradient id="p4-ambre"><stop offset="0" stop-color="#d6a64a" stop-opacity="0.55"/><stop offset="1" stop-color="#d6a64a" stop-opacity="0"/></radialGradient></defs><g id="p4-cam-bg" transform="translate(540.0 491.6) scale(1.0700) translate(-540.0 -491.6)"><rect x="-300" y="-300" width="1680" height="2520" fill="#101113"/><image href="assets/archiviste.jpg" x="0" y="179.4" width="1080" height="1040.6" preserveAspectRatio="none"/><rect x="-300" y="177.4" width="1680" height="160" fill="url(#p4-haut)"/><rect x="-300" y="1060.0" width="1680" height="162" fill="url(#p4-bas)"/><rect x="-300" y="1220.0" width="1680" height="1920" fill="#101113"/></g><g id="p4-cam-mid" transform="translate(540.0 491.6) scale(1.2000) translate(-540.0 -491.6)"><ellipse id="p4-lumiere" cx="760" cy="616.5" rx="430" ry="560" fill="url(#p4-ambre)" opacity="0" style="mix-blend-mode:screen"/></g><g id="p4-cam-fg" transform="translate(540.0 491.6) scale(1.2500) translate(-540.0 -491.6)"><rect id="p4-ombre" x="-300" y="-300" width="1680" height="2520" fill="#101113" opacity="0.9"/></g></svg>
+    
+    <div id="p4-noir" data-layout-ignore></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#p4-ombre", {"opacity": 0.9}, {"opacity": 0, "duration": 1.233, "ease": "power2.inOut"}, 0.000);
+    tl.fromTo("#p4-lumiere", {"opacity": 0}, {"opacity": 1, "duration": 0.63, "ease": "power2.inOut"}, 2.110);
+    tl.fromTo("#p4-cam-bg", {attr: {transform: "translate(540.0 491.6) scale(1.0700) translate(-540.0 -491.6)"}}, {attr: {transform: "translate(540.0 491.6) scale(1.1204) translate(-540.0 -491.6)"}, duration: 2.740, ease: "none"}, 0.000);
+    tl.fromTo("#p4-cam-mid", {attr: {transform: "translate(540.0 491.6) scale(1.2000) translate(-540.0 -491.6)"}}, {attr: {transform: "translate(540.0 491.6) scale(1.3440) translate(-540.0 -491.6)"}, duration: 2.740, ease: "none"}, 0.000);
+    tl.fromTo("#p4-cam-fg", {attr: {transform: "translate(540.0 491.6) scale(1.2500) translate(-540.0 -491.6)"}}, {attr: {transform: "translate(540.0 491.6) scale(1.4300) translate(-540.0 -491.6)"}, duration: 2.740, ease: "none"}, 0.000);
+    tl.fromTo("#p4-noir", {"opacity": 1}, {"opacity": 0, "duration": 0.35, "ease": "power1.out"}, 0.000);
+    window.__timelines["p4"] = tl;
+  </script>
+</template>

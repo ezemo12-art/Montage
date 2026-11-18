@@ -1,0 +1,23 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #101113; overflow: hidden; }
+    #p5-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #p5-noir { position: absolute; inset: 0; background: #101113; }
+  </style>
+  <div id="root" data-composition-id="p5" data-width="1080" data-height="1920">
+    <svg id="p5-svg" viewBox="0 0 1080 1920" data-layout-ignore><defs><radialGradient id="p5-ambre"><stop offset="0" stop-color="#d6a64a" stop-opacity="0.6"/><stop offset="1" stop-color="#d6a64a" stop-opacity="0"/></radialGradient></defs><g id="p5-cam-bg" transform="translate(540.0 1050.0) scale(1.0000) translate(-540.0 -1050.0)"><rect x="-300" y="-300" width="1680" height="2520" fill="#101113"/><image href="assets/plans/p5.png" x="0" y="0" width="1080" height="1920" preserveAspectRatio="xMidYMid slice"/></g><g id="p5-cam-mid" transform="translate(540.0 1050.0) scale(1.0000) translate(-540.0 -1050.0)"><ellipse id="p5-lumiere" cx="608" cy="300" rx="220" ry="220" fill="url(#p5-ambre)" opacity="0" style="mix-blend-mode:screen"/></g><g id="p5-cam-fg" transform="translate(540.0 1050.0) scale(1.0000) translate(-540.0 -1050.0)"><g transform="translate(540 700)"><g id="p5-onde0" transform="scale(0.3)" opacity="0"><path d="M-60,-70 A92,92 0 0 0 -60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/><path d="M60,-70 A92,92 0 0 1 60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/></g></g><g transform="translate(540 700)"><g id="p5-onde1" transform="scale(0.3)" opacity="0"><path d="M-60,-70 A92,92 0 0 0 -60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/><path d="M60,-70 A92,92 0 0 1 60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/></g></g><g transform="translate(540 700)"><g id="p5-onde2" transform="scale(0.3)" opacity="0"><path d="M-60,-70 A92,92 0 0 0 -60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/><path d="M60,-70 A92,92 0 0 1 60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/></g></g><rect id="p5-ombre" x="-300" y="-300" width="1680" height="2520" fill="#101113" opacity="0.0"/></g></svg>
+    <div id="p5-ov" style="position:absolute;left:150px;top:300px;width:740px"><div id="p5-ov-t" class="da-tag" style="font-size:46px;display:inline-block">2010</div><div id="p5-ov-s" class="da-meta" style="margin-top:12px">TÉMOIGNAGE</div></div>
+    <div id="p5-noir" data-layout-ignore></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#p5-lumiere", {"opacity": 0}, {"opacity": 1, "duration": 1.798, "ease": "power2.inOut"}, 5.650);
+    tl.fromTo("#p5-cam-bg", {attr: {transform: "translate(540.0 1050.0) scale(1.0000) translate(-540.0 -1050.0)"}}, {attr: {transform: "translate(540.0 1050.0) scale(1.0770) translate(-540.0 -1050.0)"}, duration: 7.840, ease: "none"}, 0.000);
+    tl.fromTo("#p5-cam-mid", {attr: {transform: "translate(540.0 1050.0) scale(1.0000) translate(-540.0 -1050.0)"}}, {attr: {transform: "translate(540.0 1050.0) scale(1.2200) translate(-540.0 -1050.0)"}, duration: 7.840, ease: "none"}, 0.000);
+    tl.fromTo("#p5-cam-fg", {attr: {transform: "translate(540.0 1050.0) scale(1.0000) translate(-540.0 -1050.0)"}}, {attr: {transform: "translate(540.0 1050.0) scale(1.2750) translate(-540.0 -1050.0)"}, duration: 7.840, ease: "none"}, 0.000);
+    tl.fromTo("#p5-ov-t", {"clipPath": "inset(0 100% 0 0)"}, {"clipPath": "inset(0 0% 0 0)", "duration": 0.6, "ease": "steps(8)"}, 0.300);
+    tl.fromTo("#p5-ov-s", {"opacity": 0}, {"opacity": 1, "duration": 0.5, "ease": "power2.inOut"}, 0.900);
+    tl.fromTo("#p5-noir", {"opacity": 1}, {"opacity": 0, "duration": 0.35, "ease": "power1.out"}, 0.000);
+    window.__timelines["p5"] = tl;
+  </script>
+</template>

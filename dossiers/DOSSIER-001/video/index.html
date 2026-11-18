@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style id="da-inline">
+/* DOSSIER 00 — valeurs officielles. Copier dans assets/da.css de chaque vidéo.
+   Référence humaine : DA.md. Ne pas modifier sans mettre DA.md à jour. */
+:root {
+  --charbon: #101113;  /* fond */
+  --archive: #29292b;  /* surfaces : dossiers, cartes, documents */
+  --ivoire:  #e5ddcb;  /* texte */
+  --ambre:   #d6a64a;  /* accent principal : œil, indices, mot clé */
+  --rouge:   #9e2929;  /* alerte, rare : crime, révélation, tampon */
+  --ivoire-doux: rgba(229, 221, 203, 0.8);
+
+  /* alias génériques */
+  --ground: var(--charbon);
+  --ink: var(--ivoire);
+  --accent: var(--ambre);
+
+  --font-display: "Oswald";
+  --font-mono: "IBM Plex Mono";
+  --safe-left: 150px;
+  --safe-width: 740px;
+}
+.da-tag     { font-family: var(--font-mono); font-size: 32px; letter-spacing: 0.2em; color: var(--ambre); text-transform: uppercase; }
+.da-title   { font-family: var(--font-display); font-size: 128px; line-height: 1.16; font-weight: 700; text-transform: uppercase; color: var(--ivoire); }
+.da-meta    { font-family: var(--font-mono); font-size: 40px; letter-spacing: 0.08em; color: var(--ivoire-doux); text-transform: uppercase; }
+.da-rule    { height: 4px; background: var(--ambre); transform-origin: left center; }
+.da-card    { background: var(--archive); color: var(--ivoire); }
+.da-stamp   { font-family: var(--font-display); color: var(--rouge); border: 6px solid var(--rouge); text-transform: uppercase; letter-spacing: 0.1em; }
+.da-caption { font-family: var(--font-display); font-size: 72px; font-weight: 600; line-height: 1.18; text-transform: uppercase; color: var(--ivoire); text-align: center; }
+.da-caption em { font-style: normal; color: var(--ambre); }
+.da-caption strong { font-weight: inherit; color: var(--rouge); } /* moment fort uniquement */
+
+    </style>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--charbon); }
+      #root { position: relative; width: 100%; height: 100%; }
+      .st { position: absolute; left: 150px; top: 1110px; width: 740px; z-index: 40; }
+      .st .da-caption { text-shadow: 0 2px 14px rgba(16, 17, 19, 0.95); }
+      #fx-vignette { position: absolute; inset: 0; z-index: 50; pointer-events: none;
+        background: radial-gradient(ellipse 80% 70% at 50% 45%, rgba(16, 17, 19, 0) 55%, rgba(16, 17, 19, 0.7) 100%); }
+      #fx-grain { position: absolute; inset: 0; z-index: 51; pointer-events: none; opacity: 0.07;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    </style>
+  </head>
+  <body>
+    <!-- Généré par engine/compiler.py depuis le storyboard : modifier le storyboard puis recompiler. -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="61.75" data-width="1080" data-height="1920">
+      <div id="p1" data-composition-id="p1" data-composition-src="compositions/p1.html" data-start="0.00" data-duration="5.57" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="revelation" data-composition-id="revelation" data-composition-src="compositions/revelation.html" data-start="5.57" data-duration="4.64" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" data-variable-values="{&quot;fin&quot;: 4.14, &quot;mot&quot;: &quot;4 corps&quot;, &quot;sous_titre&quot;: &quot;Ocean Parkway — décembre 2010&quot;}"></div>
+      <div id="p3" data-composition-id="p3" data-composition-src="compositions/p3.html" data-start="10.21" data-duration="1.82" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="p4" data-composition-id="p4" data-composition-src="compositions/p4.html" data-start="12.03" data-duration="2.74" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="p5" data-composition-id="p5" data-composition-src="compositions/p5.html" data-start="14.77" data-duration="7.84" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="document" data-composition-id="document" data-composition-src="compositions/document.html" data-start="22.61" data-duration="6.68" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" data-variable-values="{&quot;fin&quot;: 6.18, &quot;titre&quot;: &quot;Véhicule identifié&quot;, &quot;reference&quot;: &quot;ENQUÊTE GILGO BEACH — 2022 — RECONSTITUTION&quot;, &quot;l1&quot;: &quot;Chevrolet Avalanche, vert foncé.&quot;, &quot;l2&quot;: &quot;Propriétaire : Rex Heuermann.&quot;, &quot;l3&quot;: &quot;Architecte à Manhattan.&quot;, &quot;l4&quot;: &quot;Marié, père de deux enfants.&quot;, &quot;cle&quot;: 2, &quot;tampon&quot;: &quot;Suspect — 2022&quot;}"></div>
+      <div id="p7" data-composition-id="p7" data-composition-src="compositions/p7.html" data-start="29.29" data-duration="2.68" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="p8" data-composition-id="p8" data-composition-src="compositions/p8.html" data-start="31.97" data-duration="6.40" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="chronologie" data-composition-id="chronologie" data-composition-src="compositions/chronologie.html" data-start="38.37" data-duration="10.12" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" data-variable-values="{&quot;fin&quot;: 9.62, &quot;titre&quot;: &quot;Chronologie&quot;, &quot;d1&quot;: &quot;DÉC. 2010&quot;, &quot;e1&quot;: &quot;Premiers corps retrouvés&quot;, &quot;d2&quot;: &quot;MARS 2022&quot;, &quot;e2&quot;: &quot;Un suspect identifié&quot;, &quot;d3&quot;: &quot;JUIL. 2023&quot;, &quot;e3&quot;: &quot;Arrestation&quot;, &quot;d4&quot;: &quot;AVR. 2026&quot;, &quot;e4&quot;: &quot;Plaide coupable&quot;, &quot;cle&quot;: 4}"></div>
+      <div id="p10" data-composition-id="p10" data-composition-src="compositions/p10.html" data-start="48.49" data-duration="3.83" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="p11" data-composition-id="p11" data-composition-src="compositions/p11.html" data-start="52.32" data-duration="2.80" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="cloture" data-composition-id="cloture" data-composition-src="compositions/cloture.html" data-start="55.12" data-duration="6.63" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" data-variable-values="{&quot;fin&quot;: 6.13, &quot;question&quot;: &quot;Comment a-t-il pu vivre si longtemps sans éveiller les soupçons ?&quot;}"></div>
+      <audio id="voix" class="clip" src="assets/voix.wav" data-start="0" data-duration="60.45" data-track-index="9" data-volume="1"></audio>
+      <div data-track-kind="captions">
+      <div id="st0" class="clip st" data-start="0.09" data-duration="1.35" data-track-index="5"><span id="st0-t" class="da-caption" style="display:block">Décembre <em>2010.</em></span></div>
+      <div id="st1" class="clip st" data-start="1.44" data-duration="0.89" data-track-index="5"><span id="st1-t" class="da-caption" style="display:block">La police cherche</span></div>
+      <div id="st2" class="clip st" data-start="2.33" data-duration="0.61" data-track-index="5"><span id="st2-t" class="da-caption" style="display:block">une jeune femme</span></div>
+      <div id="st3" class="clip st" data-start="2.94" data-duration="1.60" data-track-index="5"><span id="st3-t" class="da-caption" style="display:block">disparue sur Long Island.</span></div>
+      <div id="st4" class="clip st" data-start="4.54" data-duration="0.40" data-track-index="5"><span id="st4-t" class="da-caption" style="display:block">Au bord</span></div>
+      <div id="st5" class="clip st" data-start="4.84" data-duration="0.85" data-track-index="5"><span id="st5-t" class="da-caption" style="display:block">d&#x27;une route côtière,</span></div>
+      <div id="st6" class="clip st" data-start="5.69" data-duration="1.33" data-track-index="5"><span id="st6-t" class="da-caption" style="display:block">elle découvre quatre <em>corps.</em></span></div>
+      <div id="st7" class="clip st" data-start="7.02" data-duration="0.67" data-track-index="5"><span id="st7-t" class="da-caption" style="display:block">En quelques mois,</span></div>
+      <div id="st8" class="clip st" data-start="7.69" data-duration="1.17" data-track-index="5"><span id="st8-t" class="da-caption" style="display:block">d&#x27;autres restes sont retrouvés</span></div>
+      <div id="st9" class="clip st" data-start="8.86" data-duration="1.47" data-track-index="5"><span id="st9-t" class="da-caption" style="display:block">le long d&#x27;Ocean Parkway.</span></div>
+      <div id="st10" class="clip st" data-start="10.33" data-duration="0.76" data-track-index="5"><span id="st10-t" class="da-caption" style="display:block">Pendant douze ans,</span></div>
+      <div id="st11" class="clip st" data-start="11.09" data-duration="1.06" data-track-index="5"><span id="st11-t" class="da-caption" style="display:block">l&#x27;enquête piétine.</span></div>
+      <div id="st12" class="clip st" data-start="12.15" data-duration="0.89" data-track-index="5"><span id="st12-t" class="da-caption" style="display:block">Je suis l&#x27;Archiviste,</span></div>
+      <div id="st13" class="clip st" data-start="13.04" data-duration="0.77" data-track-index="5"><span id="st13-t" class="da-caption" style="display:block">et ce dossier se</span></div>
+      <div id="st14" class="clip st" data-start="13.81" data-duration="1.08" data-track-index="5"><span id="st14-t" class="da-caption" style="display:block">joue sur un <em>détail.</em></span></div>
+      <div id="st15" class="clip st" data-start="14.89" data-duration="0.73" data-track-index="5"><span id="st15-t" class="da-caption" style="display:block">En <em>2010,</em></span></div>
+      <div id="st16" class="clip st" data-start="15.62" data-duration="0.93" data-track-index="5"><span id="st16-t" class="da-caption" style="display:block">la colocataire d&#x27;une</span></div>
+      <div id="st17" class="clip st" data-start="16.55" data-duration="0.72" data-track-index="5"><span id="st17-t" class="da-caption" style="display:block">victime décrit le</span></div>
+      <div id="st18" class="clip st" data-start="17.27" data-duration="1.62" data-track-index="5"><span id="st18-t" class="da-caption" style="display:block">client qu&#x27;elle allait rejoindre,</span></div>
+      <div id="st19" class="clip st" data-start="18.89" data-duration="1.15" data-track-index="5"><span id="st19-t" class="da-caption" style="display:block">et son pick-up :</span></div>
+      <div id="st20" class="clip st" data-start="20.04" data-duration="1.79" data-track-index="5"><span id="st20-t" class="da-caption" style="display:block">un Chevrolet <em>Avalanche.</em></span></div>
+      <div id="st21" class="clip st" data-start="21.83" data-duration="2.10" data-track-index="5"><span id="st21-t" class="da-caption" style="display:block">En 2022,</span></div>
+      <div id="st22" class="clip st" data-start="29.41" data-duration="1.48" data-track-index="5"><span id="st22-t" class="da-caption" style="display:block">Ses relevés téléphoniques le</span></div>
+      <div id="st23" class="clip st" data-start="30.89" data-duration="1.20" data-track-index="5"><span id="st23-t" class="da-caption" style="display:block">relient à trois victimes.</span></div>
+      <div id="st24" class="clip st" data-start="32.09" data-duration="0.40" data-track-index="5"><span id="st24-t" class="da-caption" style="display:block">Puis une</span></div>
+      <div id="st25" class="clip st" data-start="32.48" data-duration="0.76" data-track-index="5"><span id="st25-t" class="da-caption" style="display:block">croûte de <em>pizza,</em></span></div>
+      <div id="st26" class="clip st" data-start="33.24" data-duration="1.21" data-track-index="5"><span id="st26-t" class="da-caption" style="display:block">jetée à la poubelle,</span></div>
+      <div id="st27" class="clip st" data-start="34.45" data-duration="1.69" data-track-index="5"><span id="st27-t" class="da-caption" style="display:block">permet de comparer son</span></div>
+      <div id="st28" class="clip st" data-start="36.14" data-duration="0.78" data-track-index="5"><span id="st28-t" class="da-caption" style="display:block">ADN à un cheveu</span></div>
+      <div id="st29" class="clip st" data-start="36.92" data-duration="1.57" data-track-index="5"><span id="st29-t" class="da-caption" style="display:block">retrouvé sur une victime.</span></div>
+      <div id="st30" class="clip st" data-start="38.49" data-duration="1.33" data-track-index="5"><span id="st30-t" class="da-caption" style="display:block">Juillet 2023</span></div>
+      <div id="st31" class="clip st" data-start="39.82" data-duration="1.11" data-track-index="5"><span id="st31-t" class="da-caption" style="display:block">il est <em>arrêté.</em></span></div>
+      <div id="st32" class="clip st" data-start="40.93" data-duration="1.34" data-track-index="5"><span id="st32-t" class="da-caption" style="display:block">En avril 2026,</span></div>
+      <div id="st33" class="clip st" data-start="42.27" data-duration="1.08" data-track-index="5"><span id="st33-t" class="da-caption" style="display:block">il plaide coupable</span></div>
+      <div id="st34" class="clip st" data-start="43.35" data-duration="1.48" data-track-index="5"><span id="st34-t" class="da-caption" style="display:block">de sept meurtres commis</span></div>
+      <div id="st35" class="clip st" data-start="44.83" data-duration="2.25" data-track-index="5"><span id="st35-t" class="da-caption" style="display:block">entre 1993 et <em>2010,</em></span></div>
+      <div id="st36" class="clip st" data-start="47.08" data-duration="0.40" data-track-index="5"><span id="st36-t" class="da-caption" style="display:block">et en</span></div>
+      <div id="st37" class="clip st" data-start="47.24" data-duration="1.37" data-track-index="5"><span id="st37-t" class="da-caption" style="display:block">avoue un huitième.</span></div>
+      <div id="st38" class="clip st" data-start="48.61" data-duration="1.53" data-track-index="5"><span id="st38-t" class="da-caption" style="display:block">Le 17 juin 2026,</span></div>
+      <div id="st39" class="clip st" data-start="50.14" data-duration="0.86" data-track-index="5"><span id="st39-t" class="da-caption" style="display:block">il est condamné à</span></div>
+      <div id="st40" class="clip st" data-start="51.00" data-duration="1.44" data-track-index="5"><span id="st40-t" class="da-caption" style="display:block">la prison à <em>perpétuité.</em></span></div>
+      <div id="st41" class="clip st" data-start="52.44" data-duration="0.48" data-track-index="5"><span id="st41-t" class="da-caption" style="display:block">Treize ans,</span></div>
+      <div id="st42" class="clip st" data-start="52.92" data-duration="1.18" data-track-index="5"><span id="st42-t" class="da-caption" style="display:block">pour un pick-up et</span></div>
+      <div id="st43" class="clip st" data-start="54.10" data-duration="2.09" data-track-index="5"><span id="st43-t" class="da-caption" style="display:block">une croûte de <em>pizza.</em></span></div>
+      </div>
+      <div id="fx-vignette" data-layout-ignore></div>
+      <div id="fx-grain" data-layout-ignore></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#st0-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 0.09);
+      tl.fromTo("#st1-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 1.44);
+      tl.fromTo("#st2-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 2.33);
+      tl.fromTo("#st3-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 2.94);
+      tl.fromTo("#st4-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 4.54);
+      tl.fromTo("#st5-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 4.84);
+      tl.fromTo("#st6-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 5.69);
+      tl.fromTo("#st7-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 7.02);
+      tl.fromTo("#st8-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 7.69);
+      tl.fromTo("#st9-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 8.86);
+      tl.fromTo("#st10-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 10.33);
+      tl.fromTo("#st11-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 11.09);
+      tl.fromTo("#st12-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 12.15);
+      tl.fromTo("#st13-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 13.04);
+      tl.fromTo("#st14-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 13.81);
+      tl.fromTo("#st15-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 14.89);
+      tl.fromTo("#st16-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 15.62);
+      tl.fromTo("#st17-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 16.55);
+      tl.fromTo("#st18-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 17.27);
+      tl.fromTo("#st19-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 18.89);
+      tl.fromTo("#st20-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 20.04);
+      tl.fromTo("#st21-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 21.83);
+      tl.fromTo("#st22-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 29.41);
+      tl.fromTo("#st23-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 30.89);
+      tl.fromTo("#st24-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 32.09);
+      tl.fromTo("#st25-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 32.48);
+      tl.fromTo("#st26-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 33.24);
+      tl.fromTo("#st27-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 34.45);
+      tl.fromTo("#st28-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 36.14);
+      tl.fromTo("#st29-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 36.92);
+      tl.fromTo("#st30-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 38.49);
+      tl.fromTo("#st31-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 39.82);
+      tl.fromTo("#st32-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 40.93);
+      tl.fromTo("#st33-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 42.27);
+      tl.fromTo("#st34-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 43.35);
+      tl.fromTo("#st35-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 44.83);
+      tl.fromTo("#st36-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 47.08);
+      tl.fromTo("#st37-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 47.24);
+      tl.fromTo("#st38-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 48.61);
+      tl.fromTo("#st39-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 50.14);
+      tl.fromTo("#st40-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 51.00);
+      tl.fromTo("#st41-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 52.44);
+      tl.fromTo("#st42-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 52.92);
+      tl.fromTo("#st43-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 54.10);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

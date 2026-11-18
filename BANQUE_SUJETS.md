@@ -27,4 +27,12 @@ Créneau : ___
 
 ## Sujets
 
-_(aucune fiche pour l'instant)_
+## Gilgo Beach — Long Island (New York), 1993–2010
+Statut : prête (DOSSIER-001), en attente de validation
+Type : affaire judiciaire / tueur en série
+Vidéo de référence : YouTube « DERRIÈRE ce MARI MODÈLE se cachait un TUEUR EN SÉRIE : Rex Heuermann (#HVF) » (McSkyz) — lectures non relevées
+Déjà fait chez moi ? oui, DOSSIER-001
+Statut judiciaire (vérifié le 18/11/2026) : condamné (plaidoyer 08/04/2026, perpétuité 17/06/2026)
+Sources : Wikipédia, AP/PBS, CNN, ABC7, KTAR
+Personnes nommées : Rex Heuermann (condamné) ; victimes non nommées à l'écran
+Format : 62 s · mot à commenter : « soupçons »

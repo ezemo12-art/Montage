@@ -1,0 +1,298 @@
+{
+  "titre": "DOSSIER 001 — Gilgo Beach",
+  "texte": "Décembre 2010. La police cherche une jeune femme disparue sur Long Island. Au bord d'une route côtière, elle découvre quatre corps. En quelques mois, d'autres restes sont retrouvés le long d'Ocean Parkway. Pendant douze ans, l'enquête piétine. Je suis l'Archiviste, et ce dossier se joue sur un détail. En 2010, la colocataire d'une victime décrit le client qu'elle allait rejoindre, et son pick-up : un Chevrolet Avalanche. En 2022, les enquêteurs retrouvent ce véhicule. Il appartient à Rex Heuermann, architecte à Manhattan, marié, père de deux enfants. Ses relevés téléphoniques le relient à trois victimes. Puis une croûte de pizza, jetée à la poubelle, permet de comparer son ADN à un cheveu retrouvé sur une victime. Juillet 2023 : il est arrêté. En avril 2026, il plaide coupable de sept meurtres commis entre 1993 et 2010, et en avoue un huitième. Le 17 juin 2026, il est condamné à la prison à perpétuité. Treize ans, pour un pick-up et une croûte de pizza. Chaque détail cache une vérité. Et vous, comment a-t-il pu vivre si longtemps sans éveiller les soupçons ?",
+  "voix": "voix.wav",
+  "transcription": "transcript.json",
+  "style": "illustration",
+  "mots_cles": [
+    "2010.",
+    "corps.",
+    "détail.",
+    "Avalanche.",
+    "Heuermann,",
+    "pizza,",
+    "arrêté.",
+    "perpétuité.",
+    "vérité."
+  ],
+  "queue": 1.4,
+  "plans": [
+    {
+      "id": "p1",
+      "ancre": "Décembre 2010",
+      "decor": "illustration",
+      "image": "images/route.png",
+      "camera": {
+        "type": "push_in",
+        "focus": [
+          600,
+          700
+        ],
+        "intensite": 1.35
+      },
+      "lumiere_xy": [
+        600,
+        650
+      ],
+      "lumiere_rayon": 240,
+      "actions": [
+        {
+          "action": "lumiere_ambre",
+          "de": 0.15,
+          "a": 0.8
+        }
+      ],
+      "incrustation": {
+        "texte": "DÉC. 2010",
+        "sous_texte": "LONG ISLAND — NEW YORK"
+      }
+    },
+    {
+      "id": "p2",
+      "ancre": "elle découvre quatre corps",
+      "decor": "motion",
+      "composition": "revelation",
+      "variables": {
+        "mot": "4 corps",
+        "sous_titre": "Ocean Parkway — décembre 2010"
+      }
+    },
+    {
+      "id": "p3",
+      "ancre": "Pendant douze ans",
+      "decor": "illustration",
+      "image": "images/route.png",
+      "camera": {
+        "type": "recul",
+        "zoom": 1.25,
+        "focus": [
+          600,
+          700
+        ]
+      },
+      "incrustation": {
+        "texte": "2010 → 2022",
+        "sous_texte": "AUCUN SUSPECT"
+      }
+    },
+    {
+      "id": "p4",
+      "ancre": "Je suis l'Archiviste",
+      "decor": "archiviste",
+      "camera": {
+        "type": "push_in",
+        "zoom": 1.2,
+        "focus": "visage",
+        "intensite": 1.12
+      },
+      "actions": [
+        {
+          "action": "sort_de_l_ombre",
+          "de": 0.0,
+          "a": 0.45
+        },
+        {
+          "action": "lumiere_ambre",
+          "de": {
+            "mot": "détail",
+            "decalage": -0.1
+          },
+          "a": 1.0
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "ancre": "En 2010, la colocataire",
+      "decor": "illustration",
+      "image": "images/pickup.png",
+      "camera": {
+        "type": "push_in",
+        "focus": [
+          540,
+          1050
+        ],
+        "intensite": 1.22
+      },
+      "lumiere_xy": [
+        608,
+        300
+      ],
+      "lumiere_rayon": 220,
+      "actions": [
+        {
+          "action": "lumiere_ambre",
+          "de": {
+            "mot": "Avalanche",
+            "decalage": -0.4
+          },
+          "a": 0.95
+        }
+      ],
+      "incrustation": {
+        "texte": "2010",
+        "sous_texte": "TÉMOIGNAGE"
+      }
+    },
+    {
+      "id": "p6",
+      "ancre": "les enquêteurs retrouvent",
+      "decor": "motion",
+      "composition": "document",
+      "variables": {
+        "titre": "Véhicule identifié",
+        "reference": "ENQUÊTE GILGO BEACH — 2022 — RECONSTITUTION",
+        "l1": "Chevrolet Avalanche, vert foncé.",
+        "l2": "Propriétaire : Rex Heuermann.",
+        "l3": "Architecte à Manhattan.",
+        "l4": "Marié, père de deux enfants.",
+        "cle": 2,
+        "tampon": "Suspect — 2022"
+      },
+      "sans_sous_titres": true
+    },
+    {
+      "id": "p7",
+      "ancre": "Ses relevés téléphoniques",
+      "decor": "illustration",
+      "image": "images/telephone.png",
+      "camera": {
+        "type": "push_in",
+        "focus": [
+          495,
+          980
+        ],
+        "intensite": 1.25
+      },
+      "lumiere_xy": [
+        652,
+        220
+      ],
+      "lumiere_rayon": 260,
+      "actions": [
+        {
+          "action": "lumiere_ambre",
+          "de": 0.05,
+          "a": 0.6
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "ancre": "Puis une croûte de pizza",
+      "decor": "illustration",
+      "image": "images/pizza.png",
+      "camera": {
+        "type": "push_in",
+        "focus": [
+          562,
+          980
+        ],
+        "intensite": 1.25
+      },
+      "lumiere_xy": [
+        562,
+        940
+      ],
+      "lumiere_rayon": 200,
+      "actions": [
+        {
+          "action": "lumiere_ambre",
+          "de": {
+            "mot": "ADN",
+            "decalage": -0.2
+          },
+          "a": 0.95
+        }
+      ],
+      "incrustation": {
+        "texte": "MANHATTAN",
+        "sous_texte": "ADN"
+      }
+    },
+    {
+      "id": "p9",
+      "ancre": "Juillet 2023",
+      "decor": "motion",
+      "composition": "chronologie",
+      "variables": {
+        "titre": "Chronologie",
+        "d1": "DÉC. 2010",
+        "e1": "Premiers corps retrouvés",
+        "d2": "MARS 2022",
+        "e2": "Un suspect identifié",
+        "d3": "JUIL. 2023",
+        "e3": "Arrestation",
+        "d4": "AVR. 2026",
+        "e4": "Plaide coupable",
+        "cle": 4
+      }
+    },
+    {
+      "id": "p10",
+      "ancre": "Le 17 juin 2026",
+      "decor": "illustration",
+      "image": "images/tribunal.png",
+      "camera": {
+        "type": "push_in",
+        "focus": [
+          540,
+          950
+        ],
+        "intensite": 1.18
+      },
+      "lumiere_xy": [
+        900,
+        500
+      ],
+      "lumiere_rayon": 320,
+      "actions": [
+        {
+          "action": "lumiere_ambre",
+          "de": {
+            "mot": "perpétuité",
+            "decalage": -0.3
+          },
+          "a": 1.0
+        }
+      ],
+      "incrustation": {
+        "texte": "17.06.2026",
+        "sous_texte": "PRISON À PERPÉTUITÉ"
+      }
+    },
+    {
+      "id": "p11",
+      "ancre": "Treize ans, pour un pick-up",
+      "decor": "archiviste",
+      "camera": {
+        "type": "push_in",
+        "zoom": 1.15,
+        "focus": "visage",
+        "intensite": 1.1
+      },
+      "actions": [
+        {
+          "action": "sort_de_l_ombre",
+          "de": 0.0,
+          "a": 0.3
+        },
+        {
+          "action": "lumiere_ambre",
+          "de": 0.3,
+          "a": 1.0
+        }
+      ]
+    },
+    {
+      "id": "p12",
+      "ancre": "Chaque détail cache une vérité",
+      "decor": "motion",
+      "composition": "cloture",
+      "sans_sous_titres": true,
+      "variables": {
+        "question": "Comment a-t-il pu vivre si longtemps sans éveiller les soupçons ?"
+      }
+    }
+  ]
+}

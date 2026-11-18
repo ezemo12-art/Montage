@@ -6,7 +6,7 @@ import pathlib
 import re
 import unicodedata
 
-DECORS_CONNUS = {"maison_nuit", "couloir", "voisinage", "archiviste", "illustration"}
+DECORS_CONNUS = {"maison_nuit", "couloir", "voisinage", "archiviste", "illustration", "motion"}
 ACTIONS_CONNUES = {"marche", "court", "entre", "regarde_derriere", "telephone", "apparait", "disparait",
                    "tombe", "ouvre_porte", "ferme_porte", "lumieres", "eteint", "bruit", "voisin_regarde",
                    "sort_de_l_ombre", "lumiere_ambre"}
@@ -53,7 +53,7 @@ def valider(sb: dict) -> None:
     persos, lieux = sb.get("personnages", {}), sb.get("lieux", {})
     if not sb.get("plans"):
         err.append("aucun plan")
-    ids = set()
+    ids, vus_motion = set(), set()
     for i, pl in enumerate(sb.get("plans", [])):
         pid = pl.get("id") or f"#{i+1}"
         if pid in ids:
@@ -65,6 +65,13 @@ def valider(sb: dict) -> None:
             err.append(f"{pid}: décor inconnu {pl.get('decor')!r} (connus : {sorted(DECORS_CONNUS)})")
         if not pl.get("ancre"):
             err.append(f"{pid}: 'ancre' manquante (début du passage narré)")
+        if pl.get("decor") == "motion":
+            nom = pl.get("composition", "")
+            if not (pathlib.Path(__file__).resolve().parent.parent / "motion" / "compositions" / f"{nom}.html").exists():
+                err.append(f"{pid}: composition motion inconnue {nom!r}")
+            if nom in vus_motion:
+                err.append(f"{pid}: la composition {nom!r} ne peut servir qu'une fois par vidéo")
+            vus_motion.add(nom)
         if pl.get("decor") == "illustration" and not pl.get("image"):
             err.append(f"{pid}: plan illustration sans 'image'")
         if pl.get("lieu") and pl["lieu"] not in lieux:

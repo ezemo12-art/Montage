@@ -45,7 +45,7 @@
     ["#su-l1", "#su-l2", "#su-l3"].forEach((l, i) => {
       tl.fromTo(l, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, 2.6 + i * 0.8);
     });
-    tl.to("#root > *", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 6.6);
+    tl.to("#root > *", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, (Number(((window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {}).fin) || 6.6));
     window.__timelines["suspects"] = tl;
   </script>
 </template>

@@ -63,7 +63,7 @@
     });
     tl.fromTo("#em-result", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 4.1);
     tl.fromTo("#em-num", { innerText: 0 }, { innerText: target, snap: { innerText: 1 }, duration: 1.2, ease: "power2.out" }, 4.2);
-    tl.to("#root > *", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 6.6);
+    tl.to("#root > *", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, (Number(((window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {}).fin) || 6.6));
     window.__timelines["empreinte"] = tl;
   </script>
 </template>

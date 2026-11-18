@@ -62,7 +62,7 @@
     tl.fromTo("#ca-ring", { scale: 1, opacity: 0.9, transformOrigin: "50% 50%" }, { scale: 4, opacity: 0, duration: 1.6, ease: "power1.out", repeat: 2 }, 3.0);
     tl.fromTo("#ca-lieu", { opacity: 0, y: 20, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "expo.out" }, 3.4);
     tl.fromTo("#ca-coord", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.9, ease: "steps(24)" }, 4.4);
-    tl.to("#root > *", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 6.6);
+    tl.to("#root > *", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, (Number(((window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {}).fin) || 6.6));
     window.__timelines["carte"] = tl;
   </script>
 </template>

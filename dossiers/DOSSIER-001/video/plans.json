@@ -1,0 +1,86 @@
+[
+  {
+    "id": "p1",
+    "debut": 0.0,
+    "duree": 5.57,
+    "decor": "illustration",
+    "ancre": "Décembre 2010"
+  },
+  {
+    "id": "p2",
+    "debut": 5.57,
+    "duree": 4.64,
+    "decor": "motion",
+    "ancre": "elle découvre quatre corps"
+  },
+  {
+    "id": "p3",
+    "debut": 10.21,
+    "duree": 1.82,
+    "decor": "illustration",
+    "ancre": "Pendant douze ans"
+  },
+  {
+    "id": "p4",
+    "debut": 12.03,
+    "duree": 2.74,
+    "decor": "archiviste",
+    "ancre": "Je suis l'Archiviste"
+  },
+  {
+    "id": "p5",
+    "debut": 14.77,
+    "duree": 7.84,
+    "decor": "illustration",
+    "ancre": "En 2010, la colocataire"
+  },
+  {
+    "id": "p6",
+    "debut": 22.61,
+    "duree": 6.68,
+    "decor": "motion",
+    "ancre": "les enquêteurs retrouvent"
+  },
+  {
+    "id": "p7",
+    "debut": 29.29,
+    "duree": 2.68,
+    "decor": "illustration",
+    "ancre": "Ses relevés téléphoniques"
+  },
+  {
+    "id": "p8",
+    "debut": 31.97,
+    "duree": 6.4,
+    "decor": "illustration",
+    "ancre": "Puis une croûte de pizza"
+  },
+  {
+    "id": "p9",
+    "debut": 38.37,
+    "duree": 10.12,
+    "decor": "motion",
+    "ancre": "Juillet 2023"
+  },
+  {
+    "id": "p10",
+    "debut": 48.49,
+    "duree": 3.83,
+    "decor": "illustration",
+    "ancre": "Le 17 juin 2026"
+  },
+  {
+    "id": "p11",
+    "debut": 52.32,
+    "duree": 2.8,
+    "decor": "archiviste",
+    "ancre": "Treize ans, pour un pick-up"
+  },
+  {
+    "id": "p12",
+    "debut": 55.12,
+    "duree": 6.63,
+    "decor": "motion",
+    "ancre": "Chaque détail cache une vérité"
+  }
+]
