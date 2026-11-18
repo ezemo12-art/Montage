@@ -28,8 +28,24 @@ marionnette, majordome, jumeaux, horloger…), jamais des silhouettes génériqu
 | Format | Hook (0–2 s, en gros texte + voix) | Exemples de thèmes |
 | --- | --- | --- |
 | **Énigme de situation** | « **1… 2… 3… raté.** » (compte à rebours puis tampon RATÉ) | évasion de prison, pièce fermée de l'intérieur, faux alibi, survie, braquage |
-| **Enquête criminelle** | « **Tu penses être un enquêteur… ou plutôt nul à chier ?** » | trouver le coupable parmi 3 suspects, l'indice qui trahit, le mensonge |
+| **Enquête criminelle** | « **T'es un enquêteur ou nul à chier ? 🕵️‍♂️** » (+ ouverture type ci-dessous) | trouver le coupable parmi 3 suspects, l'indice qui trahit, le mensonge |
 | **Esprit criminel** | « **STOP. Penses-tu comme un criminel ?** » | « comment a-t-il réussi ? », « quelle erreur l'a fait tomber ? », le crime parfait |
+
+### Ouverture type — énigmes d'enquête criminelle (validée par l'utilisateur, 19/11/2026)
+
+À dire **mot pour mot**, dans cet ordre, au début de chaque énigme d'enquête criminelle :
+
+| # | Réplique (voix de l'Archiviste) | À l'écran |
+| --- | --- | --- |
+| 1 | « **T'es un enquêteur ou nul à chier ?** 🕵️‍♂️ » | Hook plein écran, « NUL À CHIER » en rouge (l'émoji seulement dans la légende du post : la police Oswald ne l'affiche pas) |
+| 2 | « **Un meurtre vient d'être commis.** » | Bandeau « LE CRIME » + image de la scène |
+| 3 | « **Tu as 30 secondes pour trouver le coupable.** » | Chrono « 00:30 » qui démarre et reste en coin pendant l'énigme |
+| 4 | « **Attention, un seul détail peut tout changer.** » | Loupe / mot « DÉTAIL » en ambre, l'Archiviste lève l'index |
+| … | L'énigme (scène, suspects, indices) | — |
+| fin | « **Si tu trouves, explique-nous comment en commentaire.** » | Bouton « EXPLIQUE EN COMMENTAIRE » + DOSSIER 00 |
+
+Le chrono de 30 s est un ressort de jeu : l'énigme elle-même (après la réplique 4) doit tenir en ~30 s.
+La phrase finale demande le **comment**, pas seulement le nom : ça donne des commentaires plus longs et plus de débat.
 
 Règles d'une bonne énigme virale :
 - **Résoluble avec ce qui est montré** : l'indice décisif est dit OU visible à l'écran (jamais une info cachée).

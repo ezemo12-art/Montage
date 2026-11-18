@@ -6,3 +6,13 @@ Exemple fourni : enregistrement d'écran TikTok « Le dilemme impossible » (17 
 cette énigme, tu as l'esprit d'un véritable inspecteur. Tu penses être capable de trouver le coupable ? Alors écoute bien
 cette énigme jusqu'au bout. » Illustrations 2D simples (suspects alignés avec étiquettes, horloge, panneau FERMÉ),
 bandeau titre rouge en haut, gros sous-titres centrés avec mot clé coloré.
+
+
+<!-- Ajout de l'utilisateur (19/11/2026), conservé mot pour mot. -->
+
+« T'es un enquêteur ou nul à chier ? 🕵️‍♂️ »
+Puis :
+« Un meurtre vient d'être commis. »
+« Tu as 30 secondes pour trouver le coupable. »
+« Attention, un seul détail peut tout changer. »
+« Si tu trouves, explique-nous comment en commentaire. » ajoute ça au DA pour avoir un peu plus de construction les prochaine fois

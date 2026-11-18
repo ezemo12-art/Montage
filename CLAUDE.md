@@ -4,7 +4,7 @@
 > (brief: `docs/DOSSIER00_BRIEF_ENIGMES.md`, rules: `DA.md` §1 and §6). Goal n°1: views and comments.
 > Riddle videos are built with `python3 scripts/enigme.py <enigme.json> <project> --render`
 > (example: `dossiers/ENIGME-001/enigme.json`). Rotate the 3 hooks: « 1… 2… 3… raté. » (situation),
-> « Tu penses être un enquêteur… ou plutôt nul à chier ? » (criminal investigation),
+> « T'es un enquêteur ou nul à chier ? » + the fixed opening lines in `DA.md` §1 (criminal investigation),
 > « STOP. Penses-tu comme un criminel ? » (criminal mind). Archiviste in the bottom-left corner the whole
 > video (poses in `archiviste/poses/`), atypical creative characters, voice = ElevenLabs
 > « Kevan – Narrateur Cinématique » (voice_id AYfOkr1hDQYbhigmRZ16, model eleven_v4). The solution goes in the
