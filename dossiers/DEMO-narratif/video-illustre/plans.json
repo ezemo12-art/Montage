@@ -1,0 +1,44 @@
+[
+  {
+    "id": "p1",
+    "debut": 0.0,
+    "duree": 1.72,
+    "decor": "illustration",
+    "ancre": "À 23 heures"
+  },
+  {
+    "id": "p2",
+    "debut": 1.72,
+    "duree": 1.54,
+    "decor": "illustration",
+    "ancre": "un homme entre discrètement"
+  },
+  {
+    "id": "p3",
+    "debut": 3.26,
+    "duree": 1.25,
+    "decor": "illustration",
+    "ancre": "dans une maison"
+  },
+  {
+    "id": "p4",
+    "debut": 4.51,
+    "duree": 1.87,
+    "decor": "illustration",
+    "ancre": "Quelques minutes plus tard"
+  },
+  {
+    "id": "p5",
+    "debut": 6.38,
+    "duree": 2.95,
+    "decor": "illustration",
+    "ancre": "les voisins entendent"
+  },
+  {
+    "id": "p6",
+    "debut": 9.33,
+    "duree": 3.87,
+    "decor": "archiviste",
+    "ancre": "Chaque détail cache une vérité"
+  }
+]

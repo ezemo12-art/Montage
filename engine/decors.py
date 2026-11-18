@@ -6,6 +6,7 @@ toujours le même dessin, quel que soit le plan.
 """
 from __future__ import annotations
 
+import pathlib
 from dataclasses import dataclass, field
 
 from .style import PALETTE as C, ROOT as ROOT_DEPOT
@@ -213,4 +214,28 @@ def archiviste(p: str, lieu: dict) -> Scene:
     return sc
 
 
-DECORS = {"maison_nuit": maison_nuit, "couloir": couloir, "voisinage": voisinage, "archiviste": archiviste}
+def illustration(p: str, plan: dict) -> Scene:
+    """Plan illustré : image générée (Runway…) plein cadre, animée par le moteur
+    (caméra, ombre, lumière ambre, ondes sonores). L'image est posée telle quelle."""
+    sc = Scene(sol_y=1500)
+    lx, ly = plan.get("lumiere_xy", [540, 700])
+    sx, sy = plan.get("son_xy", [540, 700])
+    sc.defs.append(f'<radialGradient id="{p}-ambre"><stop offset="0" stop-color="{C["ambre"]}" stop-opacity="0.6"/>'
+                   f'<stop offset="1" stop-color="{C["ambre"]}" stop-opacity="0"/></radialGradient>')
+    sc.bg.append(f'<rect x="-300" y="-300" width="{W+600}" height="{H+600}" fill="{C["charbon"]}"/>'
+                 f'<image href="assets/plans/{p}{pathlib.Path(plan["image"]).suffix}" x="0" y="0" width="{W}" height="{H}" '
+                 f'preserveAspectRatio="xMidYMid slice"/>')
+    sc.mid.append(f'<ellipse id="{p}-lumiere" cx="{lx}" cy="{ly}" rx="{plan.get("lumiere_rayon", 260)}" '
+                  f'ry="{plan.get("lumiere_rayon", 260)}" fill="url(#{p}-ambre)" opacity="0" style="mix-blend-mode:screen"/>')
+    sc.fg.append("".join(f'<g transform="translate({sx} {sy})"><g id="{p}-onde{i}" transform="scale(0.3)" opacity="0">'
+                         f'<path d="M-60,-70 A92,92 0 0 0 -60,70" fill="none" stroke="{C["ivoire"]}" stroke-width="5" stroke-linecap="round"/>'
+                         f'<path d="M60,-70 A92,92 0 0 1 60,70" fill="none" stroke="{C["ivoire"]}" stroke-width="5" stroke-linecap="round"/></g></g>'
+                         for i in range(3)))
+    sc.fg.append(f'<rect id="{p}-ombre" x="-300" y="-300" width="{W+600}" height="{H+600}" fill="{C["charbon"]}" '
+                 f'opacity="{float(plan.get("ombre_initiale", 0))}"/>')
+    sc.ancres = {"son": (sx, sy), "visage": (lx, ly), "gauche": -200, "droite": W + 200}
+    return sc
+
+
+DECORS = {"maison_nuit": maison_nuit, "couloir": couloir, "voisinage": voisinage, "archiviste": archiviste,
+          "illustration": illustration}

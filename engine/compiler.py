@@ -58,6 +58,8 @@ def compiler_plan(pl: dict, sb: dict, ws: list[dict]) -> str:
     lieu = lieux.get(pl.get("lieu"), {})
     if pl["decor"] == "voisinage":
         sc = D.voisinage(P, lieu, lieux.get(pl.get("voisin"), {}))
+    elif pl["decor"] == "illustration":
+        sc = D.illustration(P, pl)
     else:
         sc = D.DECORS[pl["decor"]](P, lieu)
     tl = Timeline()
@@ -126,7 +128,7 @@ def compiler_plan(pl: dict, sb: dict, ws: list[dict]) -> str:
                     tl.attr(f"#{P}-onde{i}", "scale(0.3)", "scale(1.9)", t, 1.3, "power1.out")
                     tl.prop(f"#{P}-onde{i}", {"opacity": 0.95}, {"opacity": 0}, t, 1.3, "power1.in")
         elif typ == "sort_de_l_ombre":
-            tl.prop(f"#{P}-ombre", {"opacity": float(lieu.get("ombre_initiale", 0.9))}, {"opacity": 0}, t0, max(0.8, t1 - t0), "power2.inOut")
+            tl.prop(f"#{P}-ombre", {"opacity": float(pl.get("ombre_initiale", lieu.get("ombre_initiale", 0.9)))}, {"opacity": 0}, t0, max(0.8, t1 - t0), "power2.inOut")
         elif typ == "lumiere_ambre":
             tl.prop(f"#{P}-lumiere", {"opacity": 0}, {"opacity": 1}, t0, max(0.6, t1 - t0), "power2.inOut")
         elif typ == "voisin_regarde":
@@ -221,6 +223,10 @@ def compiler(sb: dict, sb_dir: pathlib.Path, out: pathlib.Path) -> dict:
     (out / "assets" / "da.css").write_text(DA_CSS)
     hosts = []
     for pl in plans:
+        if pl.get("decor") == "illustration":  # image générée, copiée telle quelle
+            src = (sb_dir / pl["image"]).resolve()
+            (out / "assets" / "plans").mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(src, out / "assets" / "plans" / f"{pl['id']}{src.suffix}")
         (out / "compositions" / f"{pl['id']}.html").write_text(compiler_plan(pl, sb, ws))
         hosts.append(f'<div id="{pl["id"]}" data-composition-id="{pl["id"]}" data-composition-src="compositions/{pl["id"]}.html" '
                      f'data-start="{pl["debut"]:.2f}" data-duration="{pl["duree"]:.2f}" data-track-index="1" data-track-kind="graphics" '

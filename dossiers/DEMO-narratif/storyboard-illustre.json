@@ -1,0 +1,183 @@
+{
+  "titre": "Démo — images générées + motion design",
+  "texte": "À 23 heures, un homme entre discrètement dans une maison. Quelques minutes plus tard, les voisins entendent un bruit étrange. Chaque détail cache une vérité.",
+  "voix": "voix.wav",
+  "transcription": "transcript.json",
+  "style": "illustration",
+  "mots_cles": [
+    "heures",
+    "maison",
+    "bruit",
+    "vérité."
+  ],
+  "queue": 1.6,
+  "personnages": {
+    "homme1": {
+      "bibliotheque": "homme-veste-noire"
+    }
+  },
+  "lieux": {
+    "maison1": {
+      "bibliotheque": "maison-etage-nuit"
+    },
+    "voisins": {
+      "type": "maison",
+      "fenetres_allumees": [],
+      "applique": false
+    }
+  },
+  "plans": [
+    {
+      "id": "p1",
+      "ancre": "À 23 heures",
+      "decor": "illustration",
+      "image": "images/p1-maison.png",
+      "camera": {
+        "type": "push_in",
+        "focus": [
+          555,
+          950
+        ],
+        "intensite": 1.18
+      },
+      "lumiere_xy": [
+        555,
+        890
+      ],
+      "lumiere_rayon": 220,
+      "actions": [
+        {
+          "action": "lumiere_ambre",
+          "de": 0.2,
+          "a": 0.9
+        }
+      ],
+      "incrustation": {
+        "texte": "23:00"
+      }
+    },
+    {
+      "id": "p2",
+      "ancre": "un homme entre discrètement",
+      "decor": "illustration",
+      "image": "images/p2-approche.png",
+      "camera": {
+        "type": "push_in",
+        "focus": [
+          540,
+          1000
+        ],
+        "intensite": 1.22
+      }
+    },
+    {
+      "id": "p3",
+      "ancre": "dans une maison",
+      "decor": "illustration",
+      "image": "images/p3-porte.png",
+      "camera": {
+        "type": "push_in",
+        "focus": [
+          600,
+          800
+        ],
+        "intensite": 1.15
+      },
+      "lumiere_xy": [
+        540,
+        650
+      ],
+      "lumiere_rayon": 300,
+      "actions": [
+        {
+          "action": "lumiere_ambre",
+          "de": 0.0,
+          "a": 0.8
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "ancre": "Quelques minutes plus tard",
+      "decor": "illustration",
+      "image": "images/p4-couloir.png",
+      "camera": {
+        "type": "push_in",
+        "focus": [
+          540,
+          900
+        ],
+        "intensite": 1.18
+      },
+      "incrustation": {
+        "texte": "23:07"
+      },
+      "lumiere_xy": [
+        540,
+        595
+      ],
+      "lumiere_rayon": 200,
+      "actions": [
+        {
+          "action": "lumiere_ambre",
+          "de": 0.1,
+          "a": 0.7
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "ancre": "les voisins entendent",
+      "decor": "illustration",
+      "image": "images/p5-voisins.png",
+      "camera": {
+        "type": "push_in",
+        "focus": [
+          760,
+          900
+        ],
+        "intensite": 1.15
+      },
+      "son_xy": [
+        790,
+        960
+      ],
+      "actions": [
+        {
+          "action": "bruit",
+          "de": {
+            "mot": "bruit",
+            "decalage": -0.2
+          },
+          "repetitions": 2
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "ancre": "Chaque détail cache une vérité",
+      "decor": "archiviste",
+      "camera": {
+        "type": "push_in",
+        "zoom": 1.2,
+        "focus": "visage",
+        "intensite": 1.15
+      },
+      "actions": [
+        {
+          "action": "sort_de_l_ombre",
+          "de": 0.0,
+          "a": 0.4
+        },
+        {
+          "action": "lumiere_ambre",
+          "de": {
+            "mot": "vérité",
+            "decalage": -0.1
+          },
+          "a": 0.95
+        }
+      ]
+    }
+  ]
+}

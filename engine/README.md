@@ -78,3 +78,23 @@ Bibliothèque persistante (réutilisée d'une vidéo à l'autre) : `bibliotheque
 - Vue de profil uniquement ; pas encore de visages, d'expressions ni de vue de face.
 - 3 décors ; pas encore de voiture animée, rue, forêt, poste de police, ruban de sécurité.
 - Les styles « illustration 2.5D IA » et « clips vidéo IA » attendent les clés API (voir ROADMAP).
+
+## Plans illustrés par images générées (Runway)
+
+Style « illustration » : une image générée par plan (Runway, offre gratuite = images seulement),
+animée par le moteur. Exemple complet : `dossiers/DEMO-narratif/storyboard-illustre.json`.
+
+```jsonc
+{ "id": "p5", "ancre": "les voisins entendent", "decor": "illustration", "image": "images/p5-voisins.png",
+  "camera": { "type": "push_in", "focus": [760, 900], "intensite": 1.15 },
+  "son_xy": [790, 960], "lumiere_xy": [540, 595], "lumiere_rayon": 200,
+  "actions": [ { "action": "bruit", "de": { "mot": "bruit" } }, { "action": "lumiere_ambre", "de": 0.1 } ],
+  "incrustation": { "texte": "23:07" } }
+```
+
+Règles de génération :
+- Image 9:16, 2K, style de `prompts/archiviste.md` (bloc style) ; personnages anonymes, vus de dos ou de loin.
+- **Cohérence** : générer d'abord le lieu principal, puis passer son image en référence (`@maison`) aux plans
+  suivants ; idem pour un personnage (`@homme`). Ne jamais régénérer ce qui existe déjà.
+- Télécharger : `scripts/telecharger.sh "<url signée>" dossiers/<épisode>/images/<plan>.png`.
+- Coût indicatif : ~6 crédits par image 2K.

@@ -6,7 +6,7 @@ import pathlib
 import re
 import unicodedata
 
-DECORS_CONNUS = {"maison_nuit", "couloir", "voisinage", "archiviste"}
+DECORS_CONNUS = {"maison_nuit", "couloir", "voisinage", "archiviste", "illustration"}
 ACTIONS_CONNUES = {"marche", "court", "entre", "regarde_derriere", "telephone", "apparait", "disparait",
                    "tombe", "ouvre_porte", "ferme_porte", "lumieres", "eteint", "bruit", "voisin_regarde",
                    "sort_de_l_ombre", "lumiere_ambre"}
@@ -65,6 +65,8 @@ def valider(sb: dict) -> None:
             err.append(f"{pid}: décor inconnu {pl.get('decor')!r} (connus : {sorted(DECORS_CONNUS)})")
         if not pl.get("ancre"):
             err.append(f"{pid}: 'ancre' manquante (début du passage narré)")
+        if pl.get("decor") == "illustration" and not pl.get("image"):
+            err.append(f"{pid}: plan illustration sans 'image'")
         if pl.get("lieu") and pl["lieu"] not in lieux:
             err.append(f"{pid}: lieu {pl['lieu']!r} absent de 'lieux'")
         for pp in pl.get("personnages", []):

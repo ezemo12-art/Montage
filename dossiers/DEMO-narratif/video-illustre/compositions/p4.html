@@ -1,0 +1,22 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #101113; overflow: hidden; }
+    #p4-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #p4-noir { position: absolute; inset: 0; background: #101113; }
+  </style>
+  <div id="root" data-composition-id="p4" data-width="1080" data-height="1920">
+    <svg id="p4-svg" viewBox="0 0 1080 1920" data-layout-ignore><defs><radialGradient id="p4-ambre"><stop offset="0" stop-color="#d6a64a" stop-opacity="0.6"/><stop offset="1" stop-color="#d6a64a" stop-opacity="0"/></radialGradient></defs><g id="p4-cam-bg" transform="translate(540.0 900.0) scale(1.0000) translate(-540.0 -900.0)"><rect x="-300" y="-300" width="1680" height="2520" fill="#101113"/><image href="assets/plans/p4.png" x="0" y="0" width="1080" height="1920" preserveAspectRatio="xMidYMid slice"/></g><g id="p4-cam-mid" transform="translate(540.0 900.0) scale(1.0000) translate(-540.0 -900.0)"><ellipse id="p4-lumiere" cx="540" cy="595" rx="200" ry="200" fill="url(#p4-ambre)" opacity="0" style="mix-blend-mode:screen"/></g><g id="p4-cam-fg" transform="translate(540.0 900.0) scale(1.0000) translate(-540.0 -900.0)"><g transform="translate(540 700)"><g id="p4-onde0" transform="scale(0.3)" opacity="0"><path d="M-60,-70 A92,92 0 0 0 -60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/><path d="M60,-70 A92,92 0 0 1 60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/></g></g><g transform="translate(540 700)"><g id="p4-onde1" transform="scale(0.3)" opacity="0"><path d="M-60,-70 A92,92 0 0 0 -60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/><path d="M60,-70 A92,92 0 0 1 60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/></g></g><g transform="translate(540 700)"><g id="p4-onde2" transform="scale(0.3)" opacity="0"><path d="M-60,-70 A92,92 0 0 0 -60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/><path d="M60,-70 A92,92 0 0 1 60,70" fill="none" stroke="#e5ddcb" stroke-width="5" stroke-linecap="round"/></g></g><rect id="p4-ombre" x="-300" y="-300" width="1680" height="2520" fill="#101113" opacity="0.0"/></g></svg>
+    <div id="p4-ov" style="position:absolute;left:150px;top:300px;width:740px"><div id="p4-ov-t" class="da-tag" style="font-size:46px;display:inline-block">23:07</div></div>
+    <div id="p4-noir" data-layout-ignore></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#p4-lumiere", {"opacity": 0}, {"opacity": 1, "duration": 1.122, "ease": "power2.inOut"}, 0.187);
+    tl.fromTo("#p4-cam-bg", {attr: {transform: "translate(540.0 900.0) scale(1.0000) translate(-540.0 -900.0)"}}, {attr: {transform: "translate(540.0 900.0) scale(1.0630) translate(-540.0 -900.0)"}, duration: 1.870, ease: "none"}, 0.000);
+    tl.fromTo("#p4-cam-mid", {attr: {transform: "translate(540.0 900.0) scale(1.0000) translate(-540.0 -900.0)"}}, {attr: {transform: "translate(540.0 900.0) scale(1.1800) translate(-540.0 -900.0)"}, duration: 1.870, ease: "none"}, 0.000);
+    tl.fromTo("#p4-cam-fg", {attr: {transform: "translate(540.0 900.0) scale(1.0000) translate(-540.0 -900.0)"}}, {attr: {transform: "translate(540.0 900.0) scale(1.2250) translate(-540.0 -900.0)"}, duration: 1.870, ease: "none"}, 0.000);
+    tl.fromTo("#p4-ov-t", {"clipPath": "inset(0 100% 0 0)"}, {"clipPath": "inset(0 0% 0 0)", "duration": 0.6, "ease": "steps(8)"}, 0.300);
+    tl.fromTo("#p4-noir", {"opacity": 1}, {"opacity": 0, "duration": 0.35, "ease": "power1.out"}, 0.000);
+    window.__timelines["p4"] = tl;
+  </script>
+</template>
