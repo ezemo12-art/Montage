@@ -1,4 +1,16 @@
-# DOSSIER 00 — true-crime brand (Instagram / TikTok) + investigation games shop
+# DOSSIER 00 — criminal RIDDLE videos (Instagram / TikTok) + investigation games shop
+
+> **Since 18/11/2026 the channel makes fictional criminal / situation RIDDLES, not true stories**
+> (brief: `docs/DOSSIER00_BRIEF_ENIGMES.md`, rules: `DA.md` §1 and §6). Goal n°1: views and comments.
+> Riddle videos are built with `python3 scripts/enigme.py <enigme.json> <project> --render`
+> (example: `dossiers/ENIGME-001/enigme.json`). Rotate the 3 hooks: « 1… 2… 3… raté. » (situation),
+> « Tu penses être un enquêteur… ou plutôt nul à chier ? » (criminal investigation),
+> « STOP. Penses-tu comme un criminel ? » (criminal mind). Archiviste in the bottom-left corner the whole
+> video (poses in `archiviste/poses/`), atypical creative characters, voice = ElevenLabs
+> « Kevan – Narrateur Cinématique » (voice_id AYfOkr1hDQYbhigmRZ16, model eleven_v4). The solution goes in the
+> pinned comment, never in the video. Images: ElevenLabs (gemini-nano-banana-2.1 ≈ 204 credits; the
+> character-consistent gemini-3-pro-image ≈ 1 830 credits — use only when a reference must be followed) or
+> Runway (≈ 6 credits per 2K image). Downloads: hosts allowed in the « Montage » environment.
 
 This repo is the production system of DOSSIER 00 (slogan: « Chaque détail cache une vérité. »):
 vertical 9:16 episodes (60–90 s) narrated by a permanent character, **the Archiviste**, plus a

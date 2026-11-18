@@ -1,0 +1,51 @@
+{
+  "titre": "Énigme 001 — Le magicien empoisonné",
+  "format": "enquete",
+  "script": "script.txt",
+  "voix": "voix.mp3",
+  "transcription": "transcript.json",
+  "queue": 1.8,
+  "mots_cles": ["Zéphyr,", "loge,", "mime,", "dompteuse", "ventriloque,"],
+  "images": {
+    "loge": "images/loge-v.png",
+    "mime": "images/mime.png",
+    "dompteuse": "images/dompteuse.png",
+    "ventriloque": "images/ventriloque.png",
+    "a_explique": "images/archi-explique.png",
+    "a_designe": "images/archi-designe.png",
+    "a_reflechit": "images/archi-reflechit.png"
+  },
+  "hook": {
+    "type": "texte",
+    "lignes": [
+      {"texte": "Tu penses être"},
+      {"texte": "un enquêteur…", "mot": "enquêteur", "accent": "ambre"},
+      {"texte": "ou plutôt", "mot": "ou plutôt"},
+      {"texte": "nul à chier ?", "mot": "nul à chier", "accent": "rouge"}
+    ]
+  },
+  "segments": [
+    {"type": "scene", "ancre": "Le Grand Zéphyr", "bandeau": "Le crime", "image": "loge",
+     "etiquettes": [{"texte": "Heure : ???", "mot": "l'heure", "x": 30, "y": 30},
+                    {"texte": "Cause : ???", "mot": "cause", "x": 30, "y": 90}]},
+    {"type": "suspects", "ancre": "Trois suspects", "bandeau": "Les suspects",
+     "suspects": [
+       {"nom": "Le mime", "image": "mime", "ancre": "Le mime", "ardoise": "J'étais seul sur la piste. Je répétais."},
+       {"nom": "La dompteuse", "image": "dompteuse", "ancre": "La dompteuse"},
+       {"nom": "Le ventriloque", "image": "ventriloque", "ancre": "Le ventriloque"}
+     ]},
+    {"type": "question", "ancre": "L'un d'eux vient", "bandeau": "Qui ment ?", "texte": "Qui est le coupable ?",
+     "rappel": [["mime", "Le mime"], ["dompteuse", "La dompteuse"], ["ventriloque", "Le ventriloque"]],
+     "compte_ancre": "Qui est le coupable", "cta_ancre": "Écris ta réponse", "cta": "Écris ta réponse en commentaire"}
+  ],
+  "archiviste": {
+    "poses": {"explique": "a_explique", "designe": "a_designe", "reflechit": "a_reflechit"},
+    "sequence": [
+      {"pose": "explique"},
+      {"mot": "Trois suspects", "pose": "designe"},
+      {"mot": "L'un d'eux vient", "pose": "reflechit"},
+      {"mot": "Écris ta réponse", "pose": "explique"}
+    ]
+  },
+  "solution": "La dompteuse : la police n'a rien révélé sur la cause de la mort, mais elle parle d'empoisonnement. Seul le coupable pouvait le savoir."
+}

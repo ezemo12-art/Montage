@@ -15,10 +15,29 @@
 | **Format** | Vertical 9:16 — 1080 × 1920, 30 images/s |
 | **Style** | Animation 3D stylisée, cinématographique |
 | **Ambiance** | Thriller psychologique : sombre, mystérieux, immersif |
-| **Narrateur** | L'Archiviste (personnage permanent) |
+| **Narrateur** | L'Archiviste (personnage permanent), **dans un coin de l'écran**, qui pose l'énigme et explique |
+| **Contenu** | **Énigmes criminelles et énigmes de situation** (fictives), PAS d'histoires vraies |
+| **Objectif n°1** | **Vues et commentaires** : chaque vidéo finit sur une question à laquelle on répond en commentaire |
 
-Mots-clés : *archive · secret · lumière ambre dans le noir · silence · indice · révélation.*
-Jamais sensationnaliste, jamais gore, jamais « cheap ».
+Mots-clés : *énigme · indice caché · suspects · piège · « t'as trouvé ? » · lumière ambre dans le noir.*
+Jamais gore, jamais « cheap ». Personnages **atypiques et créatifs** (mime, dompteuse, ventriloque et sa
+marionnette, majordome, jumeaux, horloger…), jamais des silhouettes génériques.
+
+### Les 3 formats et leurs hooks (à alterner)
+
+| Format | Hook (0–2 s, en gros texte + voix) | Exemples de thèmes |
+| --- | --- | --- |
+| **Énigme de situation** | « **1… 2… 3… raté.** » (compte à rebours puis tampon RATÉ) | évasion de prison, pièce fermée de l'intérieur, faux alibi, survie, braquage |
+| **Enquête criminelle** | « **Tu penses être un enquêteur… ou plutôt nul à chier ?** » | trouver le coupable parmi 3 suspects, l'indice qui trahit, le mensonge |
+| **Esprit criminel** | « **STOP. Penses-tu comme un criminel ?** » | « comment a-t-il réussi ? », « quelle erreur l'a fait tomber ? », le crime parfait |
+
+Règles d'une bonne énigme virale :
+- **Résoluble avec ce qui est montré** : l'indice décisif est dit OU visible à l'écran (jamais une info cachée).
+- **Une seule bonne réponse**, vérifiable ; un piège plausible pour les autres réponses (ça fait débattre).
+- **Courte** : 30–50 s. Une phrase = une image.
+- **Pas de réponse dans la vidéo** : « Écris ta réponse en commentaire » ; la solution va dans le **commentaire
+  épinglé** ou la **partie 2** (fait revenir et commenter).
+- Fin qui pique l'ego : « Les vrais enquêteurs l'ont déjà trouvé. », « 90 % se trompent. »
 
 ## 2. Palette officielle (5 couleurs, aucune autre)
 
@@ -73,17 +92,18 @@ Compositions réutilisées d'un épisode à l'autre (bibliothèque : `motion/`) 
 
 Texture : grain de film léger + vignettage sur les images 3D. Rien d'autre.
 
-## 6. Structure d'un épisode (60–90 s)
+## 6. Structure d'une vidéo énigme (30–50 s)
 
 | # | Séquence | Durée indicative |
 | --- | --- | --- |
-| 1 | **Hook immédiat** (révélation typographique ou image choc non gore) | 0–3 s |
-| 2 | Présentation de l'affaire (ouverture dossier, date, lieu) | 3–12 s |
-| 3 | Apparition de l'Archiviste | 12–18 s |
-| 4 | Reconstitution cinématographique | 18–45 s |
-| 5 | Présentation des indices (documents, carte, empreintes) | 45–60 s |
-| 6 | Retournement narratif | 60–75 s |
-| 7 | Conclusion + question au spectateur + slogan | 75–90 s |
+| 1 | **Hook** (un des 3, gros texte plein écran, Archiviste dans le coin) | 0–3 s |
+| 2 | La situation / le crime (1–2 images, bandeau titre en haut) | 3–12 s |
+| 3 | Les suspects ou les éléments (cartes étiquetées, un par un, leur phrase en bulle) | 12–35 s |
+| 4 | **La question** + compte à rebours 3-2-1 | 35–42 s |
+| 5 | Appel au commentaire (« Écris ta réponse… ») + DOSSIER 00 | 42–50 s |
+
+L'Archiviste est présent **pendant toute la vidéo**, en bas à gauche, et change de pose (explique, désigne,
+réfléchit) selon ce qu'il dit. Plus d'apparition « plein écran » sauf exception.
 
 La 1re image (0 s) doit déjà montrer le titre ou l'Archiviste : c'est la miniature.
 **Hook** : un impact qui remplit l'écran dès 0 s ; aucun plan immobile de plus de 0,5 s dans les 4 premières
@@ -94,8 +114,9 @@ jamais deux sur un même créneau (`scripts/calendrier.py`).
 
 ## 7. Son
 
-- **Voix** : narration française masculine, grave, posée, naturelle et reconnaissable
-  (toujours la même voix — voir `archiviste/CHARACTER.md`).
+- **Voix** : voix de l'Archiviste = ElevenLabs « Kevan – Narrateur Cinématique » (`AYfOkr1hDQYbhigmRZ16`),
+  française, grave, sombre, intrigante ; un peu joueuse sur les hooks et la fin (balises [intrigued],
+  [mischievous], [whispers], [pause]). Toujours la même voix.
 - Nappe sombre (drone, piano grave, cordes basses), très en dessous de la voix.
 - Sons discrets : papier, machine à écrire, tic d'horloge, souffle sur les titres.
 - Interdit : bruitages cartoon, jump scares, cris, musique épique.
@@ -105,13 +126,18 @@ jamais deux sur un même créneau (`scripts/calendrier.py`).
 - Textes entre **x = 150 et x = 890 px** ; zone utile **y = 280 à 1230 px** (sous 1230 px, l'interface Reels peut cacher le texte).
 - Rien d'important dans les 20 % du bas ni sur le bord droit.
 - Titres en haut (~300–650 px), sous-titres au milieu (~900–1150 px).
+- **Vidéos énigmes** : bandeau titre en haut (y ≈ 260–340), illustration au centre (y ≈ 360–1000),
+  sous-titres (y ≈ 1030–1150), **Archiviste en bas à gauche** (x 0–380, y ≈ 1150–1560, il peut déborder
+  sous la zone sûre : c'est un personnage, pas du texte).
 
 ## 9. Éthique (fait partie de la DA)
 
-- Faits réels et sourcés ; à l'écran, distinguer **FAIT / ACCUSATION / HYPOTHÈSE**.
-- Vérifier le statut judiciaire ; présomption d'innocence : aucune personne non condamnée présentée comme coupable.
-- Jamais de preuve, témoignage ou document inventé dans une histoire vraie.
-- Reconstitutions : stylisées 3D, jamais de visage réaliste d'une vraie victime, pas de gore.
+- Les énigmes sont **fictives** : personnages et lieux inventés, aucune vraie personne, aucune vraie affaire
+  présentée comme telle (si un jour une vidéo s'inspire d'un fait réel : sources, statut judiciaire, présomption
+  d'innocence, comme avant).
+- Pas de gore, pas de cadavre montré : on suggère (chapeau tombé, gant, verre renversé).
+- Pas de méthode réellement dangereuse détaillée (fabrication d'arme, poison précis, mode d'emploi d'une évasion
+  réelle) : l'énigme reste un jeu de logique.
 - Contenus générés par IA : mention IA cochée sur CHAQUE réseau, à chaque publication — Instagram « AI info »,
   TikTok « AI-generated content », YouTube Shorts « contenu modifié ou synthétique » (revérifier dans YouTube
   Studio : certains outils de programmation remettent la case à « non »).
@@ -120,7 +146,7 @@ jamais deux sur un même créneau (`scripts/calendrier.py`).
 
 ## 10. Phrase de style (à coller au début de chaque demande)
 
-> DOSSIER 00 : animation 3D stylisée cinématographique, thriller psychologique sombre.
+> DOSSIER 00 : énigmes criminelles fictives, animation 3D stylisée cinématographique, personnages atypiques.
 > Palette stricte : noir charbon #101113, gris archive #29292B, ivoire #E5DDCB, ambre #D6A64A,
 > rouge sombre #9E2929 (rare). Oswald majuscules + IBM Plex Mono. Mouvements lents et maîtrisés,
 > une seule chose bouge à la fois. Narrateur : l'Archiviste (références officielles obligatoires).

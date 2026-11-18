@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style id="da-inline">
+/* DOSSIER 00 — valeurs officielles. Copier dans assets/da.css de chaque vidéo.
+   Référence humaine : DA.md. Ne pas modifier sans mettre DA.md à jour. */
+:root {
+  --charbon: #101113;  /* fond */
+  --archive: #29292b;  /* surfaces : dossiers, cartes, documents */
+  --ivoire:  #e5ddcb;  /* texte */
+  --ambre:   #d6a64a;  /* accent principal : œil, indices, mot clé */
+  --rouge:   #9e2929;  /* alerte, rare : crime, révélation, tampon */
+  --ivoire-doux: rgba(229, 221, 203, 0.8);
+
+  /* alias génériques */
+  --ground: var(--charbon);
+  --ink: var(--ivoire);
+  --accent: var(--ambre);
+
+  --font-display: "Oswald";
+  --font-mono: "IBM Plex Mono";
+  --safe-left: 150px;
+  --safe-width: 740px;
+}
+.da-tag     { font-family: var(--font-mono); font-size: 32px; letter-spacing: 0.2em; color: var(--ambre); text-transform: uppercase; }
+.da-title   { font-family: var(--font-display); font-size: 128px; line-height: 1.16; font-weight: 700; text-transform: uppercase; color: var(--ivoire); }
+.da-meta    { font-family: var(--font-mono); font-size: 40px; letter-spacing: 0.08em; color: var(--ivoire-doux); text-transform: uppercase; }
+.da-rule    { height: 4px; background: var(--ambre); transform-origin: left center; }
+.da-card    { background: var(--archive); color: var(--ivoire); }
+.da-stamp   { font-family: var(--font-display); color: var(--rouge); border: 6px solid var(--rouge); text-transform: uppercase; letter-spacing: 0.1em; }
+.da-caption { font-family: var(--font-display); font-size: 72px; font-weight: 600; line-height: 1.18; text-transform: uppercase; color: var(--ivoire); text-align: center; }
+.da-caption em { font-style: normal; color: var(--ambre); }
+.da-caption strong { font-weight: inherit; color: var(--rouge); } /* moment fort uniquement */
+
+    </style>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--charbon); }
+      #root { position: relative; width: 100%; height: 100%; }
+      #fond { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 45% at 50% 38%, #1d1c1d, var(--charbon) 70%); }
+      .seg, #hook { position: absolute; inset: 0; }
+      /* hook */
+      .hk-texte { position: absolute; left: 90px; top: 420px; width: 900px; text-align: center; }
+      .hk-l { font-family: var(--font-display); font-weight: 700; font-size: 112px; line-height: 1.12; text-transform: uppercase; color: var(--ivoire); }
+      .hk-a { color: var(--ambre); } .hk-r { color: var(--rouge); }
+      .hk-compte { position: absolute; left: 90px; top: 380px; width: 900px; height: 700px; }
+      .hk-chiffre { position: absolute; inset: 0; text-align: center; font-family: var(--font-display); font-weight: 700; font-size: 420px; line-height: 700px; color: var(--ivoire); }
+      .hk-rate { position: absolute; left: 0; right: 0; top: 230px; text-align: center; font-family: var(--font-display); font-weight: 700; font-size: 190px; color: var(--rouge); border: 14px solid var(--rouge); transform: rotate(-8deg); }
+      /* bandeau */
+      .ban { position: absolute; left: 0; right: 0; top: 250px; text-align: center; }
+      .ban span { display: inline-block; background: var(--rouge); color: var(--ivoire); font-family: var(--font-display); font-weight: 700; font-size: 46px; letter-spacing: 0.08em; padding: 6px 26px; text-transform: uppercase; }
+      /* scène */
+      .card { position: absolute; left: 150px; top: 350px; width: 780px; height: 660px; border-radius: 22px; overflow: hidden; border: 3px solid rgba(214,166,74,0.45); }
+      .card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .tag { position: absolute; font-family: var(--font-mono); font-size: 32px; letter-spacing: 0.08em; color: var(--charbon); background: var(--ambre); padding: 4px 14px; text-transform: uppercase; }
+      /* suspects */
+      .lineup { position: absolute; left: 0; top: 350px; width: 1080px; height: 660px; }
+      .sus { position: absolute; top: 0; width: 270px; height: 660px; transform-origin: 50% 60%; }
+      .sus-img { position: absolute; left: 0; top: 0; width: 270px; height: 560px; overflow: hidden; border-radius: 18px; border: 3px solid rgba(214,166,74,0.5); }
+      .sus-img img { width: 100%; height: 100%; object-fit: cover; }
+      .sus-nom { position: absolute; left: 0; right: 0; top: 578px; text-align: center; font-family: var(--font-display); font-weight: 700; font-size: 34px; color: var(--ivoire); text-transform: uppercase; }
+      .slate { position: absolute; left: 14px; right: 14px; top: 330px; background: #1b1d1b; border: 6px solid #6b5636; padding: 12px; font-family: var(--font-mono); font-size: 24px; line-height: 1.3; color: var(--ivoire); }
+      /* question */
+      .q { position: absolute; left: 90px; top: 330px; width: 900px; text-align: center; font-family: var(--font-display); font-weight: 700; font-size: 96px; line-height: 1.12; text-transform: uppercase; color: var(--ivoire); }
+      .minis { position: absolute; left: 150px; top: 580px; width: 780px; display: flex; justify-content: space-between; }
+      .mini { width: 220px; text-align: center; }
+      .mini img { width: 220px; height: 260px; object-fit: cover; border-radius: 14px; border: 3px solid rgba(214,166,74,0.5); }
+      .mini span { display: block; margin-top: 8px; font-family: var(--font-display); font-weight: 700; font-size: 32px; color: var(--ivoire); text-transform: uppercase; }
+      .cd { position: absolute; left: 440px; top: 915px; width: 200px; height: 200px; }
+      .cd svg { position: absolute; inset: 0; }
+      .cd circle { fill: none; stroke: var(--ambre); stroke-width: 10; stroke-dasharray: 1; transform: rotate(-90deg); transform-origin: 50% 50%; }
+      .cd span { position: absolute; inset: 0; text-align: center; line-height: 200px; font-family: var(--font-display); font-weight: 700; font-size: 120px; color: var(--ambre); opacity: 0; }
+      .cta { position: absolute; left: 370px; top: 1150px; width: 520px; text-align: center; background: var(--ambre); color: var(--charbon); font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1.15; padding: 14px 18px; border-radius: 14px; text-transform: uppercase; opacity: 0; }
+      .logo { position: absolute; left: 370px; top: 1310px; width: 520px; text-align: center; font-family: var(--font-mono); font-size: 34px; letter-spacing: 0.3em; color: var(--ambre); opacity: 0; }
+      /* Archiviste */
+      #archi { position: absolute; left: -10px; top: 1120px; width: 390px; height: 520px; z-index: 30;
+        -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%), linear-gradient(to right, #000 80%, transparent 100%);
+        -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 72%, transparent 100%); }
+      #ar-halo { position: absolute; left: 40px; top: 30px; width: 320px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(214,166,74,0.35), rgba(214,166,74,0) 70%); }
+      #ar-in { position: absolute; inset: 0; }
+      .ar-p { position: absolute; left: 0; top: 0; width: 390px; height: 652px; object-fit: cover; object-position: 50% 0; }
+      #ar-nom { position: absolute; left: 30px; top: 470px; font-family: var(--font-mono); font-size: 26px; letter-spacing: 0.2em; color: var(--ambre); }
+      .st { position: absolute; left: 140px; top: 1035px; width: 800px; z-index: 40; }
+      .st .da-caption { text-shadow: 0 2px 14px rgba(16, 17, 19, 0.95); font-size: 70px; }
+      #fx-vignette { position: absolute; inset: 0; z-index: 50; pointer-events: none; background: radial-gradient(ellipse 85% 75% at 50% 45%, rgba(16,17,19,0) 60%, rgba(16,17,19,0.65) 100%); }
+      #fx-grain { position: absolute; inset: 0; z-index: 51; pointer-events: none; opacity: 0.06;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    </style>
+  </head>
+  <body>
+    <!-- Généré par scripts/enigme.py depuis enigme.json : modifier le fichier d'énigme puis regénérer. -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="45.21" data-width="1080" data-height="1920">
+      <div id="fond" data-layout-ignore></div>
+      <div id="hook" class="clip" data-start="0.00" data-duration="5.74" data-track-index="1"><div id="hook-in" class="hk-texte"><div id="hk0" class="hk-l">Tu penses être</div><div id="hk1" class="hk-l hk-a">un enquêteur…</div><div id="hk2" class="hk-l">ou plutôt</div><div id="hk3" class="hk-l hk-r">nul à chier ?</div></div></div>
+      <div id="s0" class="clip seg" data-start="5.74" data-duration="10.24" data-track-index="1"><div id="s0-ban" class="ban"><span>Le crime</span></div><div id="s0-card" class="card"><img id="s0-img" src="assets/loge-v.png" alt=""><div id="s0-tg0" class="tag" style="left:30px;top:30px">Heure : ???</div><div id="s0-tg1" class="tag" style="left:30px;top:90px">Cause : ???</div></div></div>
+      <div id="s1" class="clip seg" data-start="15.98" data-duration="19.60" data-track-index="1"><div id="s1-ban" class="ban"><span>Les suspects</span></div><div class="lineup"><div id="s1-c0" class="sus" style="left:120px"><div class="sus-img"><img src="assets/mime.png" alt=""></div><div id="s1-sl0" class="slate">J&#x27;étais seul sur la piste. Je répétais.</div><div class="sus-nom">Le mime</div></div><div id="s1-c1" class="sus" style="left:405px"><div class="sus-img"><img src="assets/dompteuse.png" alt=""></div><div class="sus-nom">La dompteuse</div></div><div id="s1-c2" class="sus" style="left:690px"><div class="sus-img"><img src="assets/ventriloque.png" alt=""></div><div class="sus-nom">Le ventriloque</div></div></div></div>
+      <div id="s2" class="clip seg" data-start="35.58" data-duration="9.63" data-track-index="1"><div id="s2-ban" class="ban"><span>Qui ment ?</span></div><div id="s2-q" class="q">Qui est le coupable ?</div><div class="minis" id="s2-m"><div class="mini"><img src="assets/mime.png" alt=""><span>Le mime</span></div><div class="mini"><img src="assets/dompteuse.png" alt=""><span>La dompteuse</span></div><div class="mini"><img src="assets/ventriloque.png" alt=""><span>Le ventriloque</span></div></div><div id="s2-cd" class="cd"><svg viewBox="0 0 200 200"><circle id="s2-ring" cx="100" cy="100" r="88" pathLength="1"/></svg><span id="s2-n3">3</span><span id="s2-n2">2</span><span id="s2-n1">1</span></div><div id="s2-cta" class="cta">Écris ta réponse en commentaire</div><div id="s2-logo" class="logo">DOSSIER 00</div></div>
+      <div id="archi"><div id="ar-halo"></div><div id="ar-in"><img id="ar-explique" class="ar-p" src="assets/archi-explique.png" alt="" style="opacity:1"><img id="ar-designe" class="ar-p" src="assets/archi-designe.png" alt="" style="opacity:0"><img id="ar-reflechit" class="ar-p" src="assets/archi-reflechit.png" alt="" style="opacity:0"></div></div>
+      <audio id="voix" class="clip" src="assets/voix.mp3" data-start="0" data-duration="43.61" data-track-index="9" data-volume="1"></audio>
+      <div data-track-kind="captions">
+      <div id="st0" class="clip st" data-start="5.84" data-duration="0.99" data-track-index="5"><span id="st0-t" class="da-caption" style="display:block">Le Grand <em>Zéphyr,</em></span></div>
+      <div id="st1" class="clip st" data-start="6.83" data-duration="0.54" data-track-index="5"><span id="st1-t" class="da-caption" style="display:block">le magicien</span></div>
+      <div id="st2" class="clip st" data-start="7.37" data-duration="1.03" data-track-index="5"><span id="st2-t" class="da-caption" style="display:block">vedette du cirque,</span></div>
+      <div id="st3" class="clip st" data-start="8.40" data-duration="0.91" data-track-index="5"><span id="st3-t" class="da-caption" style="display:block">est retrouvé mort</span></div>
+      <div id="st4" class="clip st" data-start="9.31" data-duration="0.78" data-track-index="5"><span id="st4-t" class="da-caption" style="display:block">dans sa <em>loge,</em></span></div>
+      <div id="st5" class="clip st" data-start="10.09" data-duration="0.51" data-track-index="5"><span id="st5-t" class="da-caption" style="display:block">juste après</span></div>
+      <div id="st6" class="clip st" data-start="10.60" data-duration="1.24" data-track-index="5"><span id="st6-t" class="da-caption" style="display:block">son dernier tour.</span></div>
+      <div id="st7" class="clip st" data-start="11.84" data-duration="0.75" data-track-index="5"><span id="st7-t" class="da-caption" style="display:block">La police n&#x27;a</span></div>
+      <div id="st8" class="clip st" data-start="12.59" data-duration="1.13" data-track-index="5"><span id="st8-t" class="da-caption" style="display:block">encore rien révélé :</span></div>
+      <div id="st9" class="clip st" data-start="13.72" data-duration="0.67" data-track-index="5"><span id="st9-t" class="da-caption" style="display:block">ni l&#x27;heure,</span></div>
+      <div id="st10" class="clip st" data-start="14.39" data-duration="0.68" data-track-index="5"><span id="st10-t" class="da-caption" style="display:block">ni la cause</span></div>
+      <div id="st11" class="clip st" data-start="15.07" data-duration="1.01" data-track-index="5"><span id="st11-t" class="da-caption" style="display:block">de sa mort.</span></div>
+      <div id="st12" class="clip st" data-start="16.08" data-duration="1.76" data-track-index="5"><span id="st12-t" class="da-caption" style="display:block">Trois suspects sont interrogés.</span></div>
+      <div id="st13" class="clip st" data-start="17.84" data-duration="0.47" data-track-index="5"><span id="st13-t" class="da-caption" style="display:block">Le <em>mime,</em></span></div>
+      <div id="st14" class="clip st" data-start="18.31" data-duration="1.34" data-track-index="5"><span id="st14-t" class="da-caption" style="display:block">qui ne parle jamais,</span></div>
+      <div id="st15" class="clip st" data-start="19.65" data-duration="1.51" data-track-index="5"><span id="st15-t" class="da-caption" style="display:block">écrit sur son ardoise :</span></div>
+      <div id="st16" class="clip st" data-start="21.16" data-duration="0.85" data-track-index="5"><span id="st16-t" class="da-caption" style="display:block">« J&#x27;étais seul</span></div>
+      <div id="st17" class="clip st" data-start="22.01" data-duration="0.78" data-track-index="5"><span id="st17-t" class="da-caption" style="display:block">sur la piste.</span></div>
+      <div id="st18" class="clip st" data-start="22.79" data-duration="2.12" data-track-index="5"><span id="st18-t" class="da-caption" style="display:block">Je répétais. » La <em>dompteuse :</em></span></div>
+      <div id="st19" class="clip st" data-start="24.91" data-duration="1.67" data-track-index="5"><span id="st19-t" class="da-caption" style="display:block">« Je nourrissais mes tigres.</span></div>
+      <div id="st20" class="clip st" data-start="26.58" data-duration="1.21" data-track-index="5"><span id="st20-t" class="da-caption" style="display:block">Pauvre <em>Zéphyr…</em> Qui</span></div>
+      <div id="st21" class="clip st" data-start="27.79" data-duration="0.43" data-track-index="5"><span id="st21-t" class="da-caption" style="display:block">a bien pu</span></div>
+      <div id="st22" class="clip st" data-start="28.22" data-duration="1.87" data-track-index="5"><span id="st22-t" class="da-caption" style="display:block">l&#x27;empoisonner ? » Le <em>ventriloque,</em></span></div>
+      <div id="st23" class="clip st" data-start="30.09" data-duration="1.14" data-track-index="5"><span id="st23-t" class="da-caption" style="display:block">et sa marionnette :</span></div>
+      <div id="st24" class="clip st" data-start="31.23" data-duration="0.83" data-track-index="5"><span id="st24-t" class="da-caption" style="display:block">« On était au bar,</span></div>
+      <div id="st25" class="clip st" data-start="32.06" data-duration="0.40" data-track-index="5"><span id="st25-t" class="da-caption" style="display:block">tous les</span></div>
+      <div id="st26" class="clip st" data-start="32.45" data-duration="1.18" data-track-index="5"><span id="st26-t" class="da-caption" style="display:block">deux. » « C&#x27;est vrai,</span></div>
+      <div id="st27" class="clip st" data-start="33.63" data-duration="0.59" data-track-index="5"><span id="st27-t" class="da-caption" style="display:block">je l&#x27;ai pas</span></div>
+      <div id="st28" class="clip st" data-start="34.22" data-duration="2.57" data-track-index="5"><span id="st28-t" class="da-caption" style="display:block">quitté une seconde ! »</span></div>
+      </div>
+      <div id="fx-vignette" data-layout-ignore></div>
+      <div id="fx-grain" data-layout-ignore></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#hk0", {"opacity": 0, "scale": 1.35}, {"opacity": 1, "scale": 1, "duration": 0.25, "ease": "power3.out"}, 0.000);
+      tl.fromTo("#hk1", {"opacity": 0, "scale": 1.35}, {"opacity": 1, "scale": 1, "duration": 0.25, "ease": "power3.out"}, 1.140);
+      tl.fromTo("#hk2", {"opacity": 0, "scale": 1.35}, {"opacity": 1, "scale": 1, "duration": 0.25, "ease": "power3.out"}, 2.270);
+      tl.fromTo("#hk3", {"opacity": 0, "scale": 1.35}, {"opacity": 1, "scale": 1, "duration": 0.25, "ease": "power3.out"}, 3.080);
+      tl.fromTo("#hook-in", {"scale": 1}, {"scale": 1.06, "duration": 5.64, "ease": "none"}, 0.000);
+      tl.fromTo("#s0-tg0", {"opacity": 0, "y": 10}, {"opacity": 1, "y": 0, "duration": 0.3, "ease": "power2.out"}, 13.840);
+      tl.fromTo("#s0-tg1", {"opacity": 0, "y": 10}, {"opacity": 1, "y": 0, "duration": 0.3, "ease": "power2.out"}, 14.690);
+      tl.fromTo("#s0-card", {"opacity": 0, "y": 30}, {"opacity": 1, "y": 0, "duration": 0.45, "ease": "power3.out"}, 5.740);
+      tl.fromTo("#s0-img", {"scale": 1.0}, {"scale": 1.14, "duration": 10.24, "ease": "none"}, 5.740);
+      tl.fromTo("#s0-ban", {"opacity": 0, "scale": 1.3}, {"opacity": 1, "scale": 1, "duration": 0.3, "ease": "power3.out"}, 5.740);
+      tl.fromTo("#s1-c0", {"opacity": 0, "y": 40}, {"opacity": 0.45, "y": 0, "duration": 0.4, "ease": "power3.out"}, 15.980);
+      tl.fromTo("#s1-c0", {"opacity": 0.45, "scale": 1}, {"opacity": 1, "scale": 1.06, "duration": 0.3, "ease": "power2.out", "immediateRender": false}, 17.740);
+      tl.fromTo("#s1-c0", {"opacity": 1, "scale": 1.06}, {"opacity": 0.45, "scale": 1, "duration": 0.3, "ease": "power2.out", "immediateRender": false}, 23.780);
+      tl.fromTo("#s1-sl0", {"clipPath": "inset(0 100% 0 0)"}, {"clipPath": "inset(0 0% 0 0)", "duration": 1.2, "ease": "steps(30)"}, 21.160);
+      tl.fromTo("#s1-c1", {"opacity": 0, "y": 40}, {"opacity": 0.45, "y": 0, "duration": 0.4, "ease": "power3.out"}, 16.130);
+      tl.fromTo("#s1-c1", {"opacity": 0.45, "scale": 1}, {"opacity": 1, "scale": 1.06, "duration": 0.3, "ease": "power2.out", "immediateRender": false}, 23.780);
+      tl.fromTo("#s1-c1", {"opacity": 1, "scale": 1.06}, {"opacity": 0.45, "scale": 1, "duration": 0.3, "ease": "power2.out", "immediateRender": false}, 29.070);
+      tl.fromTo("#s1-c2", {"opacity": 0, "y": 40}, {"opacity": 0.45, "y": 0, "duration": 0.4, "ease": "power3.out"}, 16.280);
+      tl.fromTo("#s1-c2", {"opacity": 0.45, "scale": 1}, {"opacity": 1, "scale": 1.06, "duration": 0.3, "ease": "power2.out", "immediateRender": false}, 29.070);
+      tl.fromTo("#s1-ban", {"opacity": 0, "scale": 1.3}, {"opacity": 1, "scale": 1, "duration": 0.3, "ease": "power3.out"}, 15.980);
+      tl.fromTo("#s2-q", {"opacity": 0, "scale": 1.3}, {"opacity": 1, "scale": 1, "duration": 0.3, "ease": "power3.out"}, 35.580);
+      tl.fromTo("#s2-m", {"opacity": 0, "y": 20}, {"opacity": 1, "y": 0, "duration": 0.4, "ease": "power2.out"}, 35.980);
+      tl.fromTo("#s2-ring", {"strokeDashoffset": 0}, {"strokeDashoffset": 1, "duration": 3.0, "ease": "none"}, 38.120);
+      tl.fromTo("#s2-n3", {"opacity": 0, "scale": 1.5}, {"opacity": 1, "scale": 1, "duration": 0.2, "ease": "power3.out"}, 38.120);
+      tl.fromTo("#s2-n3", {"opacity": 1}, {"opacity": 0, "duration": 0.12, "ease": "none", "immediateRender": false}, 38.970);
+      tl.fromTo("#s2-n2", {"opacity": 0, "scale": 1.5}, {"opacity": 1, "scale": 1, "duration": 0.2, "ease": "power3.out"}, 39.120);
+      tl.fromTo("#s2-n2", {"opacity": 1}, {"opacity": 0, "duration": 0.12, "ease": "none", "immediateRender": false}, 39.970);
+      tl.fromTo("#s2-n1", {"opacity": 0, "scale": 1.5}, {"opacity": 1, "scale": 1, "duration": 0.2, "ease": "power3.out"}, 40.120);
+      tl.fromTo("#s2-n1", {"opacity": 1}, {"opacity": 0, "duration": 0.12, "ease": "none", "immediateRender": false}, 40.970);
+      tl.fromTo("#s2-cta", {"opacity": 0, "scale": 1.25}, {"opacity": 1, "scale": 1, "duration": 0.3, "ease": "power3.out"}, 39.620);
+      tl.fromTo("#s2-cta", {"scale": 1}, {"scale": 1.05, "duration": 0.5, "ease": "sine.inOut", "immediateRender": false}, 40.220);
+      tl.fromTo("#s2-cta", {"scale": 1.05}, {"scale": 1, "duration": 0.5, "ease": "sine.inOut", "immediateRender": false}, 40.720);
+      tl.fromTo("#s2-logo", {"opacity": 0}, {"opacity": 1, "duration": 0.5, "ease": "power2.out"}, 40.420);
+      tl.fromTo("#s2-ban", {"opacity": 0, "scale": 1.3}, {"opacity": 1, "scale": 1, "duration": 0.3, "ease": "power3.out"}, 35.580);
+      tl.fromTo("#ar-explique", {"opacity": 1}, {"opacity": 0, "duration": 0.25, "ease": "power1.inOut"}, 15.930);
+      tl.fromTo("#ar-designe", {"opacity": 0}, {"opacity": 1, "duration": 0.25, "ease": "power1.inOut"}, 15.930);
+      tl.fromTo("#ar-designe", {"opacity": 1}, {"opacity": 0, "duration": 0.25, "ease": "power1.inOut", "immediateRender": false}, 35.530);
+      tl.fromTo("#ar-reflechit", {"opacity": 0}, {"opacity": 1, "duration": 0.25, "ease": "power1.inOut"}, 35.530);
+      tl.fromTo("#ar-reflechit", {"opacity": 1}, {"opacity": 0, "duration": 0.25, "ease": "power1.inOut", "immediateRender": false}, 39.470);
+      tl.fromTo("#ar-explique", {"opacity": 0}, {"opacity": 1, "duration": 0.25, "ease": "power1.inOut", "immediateRender": false}, 39.470);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut"}, 0.000);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 0.800);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 1.600);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 2.400);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 3.200);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 4.000);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 4.800);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 5.600);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 6.400);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 7.200);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 8.000);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 8.800);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 9.600);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 10.400);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 11.200);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 12.000);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 12.800);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 13.600);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 14.400);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 15.200);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 16.000);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 16.800);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 17.600);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 18.400);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 19.200);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 20.000);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 20.800);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 21.600);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 22.400);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 23.200);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 24.000);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 24.800);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 25.600);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 26.400);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 27.200);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 28.000);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 28.800);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 29.600);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 30.400);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 31.200);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 32.000);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 32.800);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 33.600);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 34.400);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 35.200);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 36.000);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 36.800);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 37.600);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 38.400);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 39.200);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 40.000);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 40.800);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 41.600);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 42.400);
+      tl.fromTo("#ar-in", {"y": 0}, {"y": -8, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 43.200);
+      tl.fromTo("#ar-in", {"y": -8}, {"y": 0, "duration": 0.8, "ease": "sine.inOut", "immediateRender": false}, 44.000);
+      tl.fromTo("#ar-halo", {"opacity": 0.35}, {"opacity": 0.8, "duration": 1.2, "ease": "sine.inOut"}, 0.000);
+      tl.fromTo("#st0-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 5.84);
+      tl.fromTo("#st1-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 6.83);
+      tl.fromTo("#st2-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 7.37);
+      tl.fromTo("#st3-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 8.40);
+      tl.fromTo("#st4-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 9.31);
+      tl.fromTo("#st5-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 10.09);
+      tl.fromTo("#st6-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 10.60);
+      tl.fromTo("#st7-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 11.84);
+      tl.fromTo("#st8-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 12.59);
+      tl.fromTo("#st9-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 13.72);
+      tl.fromTo("#st10-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 14.39);
+      tl.fromTo("#st11-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 15.07);
+      tl.fromTo("#st12-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 16.08);
+      tl.fromTo("#st13-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 17.84);
+      tl.fromTo("#st14-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 18.31);
+      tl.fromTo("#st15-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 19.65);
+      tl.fromTo("#st16-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 21.16);
+      tl.fromTo("#st17-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 22.01);
+      tl.fromTo("#st18-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 22.79);
+      tl.fromTo("#st19-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 24.91);
+      tl.fromTo("#st20-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 26.58);
+      tl.fromTo("#st21-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 27.79);
+      tl.fromTo("#st22-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 28.22);
+      tl.fromTo("#st23-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 30.09);
+      tl.fromTo("#st24-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 31.23);
+      tl.fromTo("#st25-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 32.06);
+      tl.fromTo("#st26-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 32.45);
+      tl.fromTo("#st27-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 33.63);
+      tl.fromTo("#st28-t", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.22, ease: "power2.out"}, 34.22);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -61,9 +61,16 @@ ambre monte, la caméra avance vers son visage. Utilisé là où la structure le
 Le détourage (pour le poser dans les décors) et l'animation de ses gestes attendent l'accord de l'utilisateur
 et les clés OpenAI / vidéo.
 
+## 4 ter. Poses de narrateur (vidéos énigmes)
+
+`archiviste/poses/` : `archi-explique.png` (index levé), `archi-designe.png` (désigne vers la droite),
+`archi-reflechit.png` (main près du bec), générées le 18/11/2026 à partir de l'image officielle (ElevenLabs,
+modèle de cohérence de personnage). Fidèles à la référence (bec, fedora, cravate rouge, canne dorée).
+Utilisées en bas à gauche de chaque vidéo énigme. Nouvelles poses : toujours depuis l'image officielle.
+
 ## 5. Voix
 Française, masculine, grave, posée, naturelle. Toujours la même voix pour toute la série.
-Statut : _voix à choisir et à figer_ (voir `ROADMAP.md`). Ne jamais cloner la voix d'une vraie
+Statut : **figée** — ElevenLabs « Kevan – Narrateur Cinématique » (`AYfOkr1hDQYbhigmRZ16`, modèle eleven_v4) (voir `ROADMAP.md`). Ne jamais cloner la voix d'une vraie
 personne sans son accord écrit.
 
 ## 6. Bibliothèque de références officielles

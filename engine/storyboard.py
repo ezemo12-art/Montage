@@ -99,7 +99,18 @@ def mots(transcript_path: str | pathlib.Path, texte: str | None = None) -> list[
 
 def aligner(texte: str, ws: list[dict]) -> list[dict]:
     import difflib
-    script = [{"t": t, "n": _norm(t)} for t in texte.split()]
+    script = []
+    for t in texte.split():  # ponctuation isolée (« : », « « ») collée au mot voisin
+        if not _norm(t) and script:
+            script[-1]["t"] += ("\u00a0" if t in ":;?!»" else " ") + t
+        elif not _norm(t):
+            continue
+        else:
+            script.append({"t": t, "n": _norm(t)})
+    for i in range(len(script) - 1):  # « ouvrant collé au mot suivant
+        if script[i]["t"].endswith("«"):
+            script[i]["t"] = script[i]["t"][:-1].rstrip()
+            script[i + 1]["t"] = "«\u00a0" + script[i + 1]["t"]
     sm = difflib.SequenceMatcher(a=[x["n"] for x in script], b=[x["n"] for x in ws], autojunk=False)
     out = []
     for op, a0, a1, b0, b1 in sm.get_opcodes():
@@ -121,13 +132,14 @@ def aligner(texte: str, ws: list[dict]) -> list[dict]:
 
 def trouver(ws: list[dict], phrase: str, apres: int = 0) -> int:
     """Index du mot où commence `phrase` (recherche tolérante, à partir de `apres`)."""
-    cible = _norm(phrase).split()
+    # un « mot » = ce qui est séparé par des espaces dans le texte (« L'un » reste un seul mot)
+    cible = [_norm(t).replace(" ", "") for t in phrase.split() if _norm(t)]
     if not cible:
         raise ErreurStoryboard("phrase vide")
     meilleur, score_max = None, 0.0
     for i in range(apres, len(ws)):
         n = min(len(cible), len(ws) - i)
-        fenetre = [ws[i + j]["n"] for j in range(n)]
+        fenetre = [ws[i + j]["n"].replace(" ", "") for j in range(n)]
         score = sum(1 for j in range(n) if fenetre[j] == cible[j] or (len(cible[j]) > 3 and fenetre[j].startswith(cible[j][:4])))
         score /= len(cible)
         if score > score_max + 1e-9:
