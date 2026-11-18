@@ -83,6 +83,60 @@ class Mix:
         return "\n      ".join(self.items)
 
 
+def telephone_html(ident, t):
+    """Écran « journal d'appels » (indice téléphone) : {"titre", "date", "appels": [{heure, nom, info, sens}]}."""
+    rows = "".join(f'<div class="tel-r"><span class="tel-hr">{E(a["heure"])}</span><span class="tel-n">{E(a["nom"])}'
+                   f'<small>{E(a.get("info", ""))}</small></span><span class="tel-d">{"↗" if a.get("sens") == "sortant" else "↙"} '
+                   f'{E(a.get("duree", ""))}</span></div>' for a in t["appels"])
+    return (f'<div id="{ident}" class="tel"><div class="tel-h"><span>📞 {E(t.get("titre", "APPELS RÉCENTS"))}</span>'
+            f'<span>{E(t.get("date", ""))}</span></div>{rows}</div>')
+
+
+def horloge(i, x, y, taille, h, m, total, tl):
+    """Horloge d'horloger animée : trotteuse qui avance d'un cran par seconde."""
+    tl.ft(f"#hz-s{i}", {"rotation": 0}, {"rotation": 6 * int(total)}, 0, total, f"steps({int(total)})")
+    tl.ft(f"#hz-m{i}", {"rotation": m * 6}, {"rotation": m * 6 + total / 10}, 0, total, "none")
+    return (f'<div class="hz" style="left:{x}px;top:{y}px;width:{taille}px;height:{taille}px">'
+            + "".join(f'<i class="hz-g" style="transform:rotate({k * 30}deg)"></i>' for k in range(12))
+            + f'<b class="hz-a hz-h" style="transform:rotate({(h % 12) * 30 + m / 2}deg)"></b>'
+            f'<b id="hz-m{i}" class="hz-a hz-m"></b><b id="hz-s{i}" class="hz-a hz-s"></b><u></u></div>')
+
+
+def theme_fond(sp, d, out, tl, total):
+    """Fond en rapport avec l'énigme : image du lieu floutée et éclaircie (lisibilité) + décor animé.
+    "fond": {"image": "<clé images>", "flou": 7, "voile": 0.5, "decor": "horloges"}"""
+    f = sp.get("fond")
+    if not f:
+        return "", ""
+    from PIL import Image, ImageEnhance, ImageFilter
+    src = Image.open(d / sp["images"][f["image"]]).convert("RGB")
+    w, h = src.size
+    k = max(1080 / w, 1920 / h)
+    src = src.resize((round(w * k), round(h * k)), Image.LANCZOS)
+    l, t = (src.width - 1080) // 2, (src.height - 1920) // 2
+    src = src.crop((l, t, l + 1080, t + 1920)).filter(ImageFilter.GaussianBlur(f.get("flou", 7)))
+    src = ImageEnhance.Color(ImageEnhance.Brightness(src).enhance(f.get("lumiere", 1.45))).enhance(1.25)
+    src = Image.blend(src, Image.new("RGB", src.size, (246, 228, 196)), f.get("voile", 0.35))  # voile chaud
+    src.save(out / "assets" / "fond-theme.jpg", quality=90)
+    tl.ft("#fond-img", {"scale": 1.0}, {"scale": 1.08}, 0, total, "none")
+    html_ = '<div id="fond-t" data-layout-ignore><img id="fond-img" src="assets/fond-theme.jpg" alt=""></div>'
+    css = ("#fond-t { position: absolute; inset: 0; overflow: hidden; } #fond-img { width: 100%; height: 100%; object-fit: cover; }\n"
+           "      #grille { opacity: 0.18 !important; }")
+    if f.get("decor") == "horloges":
+        html_ += ('<div id="hz-l" data-layout-ignore>' + horloge(0, 40, 120, 150, 11, 5, total, tl)
+                  + horloge(1, 880, 1500, 150, 11, 5, total, tl) + '</div>')
+        css += ("\n      #hz-l { position: absolute; inset: 0; }"
+                "\n      .hz { position: absolute; border-radius: 50%; background: #fbf7ee; border: 7px solid #6b4a24;"
+                " box-shadow: 0 0 0 4px #d6a64a, 0 10px 24px rgba(16,17,19,0.35); opacity: 0.92; }"
+                "\n      .hz-g { position: absolute; left: 50%; top: 4%; width: 4px; height: 12%; margin-left: -2px; background: #101113; transform-origin: 50% 383%; }"
+                "\n      .hz-a { position: absolute; left: 50%; bottom: 50%; transform-origin: 50% 100%; border-radius: 3px; }"
+                "\n      .hz-h { width: 8px; height: 26%; margin-left: -4px; background: #101113; }"
+                "\n      .hz-m { width: 6px; height: 38%; margin-left: -3px; background: #101113; }"
+                "\n      .hz-s { width: 3px; height: 42%; margin-left: -1.5px; background: #9e2929; }"
+                "\n      .hz u { position: absolute; left: 50%; top: 50%; width: 14px; height: 14px; margin: -7px; border-radius: 50%; background: #9e2929; }")
+    return html_, css
+
+
 def build(spec_path: pathlib.Path, out: pathlib.Path):
     sp = json.loads(spec_path.read_text(encoding="utf-8"))
     d = spec_path.parent
@@ -99,6 +153,7 @@ def build(spec_path: pathlib.Path, out: pathlib.Path):
     shutil.copyfile(voix, out / "assets" / ("voix" + voix.suffix))
     img = lambda k: "assets/" + pathlib.Path(sp["images"][k]).name  # noqa: E731
     tl, mix, parts, muets = TL(), Mix(out), [], []
+    fond_html, fond_css = theme_fond(sp, d, out, tl, total)
 
     segs = sp["segments"]
     debuts = [0.0] + [max(0.0, t_mot(s["ancre"]) - 0.12) for s in segs]
@@ -161,13 +216,18 @@ def build(spec_path: pathlib.Path, out: pathlib.Path):
             for j, im in enumerate(imgs):
                 tj = t0 if j == 0 else t_mot(im["mot"]) - 0.1
                 tfin = t1 if j == len(imgs) - 1 else t_mot(imgs[j + 1]["mot"]) - 0.1
-                cards += f'<div id="{sid}-c{j}" class="card"><img id="{sid}-i{j}" src="{img(im["image"])}" alt=""></div>'
+                if im.get("telephone"):
+                    media = telephone_html(f"{sid}-i{j}", im["telephone"])
+                else:
+                    pos = f' style="object-position:{im["position"]}"' if im.get("position") else ""
+                    media = f'<img id="{sid}-i{j}" src="{img(im["image"])}" alt=""{pos}>'
+                cercles = ""
                 tl.ft(f"#{sid}-c{j}", {"opacity": 0, "x": 320, "rotation": 7}, {"opacity": 1, "x": 0, "rotation": -1.5 + j * 2},
                       tj, 0.35, "power3.out")
                 tl.ft(f"#{sid}-i{j}", {"scale": 1.0, "x": 0, "y": 0}, {"scale": 1.12, "x": 0, "y": 0}, tj, tfin - tj, "none")
                 if j:
                     mix.add(SONS / "woosh.mp3", tj - 0.1, 0.45)
-                for z in im.get("zooms", []):  # punch sur l'indice
+                for zi, z in enumerate(im.get("zooms", [])):  # punch sur l'indice
                     tz = t_mot(z["mot"])
                     tl.ft(f"#{sid}-i{j}", {"scale": 1.12, "x": 0, "y": 0}, {"scale": z.get("echelle", 1.9), "x": z["dx"], "y": z["dy"]},
                           tz, 0.35, "power3.out")
@@ -176,12 +236,12 @@ def build(spec_path: pathlib.Path, out: pathlib.Path):
                           z.get("tenue", max(0.5, tfin - tz - 0.35)), "none")  # tient jusqu'à l'image suivante
                     mix.add(SONS / "woosh.mp3", tz - 0.08, 0.4)
                     if z.get("cercle"):
-                        cx, cy, r = z["cercle"]
-                        cards = cards.replace(
-                            f'id="{sid}-i{j}" src="{img(im["image"])}" alt=""></div>',
-                            f'id="{sid}-i{j}" src="{img(im["image"])}" alt=""><svg class="cercle" viewBox="0 0 860 484">'
-                            f'<ellipse id="{sid}-ce{j}" cx="{cx}" cy="{cy}" rx="{r}" ry="{r * 0.7}" pathLength="1"/></svg></div>')
-                        tl.ft(f"#{sid}-ce{j}", {"strokeDashoffset": 1}, {"strokeDashoffset": 0}, tz + 0.4, 0.5, "power2.inOut")
+                        cx, cy, r = z["cercle"][:3]
+                        ry = z["cercle"][3] if len(z["cercle"]) > 3 else r * 0.7
+                        cercles += (f'<svg class="cercle" viewBox="0 0 860 484"><ellipse id="{sid}-ce{j}-{zi}" cx="{cx}" cy="{cy}" '
+                                    f'rx="{r}" ry="{ry}" pathLength="1"/></svg>')
+                        tl.ft(f"#{sid}-ce{j}-{zi}", {"strokeDashoffset": 1}, {"strokeDashoffset": 0}, tz + 0.4, 0.5, "power2.inOut")
+                cards += f'<div id="{sid}-c{j}" class="card">{media}{cercles}</div>'
             inner = cards + tags
 
         elif s["type"] == "suspects":
@@ -304,6 +364,16 @@ def build(spec_path: pathlib.Path, out: pathlib.Path):
       .card {{ position: absolute; left: 110px; top: 350px; width: 860px; height: 484px; overflow: hidden; border: 8px solid #fbf7ee;
         box-shadow: 0 18px 40px rgba(16,17,19,0.35); background: var(--charbon); }}
       .card img {{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }}
+      .tel {{ position: absolute; inset: 0; background: linear-gradient(180deg, #1b1c20, #101113); color: var(--ivoire);
+        font-family: var(--font-display); padding: 26px 46px; }}
+      .tel-h {{ display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 26px; color: var(--ambre);
+        letter-spacing: 0.08em; border-bottom: 2px solid rgba(229,221,203,0.25); padding-bottom: 12px; margin-bottom: 8px; }}
+      .tel-r {{ display: flex; align-items: center; height: 108px; border-bottom: 2px solid rgba(229,221,203,0.12); }}
+      .tel-hr {{ font-family: var(--font-mono); font-weight: 700; font-size: 50px; width: 190px; }}
+      .tel-n {{ flex: 1; font-weight: 700; font-size: 46px; text-transform: uppercase; line-height: 1; }}
+      .tel-n small {{ display: block; font-family: var(--font-mono); font-weight: 400; font-size: 24px; color: rgba(229,221,203,0.65);
+        text-transform: none; margin-top: 6px; }}
+      .tel-d {{ font-family: var(--font-mono); font-size: 30px; color: rgba(229,221,203,0.8); }}
       .cercle {{ position: absolute; inset: 0; width: 100%; height: 100%; }}
       .cercle ellipse {{ fill: none; stroke: var(--rouge); stroke-width: 7; stroke-dasharray: 1; }}
       .tag {{ position: absolute; font-family: var(--font-display); font-weight: 700; font-size: 44px; color: var(--ivoire); background: var(--charbon);
@@ -347,6 +417,7 @@ def build(spec_path: pathlib.Path, out: pathlib.Path):
       .st {{ position: absolute; left: 130px; top: 990px; width: 820px; z-index: 40; }}
       .st .da-caption {{ color: var(--charbon); font-size: 72px; text-shadow: 0 0 10px #f3ecdc, 0 0 22px #f3ecdc, 3px 3px 0 #f3ecdc; }}
       .st .da-caption em {{ color: var(--rouge); }}
+      {fond_css}
       #fx-grain {{ position: absolute; inset: 0; z-index: 51; pointer-events: none; opacity: 0.08;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }}
     </style>
@@ -356,6 +427,7 @@ def build(spec_path: pathlib.Path, out: pathlib.Path):
     <div id="root" data-composition-id="main" data-start="0" data-duration="{total:.2f}" data-width="1080" data-height="1920">
       <div id="fond" data-layout-ignore></div>
       <div id="grille" data-layout-ignore></div>
+      {fond_html}
       {chr(10).join("      " + p for p in parts).strip()}
       {chrono_html}
       {archi}

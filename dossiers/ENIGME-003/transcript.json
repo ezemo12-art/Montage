@@ -1,0 +1,728 @@
+[
+  {
+    "text": "T'es",
+    "start": 0.05,
+    "end": 0.21,
+    "id": "w0"
+  },
+  {
+    "text": "un",
+    "start": 0.21,
+    "end": 0.32,
+    "id": "w1"
+  },
+  {
+    "text": "enquêteur?",
+    "start": 0.32,
+    "end": 0.92,
+    "id": "w2"
+  },
+  {
+    "text": "Ou",
+    "start": 0.92,
+    "end": 1.21,
+    "id": "w3"
+  },
+  {
+    "text": "nul",
+    "start": 1.21,
+    "end": 1.35,
+    "id": "w4"
+  },
+  {
+    "text": "à",
+    "start": 1.35,
+    "end": 1.42,
+    "id": "w5"
+  },
+  {
+    "text": "chier?",
+    "start": 1.42,
+    "end": 1.91,
+    "id": "w6"
+  },
+  {
+    "text": "Un",
+    "start": 1.99,
+    "end": 2,
+    "id": "w7"
+  },
+  {
+    "text": "meurtre",
+    "start": 2.17,
+    "end": 2.63,
+    "id": "w8"
+  },
+  {
+    "text": "vient",
+    "start": 2.63,
+    "end": 2.98,
+    "id": "w9"
+  },
+  {
+    "text": "d'être",
+    "start": 2.98,
+    "end": 3.4,
+    "id": "w10"
+  },
+  {
+    "text": "commis,",
+    "start": 3.4,
+    "end": 4,
+    "id": "w11"
+  },
+  {
+    "text": "tu",
+    "start": 4,
+    "end": 4.17,
+    "id": "w12"
+  },
+  {
+    "text": "as",
+    "start": 4.17,
+    "end": 4.26,
+    "id": "w13"
+  },
+  {
+    "text": "30",
+    "start": 4.26,
+    "end": 4.6,
+    "id": "w14"
+  },
+  {
+    "text": "secondes",
+    "start": 4.7,
+    "end": 5,
+    "id": "w15"
+  },
+  {
+    "text": "pour",
+    "start": 5,
+    "end": 5.16,
+    "id": "w16"
+  },
+  {
+    "text": "trouver",
+    "start": 5.2,
+    "end": 5.47,
+    "id": "w17"
+  },
+  {
+    "text": "le",
+    "start": 5.57,
+    "end": 5.61,
+    "id": "w18"
+  },
+  {
+    "text": "coupable.",
+    "start": 5.61,
+    "end": 6.15,
+    "id": "w19"
+  },
+  {
+    "text": "Attention,",
+    "start": 6.39,
+    "end": 7.08,
+    "id": "w20"
+  },
+  {
+    "text": "un",
+    "start": 7.12,
+    "end": 7.22,
+    "id": "w21"
+  },
+  {
+    "text": "seul",
+    "start": 7.53,
+    "end": 7.58,
+    "id": "w22"
+  },
+  {
+    "text": "détail",
+    "start": 7.58,
+    "end": 8.02,
+    "id": "w23"
+  },
+  {
+    "text": "peut",
+    "start": 8.02,
+    "end": 8.21,
+    "id": "w24"
+  },
+  {
+    "text": "tout",
+    "start": 8.48,
+    "end": 8.63,
+    "id": "w25"
+  },
+  {
+    "text": "changer.",
+    "start": 8.76,
+    "end": 9.2,
+    "id": "w26"
+  },
+  {
+    "text": "Victor",
+    "start": 9.29,
+    "end": 9.58,
+    "id": "w27"
+  },
+  {
+    "text": "le",
+    "start": 9.58,
+    "end": 9.7,
+    "id": "w28"
+  },
+  {
+    "text": "noir,",
+    "start": 9.7,
+    "end": 9.97,
+    "id": "w29"
+  },
+  {
+    "text": "horlogé,",
+    "start": 9.97,
+    "end": 10.63,
+    "id": "w30"
+  },
+  {
+    "text": "est",
+    "start": 10.63,
+    "end": 10.82,
+    "id": "w31"
+  },
+  {
+    "text": "retrouvé",
+    "start": 10.82,
+    "end": 11.2,
+    "id": "w32"
+  },
+  {
+    "text": "mort",
+    "start": 11.43,
+    "end": 11.57,
+    "id": "w33"
+  },
+  {
+    "text": "dans",
+    "start": 11.66,
+    "end": 11.82,
+    "id": "w34"
+  },
+  {
+    "text": "sa",
+    "start": 11.82,
+    "end": 11.94,
+    "id": "w35"
+  },
+  {
+    "text": "maison.",
+    "start": 11.94,
+    "end": 12.6,
+    "id": "w36"
+  },
+  {
+    "text": "La",
+    "start": 12.69,
+    "end": 12.72,
+    "id": "w37"
+  },
+  {
+    "text": "fenêtre",
+    "start": 12.72,
+    "end": 13.14,
+    "id": "w38"
+  },
+  {
+    "text": "du",
+    "start": 13.22,
+    "end": 13.27,
+    "id": "w39"
+  },
+  {
+    "text": "salon",
+    "start": 13.27,
+    "end": 13.46,
+    "id": "w40"
+  },
+  {
+    "text": "est",
+    "start": 13.46,
+    "end": 13.83,
+    "id": "w41"
+  },
+  {
+    "text": "brisée,",
+    "start": 13.83,
+    "end": 14.25,
+    "id": "w42"
+  },
+  {
+    "text": "son",
+    "start": 14.25,
+    "end": 14.43,
+    "id": "w43"
+  },
+  {
+    "text": "téléphone",
+    "start": 14.43,
+    "end": 14.98,
+    "id": "w44"
+  },
+  {
+    "text": "est",
+    "start": 15.06,
+    "end": 15.17,
+    "id": "w45"
+  },
+  {
+    "text": "posé",
+    "start": 15.17,
+    "end": 15.4,
+    "id": "w46"
+  },
+  {
+    "text": "sur",
+    "start": 15.47,
+    "end": 15.59,
+    "id": "w47"
+  },
+  {
+    "text": "la",
+    "start": 15.59,
+    "end": 15.71,
+    "id": "w48"
+  },
+  {
+    "text": "table.",
+    "start": 15.71,
+    "end": 16.29,
+    "id": "w49"
+  },
+  {
+    "text": "À",
+    "start": 16.29,
+    "end": 16.39,
+    "id": "w50"
+  },
+  {
+    "text": "23h05,",
+    "start": 16.39,
+    "end": 17.46,
+    "id": "w51"
+  },
+  {
+    "text": "il",
+    "start": 17.53,
+    "end": 17.6,
+    "id": "w52"
+  },
+  {
+    "text": "a",
+    "start": 17.6,
+    "end": 17.67,
+    "id": "w53"
+  },
+  {
+    "text": "appelé",
+    "start": 17.67,
+    "end": 18.1,
+    "id": "w54"
+  },
+  {
+    "text": "sa",
+    "start": 18.1,
+    "end": 18.21,
+    "id": "w55"
+  },
+  {
+    "text": "sœur.",
+    "start": 18.24,
+    "end": 18.8,
+    "id": "w56"
+  },
+  {
+    "text": "Quelqu'un",
+    "start": 18.89,
+    "end": 19.3,
+    "id": "w57"
+  },
+  {
+    "text": "frappe",
+    "start": 19.3,
+    "end": 19.58,
+    "id": "w58"
+  },
+  {
+    "text": "à",
+    "start": 19.63,
+    "end": 19.68,
+    "id": "w59"
+  },
+  {
+    "text": "la",
+    "start": 19.68,
+    "end": 19.76,
+    "id": "w60"
+  },
+  {
+    "text": "porte.",
+    "start": 20.03,
+    "end": 20.3,
+    "id": "w61"
+  },
+  {
+    "text": "Trois",
+    "start": 20.39,
+    "end": 20.68,
+    "id": "w62"
+  },
+  {
+    "text": "suspects,",
+    "start": 20.68,
+    "end": 21.46,
+    "id": "w63"
+  },
+  {
+    "text": "sa",
+    "start": 21.53,
+    "end": 21.61,
+    "id": "w64"
+  },
+  {
+    "text": "sœur.",
+    "start": 21.61,
+    "end": 22.19,
+    "id": "w65"
+  },
+  {
+    "text": "Il",
+    "start": 22.29,
+    "end": 22.3,
+    "id": "w66"
+  },
+  {
+    "text": "avait",
+    "start": 22.3,
+    "end": 22.56,
+    "id": "w67"
+  },
+  {
+    "text": "peur,",
+    "start": 22.56,
+    "end": 22.87,
+    "id": "w68"
+  },
+  {
+    "text": "j'ai",
+    "start": 22.87,
+    "end": 22.98,
+    "id": "w69"
+  },
+  {
+    "text": "entendu",
+    "start": 23.03,
+    "end": 23.44,
+    "id": "w70"
+  },
+  {
+    "text": "frapper,",
+    "start": 23.44,
+    "end": 23.91,
+    "id": "w71"
+  },
+  {
+    "text": "puis",
+    "start": 23.91,
+    "end": 24.11,
+    "id": "w72"
+  },
+  {
+    "text": "il",
+    "start": 24.11,
+    "end": 24.16,
+    "id": "w73"
+  },
+  {
+    "text": "a",
+    "start": 24.16,
+    "end": 24.37,
+    "id": "w74"
+  },
+  {
+    "text": "raccroché.",
+    "start": 24.37,
+    "end": 25,
+    "id": "w75"
+  },
+  {
+    "text": "Le",
+    "start": 25.09,
+    "end": 25.11,
+    "id": "w76"
+  },
+  {
+    "text": "voisin,",
+    "start": 25.11,
+    "end": 25.53,
+    "id": "w77"
+  },
+  {
+    "text": "un",
+    "start": 25.62,
+    "end": 25.67,
+    "id": "w78"
+  },
+  {
+    "text": "somniaque.",
+    "start": 25.67,
+    "end": 26.4,
+    "id": "w79"
+  },
+  {
+    "text": "À",
+    "start": 26.4,
+    "end": 26.49,
+    "id": "w80"
+  },
+  {
+    "text": "23h30,",
+    "start": 26.49,
+    "end": 27.35,
+    "id": "w81"
+  },
+  {
+    "text": "j'ai",
+    "start": 27.35,
+    "end": 27.62,
+    "id": "w82"
+  },
+  {
+    "text": "entendu",
+    "start": 27.63,
+    "end": 28.05,
+    "id": "w83"
+  },
+  {
+    "text": "la",
+    "start": 28.05,
+    "end": 28.16,
+    "id": "w84"
+  },
+  {
+    "text": "vitre",
+    "start": 28.16,
+    "end": 28.37,
+    "id": "w85"
+  },
+  {
+    "text": "exploser.",
+    "start": 28.75,
+    "end": 29.2,
+    "id": "w86"
+  },
+  {
+    "text": "J'ai",
+    "start": 29.25,
+    "end": 29.4,
+    "id": "w87"
+  },
+  {
+    "text": "vu",
+    "start": 29.4,
+    "end": 29.5,
+    "id": "w88"
+  },
+  {
+    "text": "une",
+    "start": 29.5,
+    "end": 29.6,
+    "id": "w89"
+  },
+  {
+    "text": "ombre",
+    "start": 29.65,
+    "end": 29.9,
+    "id": "w90"
+  },
+  {
+    "text": "courir",
+    "start": 29.9,
+    "end": 30.16,
+    "id": "w91"
+  },
+  {
+    "text": "dans",
+    "start": 30.16,
+    "end": 30.43,
+    "id": "w92"
+  },
+  {
+    "text": "le",
+    "start": 30.43,
+    "end": 30.5,
+    "id": "w93"
+  },
+  {
+    "text": "jardin.",
+    "start": 30.5,
+    "end": 31,
+    "id": "w94"
+  },
+  {
+    "text": "Son",
+    "start": 31.09,
+    "end": 31.25,
+    "id": "w95"
+  },
+  {
+    "text": "associé.",
+    "start": 31.25,
+    "end": 31.94,
+    "id": "w96"
+  },
+  {
+    "text": "Impossible.",
+    "start": 32.19,
+    "end": 32.87,
+    "id": "w97"
+  },
+  {
+    "text": "À",
+    "start": 32.87,
+    "end": 32.94,
+    "id": "w98"
+  },
+  {
+    "text": "23h10,",
+    "start": 32.94,
+    "end": 33.65,
+    "id": "w99"
+  },
+  {
+    "text": "j'étais",
+    "start": 33.65,
+    "end": 33.97,
+    "id": "w100"
+  },
+  {
+    "text": "encore",
+    "start": 33.97,
+    "end": 34.07,
+    "id": "w101"
+  },
+  {
+    "text": "au",
+    "start": 34.27,
+    "end": 34.35,
+    "id": "w102"
+  },
+  {
+    "text": "téléphone",
+    "start": 34.56,
+    "end": 34.79,
+    "id": "w103"
+  },
+  {
+    "text": "avec",
+    "start": 34.79,
+    "end": 34.9,
+    "id": "w104"
+  },
+  {
+    "text": "lui",
+    "start": 34.97,
+    "end": 35.12,
+    "id": "w105"
+  },
+  {
+    "text": "pour",
+    "start": 35.12,
+    "end": 35.31,
+    "id": "w106"
+  },
+  {
+    "text": "le",
+    "start": 35.31,
+    "end": 35.38,
+    "id": "w107"
+  },
+  {
+    "text": "contrat.",
+    "start": 35.4,
+    "end": 35.81,
+    "id": "w108"
+  },
+  {
+    "text": "Alors,",
+    "start": 36.09,
+    "end": 36.5,
+    "id": "w109"
+  },
+  {
+    "text": "qui",
+    "start": 36.5,
+    "end": 36.71,
+    "id": "w110"
+  },
+  {
+    "text": "est",
+    "start": 36.71,
+    "end": 36.78,
+    "id": "w111"
+  },
+  {
+    "text": "le",
+    "start": 36.78,
+    "end": 36.98,
+    "id": "w112"
+  },
+  {
+    "text": "coupable?",
+    "start": 37.23,
+    "end": 37.89,
+    "id": "w113"
+  },
+  {
+    "text": "Si",
+    "start": 37.99,
+    "end": 38,
+    "id": "w114"
+  },
+  {
+    "text": "tu",
+    "start": 38,
+    "end": 38.1,
+    "id": "w115"
+  },
+  {
+    "text": "trouves,",
+    "start": 38.1,
+    "end": 38.55,
+    "id": "w116"
+  },
+  {
+    "text": "explique-nous",
+    "start": 38.55,
+    "end": 39.2,
+    "id": "w117"
+  },
+  {
+    "text": "comment",
+    "start": 39.2,
+    "end": 39.55,
+    "id": "w118"
+  },
+  {
+    "text": "en",
+    "start": 39.55,
+    "end": 39.65,
+    "id": "w119"
+  },
+  {
+    "text": "commentaire.",
+    "start": 39.65,
+    "end": 40.4,
+    "id": "w120"
+  }
+]

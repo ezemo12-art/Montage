@@ -1,0 +1,73 @@
+{
+  "titre": "Énigme 003 — Le dernier appel de l'horloger",
+  "format": "enquete",
+  "script": "script.txt",
+  "voix": "voix.mp3",
+  "transcription": "transcript.json",
+  "queue": 2.0,
+  "mots_cles": ["meurtre", "30", "détail", "horloger,", "brisée.", "téléphone", "frappe", "exploser.", "Impossible,", "coupable ?"],
+  "images": {
+    "salon": "images/salon.png",
+    "jardin": "images/jardin.png",
+    "soeur": "images/soeur.png",
+    "voisin": "images/voisin.png",
+    "associe": "images/associe.png",
+    "a_explique": "archiviste/poses/archi-explique.png",
+    "a_designe": "archiviste/poses/archi-designe.png",
+    "a_reflechit": "archiviste/poses/archi-reflechit.png"
+  },
+  "fond": {"image": "salon", "flou": 8, "voile": 0.35, "decor": "horloges"},
+  "hook": {
+    "lignes": [
+      {"texte": "T'es un"},
+      {"texte": "enquêteur", "mot": "enquêteur", "accent": "ambre"},
+      {"texte": "ou nul à chier ?", "mot": "ou nul", "accent": "rouge"}
+    ]
+  },
+  "segments": [
+    {"type": "ouverture", "ancre": "Un meurtre vient", "bandeau": "Meurtre", "image": "salon",
+     "chrono_mot": "30 secondes", "detail_mot": "Attention"},
+    {"type": "scene", "ancre": "Victor Lenoir", "bandeau": "Le crime",
+     "images": [
+       {"image": "salon", "position": "50% 35%",
+        "zooms": [{"mot": "retrouvé mort", "echelle": 1.7, "dx": -301, "dy": 80, "cercle": [545, 242, 150]}]},
+       {"image": "jardin", "mot": "La fenêtre du salon",
+        "zooms": [{"mot": "brisée", "echelle": 1.8, "dx": 103, "dy": -194, "cercle": [430, 345, 230, 110]}]},
+       {"mot": "son téléphone", "telephone": {
+          "titre": "APPELS RÉCENTS — VICTOR", "date": "AUJOURD'HUI",
+          "appels": [
+            {"heure": "23:05", "nom": "Claire", "info": "sœur · mobile", "sens": "sortant", "duree": "3 min"},
+            {"heure": "18:42", "nom": "Marc Delorme", "info": "associé · bureau", "sens": "entrant", "duree": "12 min"},
+            {"heure": "14:10", "nom": "Fournisseur laiton", "info": "atelier", "sens": "entrant", "duree": "2 min"}
+          ]},
+        "zooms": [{"mot": "il a appelé", "echelle": 1.3, "dx": 129, "dy": 72, "cercle": [430, 187, 410, 72]}]}
+     ]},
+    {"type": "suspects", "ancre": "Trois suspects", "bandeau": "Les suspects",
+     "suspects": [
+       {"nom": "La sœur", "image": "soeur", "ancre": "sa sœur Il avait", "bulle": "« J'ai entendu frapper, puis il a raccroché »"},
+       {"nom": "Le voisin", "image": "voisin", "ancre": "Le voisin", "bulle": "« 23 h 30 : la vitre explose, une ombre court »"},
+       {"nom": "L'associé", "image": "associe", "ancre": "Son associé", "bulle": "« À 23 h 10, je lui parlais au téléphone »"}
+     ]},
+    {"type": "question", "ancre": "Alors qui est", "bandeau": "Temps écoulé", "texte": "Qui est le coupable ?",
+     "rappel": [["soeur", "La sœur"], ["voisin", "Le voisin"], ["associe", "L'associé"]],
+     "cta_ancre": "Si tu trouves", "cta": "Explique comment en commentaire"}
+  ],
+  "chrono_depart": "Victor Lenoir",
+  "sons": [
+    {"fichier": "sons/frappe.mp3", "mot": "Quelqu'un frappe", "decalage": 0.25, "volume": 0.85},
+    {"fichier": "sons/vitre.mp3", "mot": "vitre exploser", "decalage": 0.35, "volume": 0.75}
+  ],
+  "nappe": "nappe-enquete.mp3",
+  "volume_nappe": 0.16,
+  "archiviste": {
+    "poses": {"explique": "a_explique", "designe": "a_designe", "reflechit": "a_reflechit"},
+    "sequence": [
+      {"pose": "explique"},
+      {"mot": "Victor Lenoir", "pose": "reflechit"},
+      {"mot": "Trois suspects", "pose": "designe"},
+      {"mot": "Alors qui est", "pose": "reflechit"},
+      {"mot": "Si tu trouves", "pose": "designe"}
+    ]
+  },
+  "solution": "L'associé. Les éclats de verre sont DEHORS, sur la pelouse : la vitre a été cassée de l'intérieur, l'effraction est une mise en scène (vers 23 h 30, entendue par le voisin) ; le tueur était déjà dans la maison, Victor lui avait ouvert après avoir frappé. Et le journal d'appels ne montre qu'un appel ce soir-là : 23 h 05, à sa sœur (3 min). Aucun appel à 23 h 10 : l'associé ment sur son alibi."
+}
