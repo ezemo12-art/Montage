@@ -62,6 +62,18 @@ La phrase finale demande le **comment**, pas seulement le nom : ça donne des co
   chrono, montée de tension avant la question, « ding » sur l'appel à commenter) + sons de l'histoire
   (vent, pas…). Bibliothèque réutilisable : `bibliotheque/sons/`. La voix reste toujours devant.
 
+### Difficulté (retour de l'utilisateur, 19/11/2026 : « c'est trop facile »)
+
+Niveau visé : **difficile mais juste** — la majorité se trompe, la solution paraît évidente une fois lue.
+- **Deux indices à croiser** minimum : aucun indice ne suffit seul (ex. un détail du décor + une phrase d'alibi).
+- **Pas de mot qui trahit** (« empoisonner », « aucune ne repart ») : l'indice décisif est dit sur un ton neutre,
+  noyé dans une phrase banale, ou seulement visible à l'image (journal d'appels, reflet, horloge, éclats de verre…).
+- **Chaque suspect a l'air coupable** (mobile, comportement louche, fausse piste plausible) ; le coupable n'est
+  jamais le plus suspect.
+- **Mise en scène équitable** : zooms et cercles rouges sur TOUS les éléments, pas seulement sur le bon indice.
+- Un **piège de lecture** : la réponse « évidente » au premier visionnage est fausse.
+- Test avant production : si on trouve en lisant le script une seule fois, c'est trop facile → durcir.
+
 Règles d'une bonne énigme virale :
 - **Résoluble avec ce qui est montré** : l'indice décisif est dit OU visible à l'écran (jamais une info cachée).
 - **Une seule bonne réponse**, vérifiable ; un piège plausible pour les autres réponses (ça fait débattre).
