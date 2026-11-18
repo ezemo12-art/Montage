@@ -19,3 +19,4 @@ file/.lock
 file/*.tmp
 **/export/planches/
 calendrier.tmp
+dossiers/**/assets/plans/
