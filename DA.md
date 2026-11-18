@@ -47,6 +47,21 @@ marionnette, majordome, jumeaux, horloger…), jamais des silhouettes génériqu
 Le chrono de 30 s est un ressort de jeu : l'énigme elle-même (après la réplique 4) doit tenir en ~30 s.
 La phrase finale demande le **comment**, pas seulement le nom : ça donne des commentaires plus longs et plus de débat.
 
+### Look et rythme des vidéos énigmes (demande de l'utilisateur, 19/11/2026)
+
+- **Fond clair et chaud, jamais tout noir** : papier ivoire (#E5DDCB → #EFE6D3), halo ambre derrière le sujet,
+  léger quadrillage de dossier, grain papier. Texte en charbon, mots clés en **rouge**, accents ambre.
+- **Images = « photos d'enquête »** : cartes à bord blanc légèrement inclinées, ombre portée ; personnages et
+  objets colorés, lumineux, atypiques.
+- **Archiviste en médaillon** (bas gauche) : cadre sombre bordé d'ambre, étiquette « L'ARCHIVISTE » ; ses
+  images restent intactes (pas de détourage).
+- **Rythme vif** : hook en mots « tamponnés » (grossissement + rebond + impact sonore), transitions qui
+  glissent avec woosh, zoom « punch » sur chaque indice + cercle rouge, sous-titres qui « pop », chrono qui
+  tourne, une nouvelle chose à l'écran toutes les 1–2 s.
+- **Son** : nappe musicale d'enquête discrète sous toute la vidéo + bruitages (woosh, impact/tampon, tic-tac du
+  chrono, montée de tension avant la question, « ding » sur l'appel à commenter) + sons de l'histoire
+  (vent, pas…). Bibliothèque réutilisable : `bibliotheque/sons/`. La voix reste toujours devant.
+
 Règles d'une bonne énigme virale :
 - **Résoluble avec ce qui est montré** : l'indice décisif est dit OU visible à l'écran (jamais une info cachée).
 - **Une seule bonne réponse**, vérifiable ; un piège plausible pour les autres réponses (ça fait débattre).
@@ -82,6 +97,9 @@ Tailles (1080 × 1920) : grand titre 120–150 px · sous-titres 68–80 px (3�
 mot clé en ambre) · infos mono 32–40 px.
 
 ## 4. Mouvements
+
+> Vidéos énigmes : voir aussi « Look et rythme des vidéos énigmes » (§1) — rythme vif autorisé
+> (tampons, rebonds courts, punch zoom). Toujours interdits : flashs, secousses d'écran.
 
 **Oui** : lent, maîtrisé — comme la gestuelle de l'Archiviste. Fondus, flou → net, masque qui
 monte, trait qui se trace, texte tapé à la machine, push-in très lent, lumière ambre qui s'allume.

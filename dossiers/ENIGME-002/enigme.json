@@ -1,0 +1,206 @@
+{
+  "titre": "Énigme 002 — Le chef d'orchestre du chalet",
+  "format": "enquete",
+  "script": "script.txt",
+  "voix": "voix.mp3",
+  "transcription": "transcript.json",
+  "queue": 2.0,
+  "mots_cles": [
+    "meurtre",
+    "30",
+    "détail",
+    "chalet",
+    "baguette",
+    "22",
+    "empreintes.",
+    "repart."
+  ],
+  "images": {
+    "chambre": "images/chambre.png",
+    "empreintes": "images/empreintes.png",
+    "skieuse": "images/skieuse.png",
+    "majordome": "images/majordome.png",
+    "livreur": "images/livreur.png",
+    "a_explique": "archiviste/poses/archi-explique.png",
+    "a_designe": "archiviste/poses/archi-designe.png",
+    "a_reflechit": "archiviste/poses/archi-reflechit.png"
+  },
+  "hook": {
+    "lignes": [
+      {
+        "texte": "T'es un"
+      },
+      {
+        "texte": "enquêteur",
+        "mot": "enquêteur",
+        "accent": "ambre"
+      },
+      {
+        "texte": "ou nul à chier ?",
+        "mot": "ou nul",
+        "accent": "rouge"
+      }
+    ]
+  },
+  "segments": [
+    {
+      "type": "ouverture",
+      "ancre": "Un meurtre vient",
+      "bandeau": "Meurtre",
+      "image": "chambre",
+      "chrono_mot": "30 secondes",
+      "detail_mot": "Attention"
+    },
+    {
+      "type": "scene",
+      "ancre": "Nuit de tempête",
+      "bandeau": "Le crime",
+      "images": [
+        {
+          "image": "empreintes"
+        },
+        {
+          "image": "chambre",
+          "mot": "Le célèbre chef",
+          "zooms": [
+            {
+              "mot": "baguette",
+              "echelle": 1.8,
+              "dx": 0,
+              "dy": -190,
+              "cercle": [
+                430,
+                360,
+                150
+              ]
+            }
+          ]
+        },
+        {
+          "image": "empreintes",
+          "mot": "Au petit matin",
+          "zooms": [
+            {
+              "mot": "série d'empreintes",
+              "echelle": 1.9,
+              "dx": 272,
+              "dy": -210,
+              "cercle": [
+                430,
+                300,
+                170
+              ]
+            }
+          ]
+        }
+      ],
+      "etiquettes": [
+        {
+          "texte": "Neige : stop à 22 h 00",
+          "mot": "cessé",
+          "x": 130,
+          "y": 372
+        },
+        {
+          "texte": "Aucune ne repart",
+          "mot": "aucune",
+          "x": 130,
+          "y": 448
+        }
+      ]
+    },
+    {
+      "type": "suspects",
+      "ancre": "Trois suspects",
+      "bandeau": "Les suspects",
+      "suspects": [
+        {
+          "nom": "La skieuse",
+          "image": "skieuse",
+          "ancre": "La championne",
+          "bulle": "Rentrée à 21 h, en pleine tempête"
+        },
+        {
+          "nom": "Le majordome",
+          "image": "majordome",
+          "ancre": "Le majordome",
+          "bulle": "Jamais sorti de la soirée"
+        },
+        {
+          "nom": "Le livreur",
+          "image": "livreur",
+          "ancre": "Le livreur",
+          "bulle": "Passé à 22 h 30… et reparti"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "ancre": "Alors… qui est",
+      "bandeau": "Temps écoulé",
+      "texte": "Qui est le coupable ?",
+      "rappel": [
+        [
+          "skieuse",
+          "La skieuse"
+        ],
+        [
+          "majordome",
+          "Le majordome"
+        ],
+        [
+          "livreur",
+          "Le livreur"
+        ]
+      ],
+      "cta_ancre": "Si tu trouves",
+      "cta": "Explique comment en commentaire"
+    }
+  ],
+  "chrono_depart": "Nuit de tempête",
+  "sons": [
+    {
+      "fichier": "sons/vent.mp3",
+      "mot": "Nuit de tempête",
+      "volume": 0.45,
+      "duree": 8
+    },
+    {
+      "fichier": "sons/pas-neige.mp3",
+      "mot": "série d'empreintes",
+      "decalage": -0.2,
+      "volume": 0.8
+    }
+  ],
+  "nappe": "nappe-enquete.mp3",
+  "volume_nappe": 0.16,
+  "archiviste": {
+    "poses": {
+      "explique": "a_explique",
+      "designe": "a_designe",
+      "reflechit": "a_reflechit"
+    },
+    "sequence": [
+      {
+        "pose": "explique"
+      },
+      {
+        "mot": "Nuit de tempête",
+        "pose": "reflechit"
+      },
+      {
+        "mot": "Trois suspects",
+        "pose": "designe"
+      },
+      {
+        "mot": "Alors… qui est",
+        "pose": "reflechit"
+      },
+      {
+        "mot": "Si tu trouves",
+        "pose": "designe"
+      }
+    ]
+  },
+  "solution": "Le livreur de bois. La neige s'arrête à 22 h : toute empreinte faite après reste visible. Il dit être arrivé à 22 h 30 (ses empreintes arrivent jusqu'à la porte) et être reparti aussitôt — or aucune empreinte ne repart. Il ment : il n'est jamais ressorti avant le matin. Les traces de la skieuse (21 h) ont été recouvertes par la neige, et le majordome n'est jamais sorti."
+}

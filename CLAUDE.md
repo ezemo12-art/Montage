@@ -8,7 +8,10 @@
 > « STOP. Penses-tu comme un criminel ? » (criminal mind). Archiviste in the bottom-left corner the whole
 > video (poses in `archiviste/poses/`), atypical creative characters, voice = ElevenLabs
 > « Kevan – Narrateur Cinématique » (voice_id AYfOkr1hDQYbhigmRZ16, model eleven_v4). The solution goes in the
-> pinned comment, never in the video. Images: ElevenLabs (gemini-nano-banana-2.1 ≈ 204 credits; the
+> pinned comment, never in the video. **Look v2 (19/11): light warm paper background, energetic pace, sound
+> design** — engine `scripts/enigme.py` (v2; v1 dark kept as `scripts/enigme_v1.py`), reusable sounds in
+> `bibliotheque/sons/` (+ episode sounds via the "sons" key), example `dossiers/ENIGME-002/enigme.json`.
+> ElevenLabs free plan has a DAILY image cap: fall back to Runway when it is reached. Images: ElevenLabs (gemini-nano-banana-2.1 ≈ 204 credits; the
 > character-consistent gemini-3-pro-image ≈ 1 830 credits — use only when a reference must be followed) or
 > Runway (≈ 6 credits per 2K image). Downloads: hosts allowed in the « Montage » environment.
 
