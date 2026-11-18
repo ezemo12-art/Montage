@@ -13,6 +13,9 @@
 > `bibliotheque/sons/` (+ episode sounds via the "sons" key), example `dossiers/ENIGME-002/enigme.json`.
 > ElevenLabs free plan has a DAILY image cap: fall back to Runway when it is reached.
 >
+> **After EVERY riddle video, end the chat reply with the solution, ready to copy and pin** (user request,
+> 19/11): a « Réponse à épingler » block at the very bottom of the message, written as the pinned comment.
+>
 > **Use ALL the tools the user gave, never stop at one (user reminder, 19/11).** Checked 19/11/2026:
 > - Images: ElevenLabs (daily cap, resets each day) → Runway (credits) → **local, unlimited**: the
 >   `anthropic-skills:blender-video-3d` skill (Blender 4.0 installable with apt here) for 3D scenes and
