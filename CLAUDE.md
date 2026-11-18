@@ -11,7 +11,16 @@
 > pinned comment, never in the video. **Look v2 (19/11): light warm paper background, energetic pace, sound
 > design** — engine `scripts/enigme.py` (v2; v1 dark kept as `scripts/enigme_v1.py`), reusable sounds in
 > `bibliotheque/sons/` (+ episode sounds via the "sons" key), example `dossiers/ENIGME-002/enigme.json`.
-> ElevenLabs free plan has a DAILY image cap: fall back to Runway when it is reached. Images: ElevenLabs (gemini-nano-banana-2.1 ≈ 204 credits; the
+> ElevenLabs free plan has a DAILY image cap: fall back to Runway when it is reached.
+>
+> **Use ALL the tools the user gave, never stop at one (user reminder, 19/11).** Checked 19/11/2026:
+> - Images: ElevenLabs (daily cap, resets each day) → Runway (credits) → **local, unlimited**: the
+>   `anthropic-skills:blender-video-3d` skill (Blender 4.0 installable with apt here) for 3D scenes and
+>   characters that REALLY move, HyperFrames registry blocks (`catalog`, e.g. `lottie-character-walk`),
+>   Three.js / SVG in HyperFrames, and the `engine/` silhouettes.
+> - Video generation: paid plan needed on both ElevenLabs and Runway (blocked on free plans) → real motion
+>   comes from Blender or Lottie, camera/punch motion from HyperFrames.
+> - Voice and sound effects: ElevenLabs (credits, no daily cap seen). Music bed: ElevenLabs sfx (~50 credits). Images: ElevenLabs (gemini-nano-banana-2.1 ≈ 204 credits; the
 > character-consistent gemini-3-pro-image ≈ 1 830 credits — use only when a reference must be followed) or
 > Runway (≈ 6 credits per 2K image). Downloads: hosts allowed in the « Montage » environment.
 
