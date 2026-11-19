@@ -1,0 +1,848 @@
+[
+  {
+    "text": "1,",
+    "start": 0.11,
+    "end": 1,
+    "id": "w0"
+  },
+  {
+    "text": "2,",
+    "start": 1,
+    "end": 1.95,
+    "id": "w1"
+  },
+  {
+    "text": "3...",
+    "start": 2.12,
+    "end": 3.24,
+    "id": "w2"
+  },
+  {
+    "text": "RATÉ!",
+    "start": 3.24,
+    "end": 3.49,
+    "id": "w3"
+  },
+  {
+    "text": "Cette",
+    "start": 3.61,
+    "end": 3.88,
+    "id": "w4"
+  },
+  {
+    "text": "nuit,",
+    "start": 3.88,
+    "end": 4.34,
+    "id": "w5"
+  },
+  {
+    "text": "trois",
+    "start": 4.48,
+    "end": 4.61,
+    "id": "w6"
+  },
+  {
+    "text": "détenus",
+    "start": 4.61,
+    "end": 4.97,
+    "id": "w7"
+  },
+  {
+    "text": "se",
+    "start": 4.97,
+    "end": 4.99,
+    "id": "w8"
+  },
+  {
+    "text": "sont",
+    "start": 5.07,
+    "end": 5.27,
+    "id": "w9"
+  },
+  {
+    "text": "évadés",
+    "start": 5.27,
+    "end": 5.64,
+    "id": "w10"
+  },
+  {
+    "text": "de",
+    "start": 5.64,
+    "end": 5.74,
+    "id": "w11"
+  },
+  {
+    "text": "la",
+    "start": 5.74,
+    "end": 5.84,
+    "id": "w12"
+  },
+  {
+    "text": "prison",
+    "start": 5.84,
+    "end": 6.08,
+    "id": "w13"
+  },
+  {
+    "text": "de",
+    "start": 6.08,
+    "end": 6.43,
+    "id": "w14"
+  },
+  {
+    "text": "Rock",
+    "start": 6.43,
+    "end": 6.47,
+    "id": "w15"
+  },
+  {
+    "text": "Noir.",
+    "start": 6.47,
+    "end": 6.8,
+    "id": "w16"
+  },
+  {
+    "text": "Deux",
+    "start": 7.01,
+    "end": 7.14,
+    "id": "w17"
+  },
+  {
+    "text": "ont",
+    "start": 7.14,
+    "end": 7.3,
+    "id": "w18"
+  },
+  {
+    "text": "été",
+    "start": 7.3,
+    "end": 7.38,
+    "id": "w19"
+  },
+  {
+    "text": "rattrapés",
+    "start": 7.38,
+    "end": 8.04,
+    "id": "w20"
+  },
+  {
+    "text": "avant",
+    "start": 8.04,
+    "end": 8.34,
+    "id": "w21"
+  },
+  {
+    "text": "l'aube.",
+    "start": 8.34,
+    "end": 8.87,
+    "id": "w22"
+  },
+  {
+    "text": "Un",
+    "start": 9.01,
+    "end": 9.05,
+    "id": "w23"
+  },
+  {
+    "text": "seul",
+    "start": 9.05,
+    "end": 9.3,
+    "id": "w24"
+  },
+  {
+    "text": "est",
+    "start": 9.3,
+    "end": 9.38,
+    "id": "w25"
+  },
+  {
+    "text": "libre,",
+    "start": 9.87,
+    "end": 10.1,
+    "id": "w26"
+  },
+  {
+    "text": "tu",
+    "start": 10.1,
+    "end": 10.19,
+    "id": "w27"
+  },
+  {
+    "text": "as",
+    "start": 10.19,
+    "end": 10.28,
+    "id": "w28"
+  },
+  {
+    "text": "30",
+    "start": 10.28,
+    "end": 10.38,
+    "id": "w29"
+  },
+  {
+    "text": "secondes",
+    "start": 10.56,
+    "end": 10.93,
+    "id": "w30"
+  },
+  {
+    "text": "pour",
+    "start": 11.02,
+    "end": 11.11,
+    "id": "w31"
+  },
+  {
+    "text": "trouver",
+    "start": 11.11,
+    "end": 11.44,
+    "id": "w32"
+  },
+  {
+    "text": "lequel.",
+    "start": 11.44,
+    "end": 11.9,
+    "id": "w33"
+  },
+  {
+    "text": "Attention,",
+    "start": 12.01,
+    "end": 12.96,
+    "id": "w34"
+  },
+  {
+    "text": "un",
+    "start": 13,
+    "end": 13.12,
+    "id": "w35"
+  },
+  {
+    "text": "seul",
+    "start": 13.12,
+    "end": 13.37,
+    "id": "w36"
+  },
+  {
+    "text": "détail",
+    "start": 13.37,
+    "end": 13.74,
+    "id": "w37"
+  },
+  {
+    "text": "peut",
+    "start": 13.74,
+    "end": 14.05,
+    "id": "w38"
+  },
+  {
+    "text": "tout",
+    "start": 14.05,
+    "end": 14.24,
+    "id": "w39"
+  },
+  {
+    "text": "changer.",
+    "start": 14.24,
+    "end": 14.9,
+    "id": "w40"
+  },
+  {
+    "text": "La",
+    "start": 15.01,
+    "end": 15.07,
+    "id": "w41"
+  },
+  {
+    "text": "prison",
+    "start": 15.07,
+    "end": 15.35,
+    "id": "w42"
+  },
+  {
+    "text": "est",
+    "start": 15.58,
+    "end": 15.84,
+    "id": "w43"
+  },
+  {
+    "text": "sur",
+    "start": 15.89,
+    "end": 16.11,
+    "id": "w44"
+  },
+  {
+    "text": "une",
+    "start": 16.11,
+    "end": 16.37,
+    "id": "w45"
+  },
+  {
+    "text": "île",
+    "start": 16.37,
+    "end": 16.48,
+    "id": "w46"
+  },
+  {
+    "text": "à",
+    "start": 16.56,
+    "end": 16.7,
+    "id": "w47"
+  },
+  {
+    "text": "3",
+    "start": 16.7,
+    "end": 17.02,
+    "id": "w48"
+  },
+  {
+    "text": "km",
+    "start": 17.02,
+    "end": 17.13,
+    "id": "w49"
+  },
+  {
+    "text": "de",
+    "start": 17.13,
+    "end": 17.3,
+    "id": "w50"
+  },
+  {
+    "text": "la",
+    "start": 17.3,
+    "end": 17.46,
+    "id": "w51"
+  },
+  {
+    "text": "côte.",
+    "start": 17.46,
+    "end": 17.9,
+    "id": "w52"
+  },
+  {
+    "text": "L'eau",
+    "start": 17.97,
+    "end": 18.25,
+    "id": "w53"
+  },
+  {
+    "text": "est",
+    "start": 18.25,
+    "end": 18.34,
+    "id": "w54"
+  },
+  {
+    "text": "à",
+    "start": 18.34,
+    "end": 18.52,
+    "id": "w55"
+  },
+  {
+    "text": "8",
+    "start": 18.52,
+    "end": 18.73,
+    "id": "w56"
+  },
+  {
+    "text": "degrés.",
+    "start": 18.79,
+    "end": 19.37,
+    "id": "w57"
+  },
+  {
+    "text": "Au",
+    "start": 19.51,
+    "end": 19.53,
+    "id": "w58"
+  },
+  {
+    "text": "port,",
+    "start": 19.53,
+    "end": 19.84,
+    "id": "w59"
+  },
+  {
+    "text": "le",
+    "start": 19.84,
+    "end": 20,
+    "id": "w60"
+  },
+  {
+    "text": "panneau",
+    "start": 20,
+    "end": 20.52,
+    "id": "w61"
+  },
+  {
+    "text": "démarrer.",
+    "start": 20.52,
+    "end": 21.1,
+    "id": "w62"
+  },
+  {
+    "text": "Et",
+    "start": 21.1,
+    "end": 21.21,
+    "id": "w63"
+  },
+  {
+    "text": "le",
+    "start": 21.21,
+    "end": 21.28,
+    "id": "w64"
+  },
+  {
+    "text": "projecteur",
+    "start": 21.28,
+    "end": 21.68,
+    "id": "w65"
+  },
+  {
+    "text": "balaie",
+    "start": 21.68,
+    "end": 22.02,
+    "id": "w66"
+  },
+  {
+    "text": "la",
+    "start": 22.07,
+    "end": 22.11,
+    "id": "w67"
+  },
+  {
+    "text": "cour",
+    "start": 22.11,
+    "end": 22.3,
+    "id": "w68"
+  },
+  {
+    "text": "toutes",
+    "start": 22.3,
+    "end": 22.57,
+    "id": "w69"
+  },
+  {
+    "text": "les",
+    "start": 22.57,
+    "end": 22.59,
+    "id": "w70"
+  },
+  {
+    "text": "20",
+    "start": 22.72,
+    "end": 23,
+    "id": "w71"
+  },
+  {
+    "text": "secondes.",
+    "start": 23.22,
+    "end": 23.6,
+    "id": "w72"
+  },
+  {
+    "text": "Trois",
+    "start": 23.72,
+    "end": 23.98,
+    "id": "w73"
+  },
+  {
+    "text": "évadés.",
+    "start": 23.98,
+    "end": 24.67,
+    "id": "w74"
+  },
+  {
+    "text": "Le",
+    "start": 24.7,
+    "end": 24.82,
+    "id": "w75"
+  },
+  {
+    "text": "funambule.",
+    "start": 24.82,
+    "end": 25.57,
+    "id": "w76"
+  },
+  {
+    "text": "Entre",
+    "start": 25.72,
+    "end": 25.87,
+    "id": "w77"
+  },
+  {
+    "text": "deux",
+    "start": 25.87,
+    "end": 26,
+    "id": "w78"
+  },
+  {
+    "text": "passages",
+    "start": 26,
+    "end": 26.15,
+    "id": "w79"
+  },
+  {
+    "text": "du",
+    "start": 26.57,
+    "end": 26.62,
+    "id": "w80"
+  },
+  {
+    "text": "projecteur,",
+    "start": 26.7,
+    "end": 27.18,
+    "id": "w81"
+  },
+  {
+    "text": "j'ai",
+    "start": 27.26,
+    "end": 27.5,
+    "id": "w82"
+  },
+  {
+    "text": "marché",
+    "start": 27.72,
+    "end": 27.82,
+    "id": "w83"
+  },
+  {
+    "text": "sur",
+    "start": 27.82,
+    "end": 27.98,
+    "id": "w84"
+  },
+  {
+    "text": "le",
+    "start": 27.98,
+    "end": 28.09,
+    "id": "w85"
+  },
+  {
+    "text": "câble",
+    "start": 28.09,
+    "end": 28.22,
+    "id": "w86"
+  },
+  {
+    "text": "jusqu'au",
+    "start": 28.53,
+    "end": 28.9,
+    "id": "w87"
+  },
+  {
+    "text": "mirador,",
+    "start": 28.9,
+    "end": 29.4,
+    "id": "w88"
+  },
+  {
+    "text": "puis",
+    "start": 29.52,
+    "end": 29.63,
+    "id": "w89"
+  },
+  {
+    "text": "j'ai",
+    "start": 29.63,
+    "end": 29.8,
+    "id": "w90"
+  },
+  {
+    "text": "sauté",
+    "start": 29.82,
+    "end": 30.11,
+    "id": "w91"
+  },
+  {
+    "text": "de",
+    "start": 30.11,
+    "end": 30.22,
+    "id": "w92"
+  },
+  {
+    "text": "l'autre",
+    "start": 30.22,
+    "end": 30.61,
+    "id": "w93"
+  },
+  {
+    "text": "côté",
+    "start": 30.61,
+    "end": 30.84,
+    "id": "w94"
+  },
+  {
+    "text": "du",
+    "start": 30.84,
+    "end": 30.88,
+    "id": "w95"
+  },
+  {
+    "text": "mur.",
+    "start": 30.93,
+    "end": 31.37,
+    "id": "w96"
+  },
+  {
+    "text": "Le",
+    "start": 31.51,
+    "end": 31.58,
+    "id": "w97"
+  },
+  {
+    "text": "nageur.",
+    "start": 31.58,
+    "end": 32.4,
+    "id": "w98"
+  },
+  {
+    "text": "Je",
+    "start": 32.4,
+    "end": 32.45,
+    "id": "w99"
+  },
+  {
+    "text": "nage",
+    "start": 32.5,
+    "end": 32.71,
+    "id": "w100"
+  },
+  {
+    "text": "depuis",
+    "start": 32.71,
+    "end": 32.87,
+    "id": "w101"
+  },
+  {
+    "text": "l'âge",
+    "start": 33.02,
+    "end": 33.28,
+    "id": "w102"
+  },
+  {
+    "text": "de",
+    "start": 33.28,
+    "end": 33.38,
+    "id": "w103"
+  },
+  {
+    "text": "6",
+    "start": 33.52,
+    "end": 33.54,
+    "id": "w104"
+  },
+  {
+    "text": "ans.",
+    "start": 33.55,
+    "end": 33.9,
+    "id": "w105"
+  },
+  {
+    "text": "Une",
+    "start": 34.01,
+    "end": 34.06,
+    "id": "w106"
+  },
+  {
+    "text": "heure",
+    "start": 34.06,
+    "end": 34.3,
+    "id": "w107"
+  },
+  {
+    "text": "de",
+    "start": 34.32,
+    "end": 34.36,
+    "id": "w108"
+  },
+  {
+    "text": "crawl",
+    "start": 34.36,
+    "end": 34.54,
+    "id": "w109"
+  },
+  {
+    "text": "et",
+    "start": 34.77,
+    "end": 34.8,
+    "id": "w110"
+  },
+  {
+    "text": "j'étais",
+    "start": 34.8,
+    "end": 35.16,
+    "id": "w111"
+  },
+  {
+    "text": "sur",
+    "start": 35.16,
+    "end": 35.29,
+    "id": "w112"
+  },
+  {
+    "text": "la",
+    "start": 35.32,
+    "end": 35.37,
+    "id": "w113"
+  },
+  {
+    "text": "plage.",
+    "start": 35.42,
+    "end": 35.87,
+    "id": "w114"
+  },
+  {
+    "text": "Le",
+    "start": 36.02,
+    "end": 36.12,
+    "id": "w115"
+  },
+  {
+    "text": "mime.",
+    "start": 36.12,
+    "end": 36.9,
+    "id": "w116"
+  },
+  {
+    "text": "Moi,",
+    "start": 37.01,
+    "end": 37.18,
+    "id": "w117"
+  },
+  {
+    "text": "j'ai",
+    "start": 37.18,
+    "end": 37.31,
+    "id": "w118"
+  },
+  {
+    "text": "attendu",
+    "start": 37.31,
+    "end": 37.79,
+    "id": "w119"
+  },
+  {
+    "text": "trois",
+    "start": 37.88,
+    "end": 38.08,
+    "id": "w120"
+  },
+  {
+    "text": "heures",
+    "start": 38.08,
+    "end": 38.37,
+    "id": "w121"
+  },
+  {
+    "text": "du",
+    "start": 38.41,
+    "end": 38.48,
+    "id": "w122"
+  },
+  {
+    "text": "matin",
+    "start": 38.53,
+    "end": 38.87,
+    "id": "w123"
+  },
+  {
+    "text": "et",
+    "start": 39.02,
+    "end": 39.04,
+    "id": "w124"
+  },
+  {
+    "text": "je",
+    "start": 39.05,
+    "end": 39.18,
+    "id": "w125"
+  },
+  {
+    "text": "suis",
+    "start": 39.18,
+    "end": 39.46,
+    "id": "w126"
+  },
+  {
+    "text": "parti",
+    "start": 39.46,
+    "end": 39.49,
+    "id": "w127"
+  },
+  {
+    "text": "à",
+    "start": 39.83,
+    "end": 39.88,
+    "id": "w128"
+  },
+  {
+    "text": "pied.",
+    "start": 39.88,
+    "end": 40.28,
+    "id": "w129"
+  },
+  {
+    "text": "Alors,",
+    "start": 40.51,
+    "end": 40.86,
+    "id": "w130"
+  },
+  {
+    "text": "lequel",
+    "start": 40.97,
+    "end": 41.46,
+    "id": "w131"
+  },
+  {
+    "text": "est",
+    "start": 41.5,
+    "end": 41.71,
+    "id": "w132"
+  },
+  {
+    "text": "libre?",
+    "start": 41.71,
+    "end": 42.37,
+    "id": "w133"
+  },
+  {
+    "text": "Si",
+    "start": 42.37,
+    "end": 42.51,
+    "id": "w134"
+  },
+  {
+    "text": "tu",
+    "start": 42.51,
+    "end": 42.6,
+    "id": "w135"
+  },
+  {
+    "text": "trouves,",
+    "start": 42.6,
+    "end": 43.03,
+    "id": "w136"
+  },
+  {
+    "text": "explique-nous",
+    "start": 43.03,
+    "end": 43.7,
+    "id": "w137"
+  },
+  {
+    "text": "comment",
+    "start": 43.7,
+    "end": 43.87,
+    "id": "w138"
+  },
+  {
+    "text": "en",
+    "start": 44.03,
+    "end": 44.15,
+    "id": "w139"
+  },
+  {
+    "text": "commentaire.",
+    "start": 44.5,
+    "end": 44.9,
+    "id": "w140"
+  }
+]

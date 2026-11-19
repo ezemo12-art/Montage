@@ -1,0 +1,72 @@
+{
+  "titre": "Énigme 005 — L'évasion de Roc-Noir",
+  "format": "situation",
+  "script": "script.txt",
+  "voix": "voix.mp3",
+  "transcription": "transcript.json",
+  "queue": 2.0,
+  "mots_cles": ["raté.", "30", "détail", "île,", "huit", "marées.", "projecteur", "pied.", "libre ?"],
+  "images": {
+    "ile": "images/ile.png",
+    "funambule": "images/funambule.png",
+    "nageur": "images/nageur.png",
+    "mime": "images/mime.png",
+    "a_explique": "archiviste/poses/archi-explique.png",
+    "a_designe": "archiviste/poses/archi-designe.png",
+    "a_reflechit": "archiviste/poses/archi-reflechit.png"
+  },
+  "hook": {
+    "lignes": [
+      {"texte": "1…"},
+      {"texte": "2…", "mot": "2"},
+      {"texte": "3…", "mot": "3"},
+      {"texte": "RATÉ.", "mot": "raté", "accent": "rouge"}
+    ]
+  },
+  "segments": [
+    {"type": "ouverture", "ancre": "Cette nuit", "bandeau": "Évasion", "image": "ile",
+     "chrono_mot": "30 secondes", "detail_mot": "Attention"},
+    {"type": "scene", "ancre": "La prison est", "bandeau": "Roc-Noir",
+     "images": [
+       {"image": "ile",
+        "zooms": [{"mot": "trois kilomètres", "echelle": 1.6, "dx": -208, "dy": -101, "cercle": [430, 242, 330, 90]}]},
+       {"mot": "Au port", "telephone": {
+          "icone": "⚓", "titre": "PORT DE ROC-NOIR — MARÉES", "date": "CETTE NUIT",
+          "appels": [
+            {"heure": "03:00", "nom": "Marée basse", "info": "coefficient 112 · vives-eaux"},
+            {"heure": "09:14", "nom": "Marée haute", "info": "coefficient 112"},
+            {"heure": "15:27", "nom": "Marée basse", "info": "coefficient 109"}
+          ]},
+        "zooms": [{"mot": "marées", "echelle": 1.3, "dx": 129, "dy": 72, "cercle": [430, 187, 410, 72]}]},
+       {"image": "ile", "mot": "Et le projecteur",
+        "zooms": [{"mot": "balaie", "echelle": 1.6, "dx": 258, "dy": 145, "cercle": [392, 240, 200, 170]}]}
+     ]},
+    {"type": "suspects", "ancre": "Trois évadés", "bandeau": "Les évadés",
+     "suspects": [
+       {"nom": "Le funambule", "image": "funambule", "ancre": "Le funambule", "bulle": "« Sur le câble, puis par-dessus le mur »"},
+       {"nom": "Le nageur", "image": "nageur", "ancre": "Le nageur", "bulle": "« Une heure de crawl jusqu'à la plage »"},
+       {"nom": "Le mime", "image": "mime", "ancre": "Le mime", "bulle": "« À 3 h du matin… parti à pied »"}
+     ]},
+    {"type": "question", "ancre": "Alors lequel est", "bandeau": "Temps écoulé", "texte": "Lequel est libre ?",
+     "rappel": [["funambule", "Le funambule"], ["nageur", "Le nageur"], ["mime", "Le mime"]],
+     "cta_ancre": "Si tu trouves", "cta": "Explique comment en commentaire"}
+  ],
+  "chrono_depart": "La prison est",
+  "sons": [
+    {"fichier": "sons/alarme.mp3", "mot": "raté", "decalage": 0.1, "volume": 0.5},
+    {"fichier": "../ENIGME-002/sons/vent.mp3", "mot": "La prison est", "volume": 0.3, "duree": 8}
+  ],
+  "nappe": "nappe-enquete.mp3",
+  "volume_nappe": 0.16,
+  "archiviste": {
+    "poses": {"explique": "a_explique", "designe": "a_designe", "reflechit": "a_reflechit"},
+    "sequence": [
+      {"pose": "explique"},
+      {"mot": "La prison est", "pose": "reflechit"},
+      {"mot": "Trois évadés", "pose": "designe"},
+      {"mot": "Alors lequel est", "pose": "reflechit"},
+      {"mot": "Si tu trouves", "pose": "designe"}
+    ]
+  },
+  "solution": "Le mime. Le panneau des marées : marée basse à 3 h, coefficient 112 (grande marée, la mer se retire très loin). Sur l'image de l'île, une ligne de rochers relie l'île à la côte : une chaussée submersible, découverte à marée basse. À 3 h, le mime a traversé à pied. Le funambule a passé le mur… mais il est resté sur l'île. Le nageur : 3 km dans une eau à 8 °C, l'hypothermie l'arrête bien avant la plage."
+}

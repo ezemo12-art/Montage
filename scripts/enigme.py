@@ -85,12 +85,16 @@ class Mix:
         return "\n      ".join(self.items)
 
 
+FLECHES = {"sortant": "↗", "entrant": "↙"}
+
+
 def telephone_html(ident, t):
-    """Écran « journal d'appels » (indice téléphone) : {"titre", "date", "appels": [{heure, nom, info, sens}]}."""
+    """Écran-liste horodaté (journal d'appels, panneau des marées, registre…) :
+    {"icone", "titre", "date", "appels": [{heure, nom, info, sens?, duree?}]}."""
     rows = "".join(f'<div class="tel-r"><span class="tel-hr">{E(a["heure"])}</span><span class="tel-n">{E(a["nom"])}'
-                   f'<small>{E(a.get("info", ""))}</small></span><span class="tel-d">{"↗" if a.get("sens") == "sortant" else "↙"} '
+                   f'<small>{E(a.get("info", ""))}</small></span><span class="tel-d">{FLECHES.get(a.get("sens"), "")} '
                    f'{E(a.get("duree", ""))}</span></div>' for a in t["appels"])
-    return (f'<div id="{ident}" class="tel"><div class="tel-h"><span>📞 {E(t.get("titre", "APPELS RÉCENTS"))}</span>'
+    return (f'<div id="{ident}" class="tel"><div class="tel-h"><span>{E(t.get("icone", "📞"))} {E(t.get("titre", "APPELS RÉCENTS"))}</span>'
             f'<span>{E(t.get("date", ""))}</span></div>{rows}</div>')
 
 
@@ -213,7 +217,10 @@ def build(spec_path: pathlib.Path, out: pathlib.Path):
             tl.ft(f"#{sid}-card", {"opacity": 1}, {"opacity": 0.25}, td - 0.1, 0.25)
             tl.ft(f"#{sid}-det", {"opacity": 0, "scale": 2.2}, {"opacity": 1, "scale": 1}, td, 0.3, "back.out(1.8)")
             mix.add(SONS / "impact.mp3", td, 0.6)
-            muets.append((td, t1))
+            i = trouver(ws, s["chrono_mot"], 0)  # sous-titres coupés dès le début de la phrase du chrono :
+            while i > 0 and not ws[i - 1]["t"].rstrip("»  ").endswith((".", "!", "?", "…")):
+                i -= 1                             # le gros chrono puis « UN SEUL DÉTAIL » occupent leur zone
+            muets.append((ws[i]["s"] - 0.05, t1))
             chrono = {"t_affiche": tc}
 
         elif s["type"] == "scene":
