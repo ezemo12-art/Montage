@@ -1,0 +1,72 @@
+{
+  "titre": "Énigme 006 — L'ombre de midi",
+  "format": "enquete",
+  "script": "script.txt",
+  "voix": "voix.mp3",
+  "transcription": "transcript.json",
+  "queue": 2.0,
+  "mots_cles": ["meurtre", "30", "détail", "midi", "parasol,", "palmier.", "trempé :", "photo :", "coupable ?"],
+  "images": {
+    "labo": "images/labo.png",
+    "plage": "images/plage_midi.png",
+    "photo": "images/photo.png",
+    "scaphandrier": "images/scaphandrier.png",
+    "glacier": "images/glacier.png",
+    "photographe": "images/photographe.png",
+    "a_explique": "archiviste/poses/archi-explique.png",
+    "a_designe": "archiviste/poses/archi-designe.png",
+    "a_reflechit": "archiviste/poses/archi-reflechit.png"
+  },
+  "hook": {
+    "lignes": [
+      {"texte": "T'es un"},
+      {"texte": "enquêteur", "mot": "enquêteur", "accent": "ambre"},
+      {"texte": "ou nul à chier ?", "mot": "ou nul", "accent": "rouge"}
+    ]
+  },
+  "segments": [
+    {"type": "ouverture", "ancre": "Un meurtre vient", "bandeau": "Meurtre", "image": "labo",
+     "chrono_mot": "30 secondes", "detail_mot": "Attention"},
+    {"type": "scene", "ancre": "Plein été", "bandeau": "Le crime",
+     "images": [
+       {"image": "labo",
+        "zooms": [{"mot": "retrouvé mort", "echelle": 1.6, "dx": -258, "dy": -130, "cercle": [441, 242, 170, 110]}]},
+       {"image": "plage", "mot": "Par la fenêtre",
+        "zooms": [{"mot": "le parasol", "echelle": 1.5, "dx": -15, "dy": -121, "cercle": [430, 261, 330, 90]}]}
+     ],
+     "etiquettes": [{"texte": "Cri : 12 h 00", "mot": "midi pile", "x": 130, "y": 372}]},
+    {"type": "suspects", "ancre": "Trois suspects", "bandeau": "Les suspects",
+     "suspects": [
+       {"nom": "Le scaphandrier", "image": "scaphandrier", "ancre": "Le scaphandrier", "bulle": "« À midi, à 20 m sous l'eau »",
+        "preuve": {"mot": "Mon ordinateur", "telephone": {
+          "icone": "⌚", "titre": "ORDINATEUR DE PLONGÉE", "date": "19/07",
+          "appels": [
+            {"heure": "11:42", "nom": "Immersion", "info": "plongée n° 214 · eau 19 °C"},
+            {"heure": "11:58", "nom": "Profondeur max", "info": "20,4 m"},
+            {"heure": "12:31", "nom": "Sortie", "info": "durée 49 min"}
+          ]},
+          "zoom": {"mot": "enregistré", "echelle": 1.3, "dx": 129, "dy": 0, "cercle": [430, 255, 410, 72]}}},
+       {"nom": "Le glacier", "image": "glacier", "ancre": "Le marchand de glaces", "bulle": "« À midi, une file de clients »"},
+       {"nom": "La photographe", "image": "photographe", "ancre": "La photographe", "bulle": "« À midi pile, sur la plage »",
+        "preuve": {"mot": "Regardez ma photo", "image": "photo",
+          "zoom": {"mot": "12 h", "echelle": 1.4, "dx": -172, "dy": -97, "cercle": [496, 418, 330, 62]}}}
+     ]},
+    {"type": "question", "ancre": "Alors qui est", "bandeau": "Temps écoulé", "texte": "Qui est le coupable ?",
+     "rappel": [["scaphandrier", "Le scaphandrier"], ["glacier", "Le glacier"], ["photographe", "La photographe"]],
+     "cta_ancre": "Si tu trouves", "cta": "Explique comment en commentaire"}
+  ],
+  "chrono_depart": "Plein été",
+  "nappe": "nappe-enquete.mp3",
+  "volume_nappe": 0.16,
+  "archiviste": {
+    "poses": {"explique": "a_explique", "designe": "a_designe", "reflechit": "a_reflechit"},
+    "sequence": [
+      {"pose": "explique"},
+      {"mot": "Plein été", "pose": "reflechit"},
+      {"mot": "Trois suspects", "pose": "designe"},
+      {"mot": "Alors qui est", "pose": "reflechit"},
+      {"mot": "Si tu trouves", "pose": "designe"}
+    ]
+  },
+  "solution": "La photographe. À midi en plein été, le soleil est au plus haut : les ombres sont toutes courtes, juste sous le palmier et le parasol (vue par la fenêtre du labo). Sur sa photo « 12:00 », les ombres sont immenses et partent sur le côté : soleil bas, photo prise en fin de journée. La date a été réglée à la main, son alibi est faux. Le scaphandrier est trempé mais son ordinateur de plongée le place sous l'eau de 11 h 42 à 12 h 31 ; le marchand de glaces a un mobile mais des dizaines de témoins."
+}

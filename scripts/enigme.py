@@ -264,7 +264,7 @@ def build(spec_path: pathlib.Path, out: pathlib.Path):
             inner = cards + tags
 
         elif s["type"] == "suspects":
-            sus = ""
+            sus, preuves = "", ""
             for j, su in enumerate(s["suspects"]):
                 x = 70 + j * 320
                 bulle = f'<div id="{sid}-b{j}" class="bulle">{E(su["bulle"])}</div>' if su.get("bulle") else ""
@@ -277,13 +277,38 @@ def build(spec_path: pathlib.Path, out: pathlib.Path):
                 mix.add(SONS / "woosh.mp3", ts - 0.15, 0.35)
                 if su.get("bulle"):
                     tl.ft(f"#{sid}-b{j}", {"opacity": 0, "scale": 0.4}, {"opacity": 1, "scale": 1}, ts + 0.3, 0.22, "back.out(2)")
+                if su.get("preuve"):  # pièce à conviction du suspect (photo, écran…) : carte qui passe devant
+                    pv = su["preuve"]
+                    tp = t_mot(pv["mot"]) - 0.1
+                    tq = (t_mot(s["suspects"][j + 1]["ancre"]) - 0.15) if j + 1 < len(s["suspects"]) else t1 - 0.1
+                    media = (telephone_html(f"{sid}-pi{j}", pv["telephone"]) if pv.get("telephone")
+                             else f'<img id="{sid}-pi{j}" src="{img(pv["image"])}" alt="">')
+                    cer = ""
+                    tl.ft(f"#{sid}-p{j}", {"opacity": 0, "y": 500, "rotation": 6}, {"opacity": 1, "y": 0, "rotation": 1.5}, tp, 0.35, "back.out(1.4)")
+                    z = pv.get("zoom")
+                    tz = t_mot(z["mot"]) if z else tq
+                    tl.ft(f"#{sid}-pi{j}", {"scale": 1, "x": 0, "y": 0}, {"scale": 1.08, "x": 0, "y": 0}, tp, max(0.3, tz - tp), "none")
+                    mix.add(SONS / "woosh.mp3", tp - 0.1, 0.45)
+                    if su.get("bulle"):  # la bulle s'efface devant la pièce à conviction
+                        tl.ft(f"#{sid}-b{j}", {"opacity": 1}, {"opacity": 0}, tp, 0.15)
+                    if z:
+                        tl.ft(f"#{sid}-pi{j}", {"scale": 1.08, "x": 0, "y": 0}, {"scale": z["echelle"], "x": z["dx"], "y": z["dy"]}, tz, 0.35, "power3.out")
+                        mix.add(SONS / "woosh.mp3", tz - 0.08, 0.4)
+                        if z.get("cercle"):
+                            cx, cy, rr = z["cercle"][:3]
+                            ry = z["cercle"][3] if len(z["cercle"]) > 3 else rr * 0.7
+                            cer = (f'<svg class="cercle" viewBox="0 0 860 484"><ellipse id="{sid}-pce{j}" cx="{cx}" cy="{cy}" rx="{rr}" '
+                                   f'ry="{ry}" pathLength="1"/></svg>')
+                            tl.ft(f"#{sid}-pce{j}", {"strokeDashoffset": 1}, {"strokeDashoffset": 0}, tz + 0.4, 0.5, "power2.inOut")
+                    tl.ft(f"#{sid}-p{j}", {"opacity": 1}, {"opacity": 0}, tq, 0.2)
+                    preuves += f'<div id="{sid}-p{j}" class="card preuve">{media}{cer}</div>'
                 nxt = s["suspects"][j + 1]["ancre"] if j + 1 < len(s["suspects"]) else None
                 if nxt:
                     tn = t_mot(nxt) - 0.1
                     tl.ft(f"#{sid}-c{j}", {"opacity": 1, "scale": 1.1}, {"opacity": 0.55, "scale": 1}, tn, 0.2)
                     if su.get("bulle"):
                         tl.ft(f"#{sid}-b{j}", {"opacity": 1}, {"opacity": 0}, tn, 0.15)
-            inner = f'<div class="lineup">{sus}</div>'
+            inner = f'<div class="lineup">{sus}</div>{preuves}'
 
         elif s["type"] == "question":
             minis = "".join(f'<div class="mini"><img src="{img(k2)}" alt=""><span>{E(n)}</span></div>' for k2, n in s.get("rappel", []))
@@ -393,6 +418,7 @@ def build(spec_path: pathlib.Path, out: pathlib.Path):
       .tel-n small {{ display: block; font-family: var(--font-mono); font-weight: 400; font-size: 24px; color: rgba(229,221,203,0.65);
         text-transform: none; margin-top: 6px; }}
       .tel-d {{ font-family: var(--font-mono); font-size: 30px; color: rgba(229,221,203,0.8); }}
+      .preuve {{ z-index: 8; top: 380px; }}
       .cercle {{ position: absolute; inset: 0; width: 100%; height: 100%; }}
       .cercle ellipse {{ fill: none; stroke: var(--rouge); stroke-width: 7; stroke-dasharray: 1; }}
       .tag {{ position: absolute; font-family: var(--font-display); font-weight: 700; font-size: 44px; color: var(--ivoire); background: var(--charbon);
