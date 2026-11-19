@@ -134,6 +134,15 @@ def theme_fond(sp, d, out, tl, total):
                 "\n      .hz-m { width: 6px; height: 38%; margin-left: -3px; background: #101113; }"
                 "\n      .hz-s { width: 3px; height: 42%; margin-left: -1.5px; background: #9e2929; }"
                 "\n      .hz u { position: absolute; left: 50%; top: 50%; width: 14px; height: 14px; margin: -7px; border-radius: 50%; background: #9e2929; }")
+    if f.get("decor") == "pluie":  # nuit d'orage : rideau de pluie qui tombe en continu (sans flash)
+        tl.ft("#pluie", {"backgroundPosition": "0px 0px"}, {"backgroundPosition": f"-{int(total * 260)}px {int(total * 1400)}px"},
+              0, total, "none")
+        stries = "".join(f"%3Cline x1='{x}' y1='{y}' x2='{x - 9}' y2='{y + 46}'/%3E"
+                         for x, y in ((20, 10), (70, 120), (130, 40), (180, 190), (40, 230), (110, 170), (160, 270), (90, 300)))
+        html_ += '<div id="pluie" data-layout-ignore></div>'
+        css += ("\n      #pluie { position: absolute; inset: 0; opacity: 0.55; background-image: url(\"data:image/svg+xml,"
+                "%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='340'%3E%3Cg stroke='%23f7f1e3' stroke-width='3' "
+                f"stroke-linecap='round' opacity='0.8'%3E{stries}%3C/g%3E%3C/svg%3E\"); background-size: 200px 340px; }}")
     return html_, css
 
 

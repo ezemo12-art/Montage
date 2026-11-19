@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style id="da-inline">
+/* DOSSIER 00 — valeurs officielles. Copier dans assets/da.css de chaque vidéo.
+   Référence humaine : DA.md. Ne pas modifier sans mettre DA.md à jour. */
+:root {
+  --charbon: #101113;  /* fond */
+  --archive: #29292b;  /* surfaces : dossiers, cartes, documents */
+  --ivoire:  #e5ddcb;  /* texte */
+  --ambre:   #d6a64a;  /* accent principal : œil, indices, mot clé */
+  --rouge:   #9e2929;  /* alerte, rare : crime, révélation, tampon */
+  --ivoire-doux: rgba(229, 221, 203, 0.8);
+
+  /* alias génériques */
+  --ground: var(--charbon);
+  --ink: var(--ivoire);
+  --accent: var(--ambre);
+
+  --font-display: "Oswald";
+  --font-mono: "IBM Plex Mono";
+  --safe-left: 150px;
+  --safe-width: 740px;
+}
+.da-tag     { font-family: var(--font-mono); font-size: 32px; letter-spacing: 0.2em; color: var(--ambre); text-transform: uppercase; }
+.da-title   { font-family: var(--font-display); font-size: 128px; line-height: 1.16; font-weight: 700; text-transform: uppercase; color: var(--ivoire); }
+.da-meta    { font-family: var(--font-mono); font-size: 40px; letter-spacing: 0.08em; color: var(--ivoire-doux); text-transform: uppercase; }
+.da-rule    { height: 4px; background: var(--ambre); transform-origin: left center; }
+.da-card    { background: var(--archive); color: var(--ivoire); }
+.da-stamp   { font-family: var(--font-display); color: var(--rouge); border: 6px solid var(--rouge); text-transform: uppercase; letter-spacing: 0.1em; }
+.da-caption { font-family: var(--font-display); font-size: 72px; font-weight: 600; line-height: 1.18; text-transform: uppercase; color: var(--ivoire); text-align: center; }
+.da-caption em { font-style: normal; color: var(--ambre); }
+.da-caption strong { font-weight: inherit; color: var(--rouge); } /* moment fort uniquement */
+
+    </style>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ivoire); }
+      #root { position: relative; width: 100%; height: 100%; }
+      /* fond clair : papier ivoire, halo ambre chaud, quadrillage de dossier */
+      #fond { position: absolute; inset: 0; background:
+        radial-gradient(ellipse 75% 50% at 50% 38%, rgba(214,166,74,0.38), rgba(214,166,74,0) 72%),
+        radial-gradient(ellipse 120% 80% at 50% 110%, rgba(158,41,41,0.10), rgba(158,41,41,0) 60%),
+        linear-gradient(180deg, #efe6d3, #e5ddcb 55%, #d9cdb4); }
+      #grille { position: absolute; inset: 0; opacity: 0.35;
+        background-image: linear-gradient(rgba(16,17,19,0.06) 2px, transparent 2px), linear-gradient(90deg, rgba(16,17,19,0.06) 2px, transparent 2px);
+        background-size: 60px 60px; }
+      .seg, #hook { position: absolute; inset: 0; }
+      #hook-in { position: absolute; left: 70px; top: 420px; width: 940px; text-align: center; }
+      .hk-l { font-family: var(--font-display); font-weight: 700; font-size: 128px; line-height: 1.1; text-transform: uppercase; color: var(--charbon); }
+      .hk-a { color: #b07d20; } .hk-r { color: var(--rouge); }
+      .ban { position: absolute; left: 0; right: 0; top: 245px; text-align: center; z-index: 5; }
+      .ban span { display: inline-block; background: var(--rouge); color: var(--ivoire); font-family: var(--font-display); font-weight: 700;
+        font-size: 48px; letter-spacing: 0.08em; padding: 6px 28px; text-transform: uppercase; box-shadow: 6px 6px 0 var(--charbon); }
+      .card { position: absolute; left: 110px; top: 350px; width: 860px; height: 484px; overflow: hidden; border: 8px solid #fbf7ee;
+        box-shadow: 0 18px 40px rgba(16,17,19,0.35); background: var(--charbon); }
+      .card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .tel { position: absolute; inset: 0; background: linear-gradient(180deg, #1b1c20, #101113); color: var(--ivoire);
+        font-family: var(--font-display); padding: 26px 46px; }
+      .tel-h { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 26px; color: var(--ambre);
+        letter-spacing: 0.08em; border-bottom: 2px solid rgba(229,221,203,0.25); padding-bottom: 12px; margin-bottom: 8px; }
+      .tel-r { display: flex; align-items: center; height: 108px; border-bottom: 2px solid rgba(229,221,203,0.12); }
+      .tel-hr { font-family: var(--font-mono); font-weight: 700; font-size: 50px; width: 190px; }
+      .tel-n { flex: 1; font-weight: 700; font-size: 46px; text-transform: uppercase; line-height: 1; }
+      .tel-n small { display: block; font-family: var(--font-mono); font-weight: 400; font-size: 24px; color: rgba(229,221,203,0.65);
+        text-transform: none; margin-top: 6px; }
+      .tel-d { font-family: var(--font-mono); font-size: 30px; color: rgba(229,221,203,0.8); }
+      .cercle { position: absolute; inset: 0; width: 100%; height: 100%; }
+      .cercle ellipse { fill: none; stroke: var(--rouge); stroke-width: 7; stroke-dasharray: 1; }
+      .tag { position: absolute; font-family: var(--font-display); font-weight: 700; font-size: 44px; color: var(--ivoire); background: var(--charbon);
+        padding: 4px 18px; text-transform: uppercase; z-index: 6; box-shadow: 5px 5px 0 var(--rouge); }
+      .chrono { position: absolute; left: 0; right: 0; top: 856px; text-align: center; font-family: var(--font-mono); font-weight: 700;
+        font-size: 100px; color: var(--charbon); }
+      .ch-ic { font-size: 0.7em; margin-right: 10px; }
+      .det { position: absolute; left: 0; right: 0; top: 520px; text-align: center; font-family: var(--font-display); font-weight: 700;
+        font-size: 120px; line-height: 1.1; color: var(--charbon); text-transform: uppercase; }
+      .det b { color: var(--rouge); display: block; font-size: 190px; }
+      #chr { position: absolute; inset: 0; }
+      #chr-in { position: absolute; right: 200px; top: 170px; font-family: var(--font-mono); font-weight: 700; font-size: 56px;
+        color: var(--charbon); background: #fbf7ee; border: 4px solid var(--charbon); padding: 2px 16px; box-shadow: 5px 5px 0 var(--ambre); }
+      .lineup { position: absolute; left: 0; top: 340px; width: 1080px; height: 700px; }
+      .sus { position: absolute; top: 0; width: 300px; height: 640px; transform-origin: 50% 70%; }
+      .sus-img { position: absolute; left: 0; top: 0; width: 300px; height: 540px; overflow: hidden; border: 7px solid #fbf7ee;
+        box-shadow: 0 14px 30px rgba(16,17,19,0.35); background: var(--ivoire); }
+      .sus-img img { width: 100%; height: 100%; object-fit: cover; }
+      .sus-nom { position: absolute; left: -10px; right: -10px; top: 555px; text-align: center; font-family: var(--font-display); font-weight: 700;
+        font-size: 36px; color: var(--ivoire); background: var(--charbon); text-transform: uppercase; padding: 2px 0; }
+      .bulle { position: absolute; left: -16px; right: -16px; top: 380px; background: #fbf7ee; border: 4px solid var(--charbon); border-radius: 22px;
+        padding: 10px 14px; font-family: var(--font-display); font-weight: 600; font-size: 30px; line-height: 1.15; color: var(--charbon); text-align: center; }
+      .q { position: absolute; left: 70px; top: 330px; width: 940px; text-align: center; font-family: var(--font-display); font-weight: 700;
+        font-size: 112px; line-height: 1.08; text-transform: uppercase; color: var(--charbon); }
+      .minis { position: absolute; left: 120px; top: 610px; width: 840px; display: flex; justify-content: space-between; }
+      .mini { width: 250px; text-align: center; }
+      .mini img { width: 250px; height: 300px; object-fit: cover; border: 6px solid #fbf7ee; box-shadow: 0 10px 22px rgba(16,17,19,0.3); }
+      .mini span { display: block; margin-top: 8px; font-family: var(--font-display); font-weight: 700; font-size: 32px; color: var(--charbon); text-transform: uppercase; }
+      .cta { position: absolute; left: 400px; top: 1020px; width: 500px; text-align: center; background: var(--rouge); color: var(--ivoire);
+        font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1.12; padding: 16px 18px; text-transform: uppercase;
+        box-shadow: 7px 7px 0 var(--charbon); }
+      .logo { position: absolute; left: 400px; top: 1215px; width: 500px; text-align: center; font-family: var(--font-mono); font-size: 34px;
+        letter-spacing: 0.3em; color: var(--charbon); }
+      /* Archiviste : médaillon (ses images restent intactes) */
+      #medaillon { position: absolute; left: 34px; top: 1160px; width: 330px; height: 420px; z-index: 30; background: var(--charbon);
+        border: 6px solid var(--ambre); border-radius: 26px; overflow: hidden; box-shadow: 0 16px 34px rgba(16,17,19,0.45); }
+      #ar-in { position: absolute; inset: 0; }
+      .ar-p { position: absolute; left: -20px; top: 0; width: 370px; height: 620px; object-fit: cover; object-position: 50% 0; }
+      #ar-nom { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; background: var(--ambre); color: var(--charbon);
+        font-family: var(--font-mono); font-weight: 700; font-size: 24px; letter-spacing: 0.18em; padding: 4px 0; }
+      .st { position: absolute; left: 130px; top: 990px; width: 820px; z-index: 40; }
+      .st .da-caption { color: var(--charbon); font-size: 72px; text-shadow: 0 0 10px #f3ecdc, 0 0 22px #f3ecdc, 3px 3px 0 #f3ecdc; }
+      .st .da-caption em { color: var(--rouge); }
+      #fond-t { position: absolute; inset: 0; overflow: hidden; } #fond-img { width: 100%; height: 100%; object-fit: cover; }
+      #grille { opacity: 0.18 !important; }
+      #pluie { position: absolute; inset: 0; opacity: 0.55; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='340'%3E%3Cg stroke='%23f7f1e3' stroke-width='3' stroke-linecap='round' opacity='0.8'%3E%3Cline x1='20' y1='10' x2='11' y2='56'/%3E%3Cline x1='70' y1='120' x2='61' y2='166'/%3E%3Cline x1='130' y1='40' x2='121' y2='86'/%3E%3Cline x1='180' y1='190' x2='171' y2='236'/%3E%3Cline x1='40' y1='230' x2='31' y2='276'/%3E%3Cline x1='110' y1='170' x2='101' y2='216'/%3E%3Cline x1='160' y1='270' x2='151' y2='316'/%3E%3Cline x1='90' y1='300' x2='81' y2='346'/%3E%3C/g%3E%3C/svg%3E"); background-size: 200px 340px; }
+      #fx-grain { position: absolute; inset: 0; z-index: 51; pointer-events: none; opacity: 0.08;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    </style>
+  </head>
+  <body>
+    <!-- Généré par scripts/enigme.py depuis enigme.json : modifier le fichier d'énigme puis regénérer. -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="43.27" data-width="1080" data-height="1920">
+      <div id="fond" data-layout-ignore></div>
+      <div id="grille" data-layout-ignore></div>
+      <div id="fond-t" data-layout-ignore><img id="fond-img" src="assets/fond-theme.jpg" alt=""></div><div id="pluie" data-layout-ignore></div>
+      <div id="hook" class="clip" data-start="0" data-duration="2.07" data-track-index="1"><div id="hook-in"><div id="hk0" class="hk-l">T&#x27;es un</div><div id="hk1" class="hk-l hk-a">enquêteur</div><div id="hk2" class="hk-l hk-r">ou nul à chier ?</div></div></div>
+      <div id="s0" class="clip seg" data-start="2.07" data-duration="7.26" data-track-index="1"><div id="s0-ban" class="ban"><span>Meurtre</span></div><div id="s0-card" class="card"><img id="s0-img" src="assets/bibliotheque.png" alt=""></div><div id="s0-chrono" class="chrono"><span class="ch-ic">⏱</span>30 s</div><div id="s0-det" class="det">UN SEUL <b>DÉTAIL</b></div></div>
+      <div id="s1" class="clip seg" data-start="9.33" data-duration="12.66" data-track-index="1"><div id="s1-ban" class="ban"><span>Le crime</span></div><div id="s1-c0" class="card"><img id="s1-i0" src="assets/bibliotheque.png" alt=""><svg class="cercle" viewBox="0 0 860 484"><ellipse id="s1-ce0-0" cx="430" cy="248" rx="220" ry="130" pathLength="1"/></svg></div><div id="s1-c1" class="card"><img id="s1-i1" src="assets/bureau.png" alt=""><svg class="cercle" viewBox="0 0 860 484"><ellipse id="s1-ce1-0" cx="396" cy="235" rx="180" ry="150" pathLength="1"/></svg></div><div id="s1-c2" class="card"><img id="s1-i2" src="assets/bureau.png" alt=""><svg class="cercle" viewBox="0 0 860 484"><ellipse id="s1-ce2-0" cx="464" cy="242" rx="210" ry="180" pathLength="1"/></svg></div><div id="s1-c3" class="card"><img id="s1-i3" src="assets/pendule.png" alt=""><svg class="cercle" viewBox="0 0 860 484"><ellipse id="s1-ce3-0" cx="430" cy="200" rx="300" ry="260" pathLength="1"/></svg></div></div>
+      <div id="s2" class="clip seg" data-start="21.99" data-duration="14.86" data-track-index="1"><div id="s2-ban" class="ban"><span>Les suspects</span></div><div class="lineup"><div id="s2-c0" class="sus" style="left:70px"><div class="sus-img"><img src="assets/cuisiniere.png" alt=""></div><div class="sus-nom">La cuisinière</div><div id="s2-b0" class="bulle">« Whisky servi à 21 h, puis au lit »</div></div><div id="s2-c1" class="sus" style="left:390px"><div class="sus-img"><img src="assets/neveu.png" alt=""></div><div class="sus-nom">Le neveu</div><div id="s2-b1" class="bulle">« 23 h : les glaçons n&#x27;avaient pas fondu ! »</div></div><div id="s2-c2" class="sus" style="left:710px"><div class="sus-img"><img src="assets/jardinier.png" alt=""></div><div class="sus-nom">Le jardinier</div><div id="s2-b2" class="bulle">« À 22 h, il lisait sous sa lampe »</div></div></div></div>
+      <div id="s3" class="clip seg" data-start="36.85" data-duration="6.42" data-track-index="1"><div id="s3-ban" class="ban"><span>Temps écoulé</span></div><div id="s3-q" class="q">Qui est le coupable ?</div><div class="minis" id="s3-m"><div class="mini"><img src="assets/cuisiniere.png" alt=""><span>La cuisinière</span></div><div class="mini"><img src="assets/neveu.png" alt=""><span>Le neveu</span></div><div class="mini"><img src="assets/jardinier.png" alt=""><span>Le jardinier</span></div></div><div id="s3-cta" class="cta">Explique comment en commentaire</div><div id="s3-logo" class="logo">DOSSIER 00</div></div>
+      <div id="chr" class="clip" data-start="9.45" data-duration="27.40" data-track-index="3"><div id="chr-in"><span class="ch-ic">⏱</span><span id="chr-n">30</span><span> s</span></div></div>
+      <div id="medaillon"><div id="ar-in"><img id="ar-explique" class="ar-p" src="assets/archi-explique.png" alt="" style="opacity:1"><img id="ar-designe" class="ar-p" src="assets/archi-designe.png" alt="" style="opacity:0"><img id="ar-reflechit" class="ar-p" src="assets/archi-reflechit.png" alt="" style="opacity:0"></div><div id="ar-nom">L'ARCHIVISTE</div></div>
+      <audio id="voix" class="clip" src="assets/voix.mp3" data-start="0" data-duration="41.47" data-track-index="9" data-volume="1"></audio>
+      <audio id="a1" class="clip" src="assets/son-impact.mp3" data-start="0.41" data-duration="0.73" data-track-index="11" data-volume="0.7"></audio>
+      <audio id="a2" class="clip" src="assets/son-impact.mp3" data-start="1.17" data-duration="0.73" data-track-index="12" data-volume="0.7"></audio>
+      <audio id="a3" class="clip" src="assets/son-woosh.mp3" data-start="1.92" data-duration="0.63" data-track-index="13" data-volume="0.55"></audio>
+      <audio id="a4" class="clip" src="assets/son-impact.mp3" data-start="2.17" data-duration="0.73" data-track-index="14" data-volume="0.45"></audio>
+      <audio id="a5" class="clip" src="assets/son-impact.mp3" data-start="4.41" data-duration="0.73" data-track-index="15" data-volume="0.5"></audio>
+      <audio id="a6" class="clip" src="assets/son-impact.mp3" data-start="6.39" data-duration="0.73" data-track-index="10" data-volume="0.6"></audio>
+      <audio id="a7" class="clip" src="assets/son-woosh.mp3" data-start="9.18" data-duration="0.63" data-track-index="11" data-volume="0.55"></audio>
+      <audio id="a8" class="clip" src="assets/son-impact.mp3" data-start="9.43" data-duration="0.73" data-track-index="12" data-volume="0.45"></audio>
+      <audio id="a9" class="clip" src="assets/son-woosh.mp3" data-start="12.61" data-duration="0.63" data-track-index="13" data-volume="0.4"></audio>
+      <audio id="a10" class="clip" src="assets/son-woosh.mp3" data-start="15.25" data-duration="0.63" data-track-index="14" data-volume="0.45"></audio>
+      <audio id="a11" class="clip" src="assets/son-woosh.mp3" data-start="16.51" data-duration="0.63" data-track-index="15" data-volume="0.4"></audio>
+      <audio id="a12" class="clip" src="assets/son-woosh.mp3" data-start="17.09" data-duration="0.63" data-track-index="10" data-volume="0.45"></audio>
+      <audio id="a13" class="clip" src="assets/son-woosh.mp3" data-start="18.03" data-duration="0.63" data-track-index="11" data-volume="0.4"></audio>
+      <audio id="a14" class="clip" src="assets/son-woosh.mp3" data-start="18.63" data-duration="0.63" data-track-index="12" data-volume="0.45"></audio>
+      <audio id="a15" class="clip" src="assets/son-woosh.mp3" data-start="19.86" data-duration="0.63" data-track-index="13" data-volume="0.4"></audio>
+      <audio id="a16" class="clip" src="assets/son-woosh.mp3" data-start="21.84" data-duration="0.63" data-track-index="14" data-volume="0.55"></audio>
+      <audio id="a17" class="clip" src="assets/son-impact.mp3" data-start="22.09" data-duration="0.73" data-track-index="15" data-volume="0.45"></audio>
+      <audio id="a18" class="clip" src="assets/son-woosh.mp3" data-start="22.83" data-duration="0.63" data-track-index="10" data-volume="0.35"></audio>
+      <audio id="a19" class="clip" src="assets/son-woosh.mp3" data-start="27.44" data-duration="0.63" data-track-index="11" data-volume="0.35"></audio>
+      <audio id="a20" class="clip" src="assets/son-woosh.mp3" data-start="32.32" data-duration="0.63" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="a21" class="clip" src="assets/son-woosh.mp3" data-start="36.70" data-duration="0.63" data-track-index="13" data-volume="0.55"></audio>
+      <audio id="a22" class="clip" src="assets/son-impact.mp3" data-start="36.95" data-duration="0.73" data-track-index="14" data-volume="0.45"></audio>
+      <audio id="a23" class="clip" src="assets/son-montee.mp3" data-start="34.25" data-duration="3.03" data-track-index="15" data-volume="0.5"></audio>
+      <audio id="a24" class="clip" src="assets/son-impact.mp3" data-start="36.85" data-duration="0.73" data-track-index="10" data-volume="0.8"></audio>
+      <audio id="a25" class="clip" src="assets/son-ding.mp3" data-start="38.80" data-duration="1.04" data-track-index="11" data-volume="0.7"></audio>
+      <audio id="a26" class="clip" src="assets/son-tictac.mp3" data-start="9.45" data-duration="10.00" data-track-index="12" data-volume="0.22"></audio>
+      <audio id="a27" class="clip" src="assets/son-tictac.mp3" data-start="19.45" data-duration="10.00" data-track-index="13" data-volume="0.22"></audio>
+      <audio id="a28" class="clip" src="assets/son-tictac.mp3" data-start="29.45" data-duration="7.40" data-track-index="14" data-volume="0.22"></audio>
+      <audio id="a29" class="clip" src="assets/son-orage.mp3" data-start="9.15" data-duration="6.03" data-track-index="15" data-volume="0.6"></audio>
+      <audio id="a30" class="clip" src="assets/son-pierres.mp3" data-start="18.32" data-duration="1.52" data-track-index="10" data-volume="0.5"></audio>
+      <audio id="a31" class="clip" src="assets/son-pierres.mp3" data-start="30.80" data-duration="1.52" data-track-index="11" data-volume="0.6"></audio>
+      <audio id="a32" class="clip" src="assets/son-nappe-enquete.mp3" data-start="0.00" data-duration="30.00" data-track-index="12" data-volume="0.16"></audio>
+      <audio id="a33" class="clip" src="assets/son-nappe-enquete.mp3" data-start="30.00" data-duration="13.27" data-track-index="13" data-volume="0.16"></audio>
+      <div data-track-kind="captions">
+      <div id="st0" class="clip st" data-start="2.19" data-duration="0.60" data-track-index="5"><span id="st0-t" class="da-caption" style="display:block">Un <em>meurtre</em></span></div>
+      <div id="st1" class="clip st" data-start="2.79" data-duration="1.36" data-track-index="5"><span id="st1-t" class="da-caption" style="display:block">vient d&#x27;être commis.</span></div>
+      <div id="st2" class="clip st" data-start="4.15" data-duration="0.85" data-track-index="5"><span id="st2-t" class="da-caption" style="display:block">Tu as <em>30</em> secondes</span></div>
+      <div id="st3" class="clip st" data-start="5.00" data-duration="2.25" data-track-index="5"><span id="st3-t" class="da-caption" style="display:block">pour trouver le <em>coupable.</em></span></div>
+      <div id="st4" class="clip st" data-start="9.45" data-duration="0.75" data-track-index="5"><span id="st4-t" class="da-caption" style="display:block">Nuit <em>d&#x27;orage</em></span></div>
+      <div id="st5" class="clip st" data-start="10.20" data-duration="0.98" data-track-index="5"><span id="st5-t" class="da-caption" style="display:block">sur le manoir.</span></div>
+      <div id="st6" class="clip st" data-start="11.18" data-duration="1.07" data-track-index="5"><span id="st6-t" class="da-caption" style="display:block">Le romancier Edgar</span></div>
+      <div id="st7" class="clip st" data-start="12.25" data-duration="1.04" data-track-index="5"><span id="st7-t" class="da-caption" style="display:block">Morel est retrouvé</span></div>
+      <div id="st8" class="clip st" data-start="13.29" data-duration="1.32" data-track-index="5"><span id="st8-t" class="da-caption" style="display:block">mort dans sa bibliothèque,</span></div>
+      <div id="st9" class="clip st" data-start="14.61" data-duration="0.84" data-track-index="5"><span id="st9-t" class="da-caption" style="display:block">à 23 heures.</span></div>
+      <div id="st10" class="clip st" data-start="15.45" data-duration="0.70" data-track-index="5"><span id="st10-t" class="da-caption" style="display:block">Sur son bureau :</span></div>
+      <div id="st11" class="clip st" data-start="16.15" data-duration="1.37" data-track-index="5"><span id="st11-t" class="da-caption" style="display:block">des <em>bougies</em> allumées… et</span></div>
+      <div id="st12" class="clip st" data-start="17.52" data-duration="1.31" data-track-index="5"><span id="st12-t" class="da-caption" style="display:block">son verre de <em>whisky.</em></span></div>
+      <div id="st13" class="clip st" data-start="18.83" data-duration="0.40" data-track-index="5"><span id="st13-t" class="da-caption" style="display:block">Au mur,</span></div>
+      <div id="st14" class="clip st" data-start="19.23" data-duration="1.47" data-track-index="5"><span id="st14-t" class="da-caption" style="display:block">la <em>pendule</em> s&#x27;est arrêtée</span></div>
+      <div id="st15" class="clip st" data-start="20.70" data-duration="1.41" data-track-index="5"><span id="st15-t" class="da-caption" style="display:block">à 21 h 40.</span></div>
+      <div id="st16" class="clip st" data-start="22.11" data-duration="0.87" data-track-index="5"><span id="st16-t" class="da-caption" style="display:block">Trois suspects.</span></div>
+      <div id="st17" class="clip st" data-start="22.98" data-duration="1.20" data-track-index="5"><span id="st17-t" class="da-caption" style="display:block">La cuisinière :</span></div>
+      <div id="st18" class="clip st" data-start="24.18" data-duration="0.40" data-track-index="5"><span id="st18-t" class="da-caption" style="display:block">« Je lui ai</span></div>
+      <div id="st19" class="clip st" data-start="24.57" data-duration="0.78" data-track-index="5"><span id="st19-t" class="da-caption" style="display:block">servi son <em>whisky</em></span></div>
+      <div id="st20" class="clip st" data-start="25.35" data-duration="0.63" data-track-index="5"><span id="st20-t" class="da-caption" style="display:block">à 21 heures,</span></div>
+      <div id="st21" class="clip st" data-start="25.98" data-duration="0.74" data-track-index="5"><span id="st21-t" class="da-caption" style="display:block">puis je suis montée</span></div>
+      <div id="st22" class="clip st" data-start="26.72" data-duration="1.53" data-track-index="5"><span id="st22-t" class="da-caption" style="display:block">me coucher. » Le neveu :</span></div>
+      <div id="st23" class="clip st" data-start="28.25" data-duration="0.92" data-track-index="5"><span id="st23-t" class="da-caption" style="display:block">« Je suis arrivé</span></div>
+      <div id="st24" class="clip st" data-start="29.17" data-duration="0.98" data-track-index="5"><span id="st24-t" class="da-caption" style="display:block">à 23 heures,</span></div>
+      <div id="st25" class="clip st" data-start="30.15" data-duration="0.45" data-track-index="5"><span id="st25-t" class="da-caption" style="display:block">trempé.</span></div>
+      <div id="st26" class="clip st" data-start="30.60" data-duration="1.15" data-track-index="5"><span id="st26-t" class="da-caption" style="display:block">Les <em>glaçons</em> n&#x27;avaient même</span></div>
+      <div id="st27" class="clip st" data-start="31.75" data-duration="1.56" data-track-index="5"><span id="st27-t" class="da-caption" style="display:block">pas fondu ! » Le jardinier :</span></div>
+      <div id="st28" class="clip st" data-start="33.31" data-duration="0.80" data-track-index="5"><span id="st28-t" class="da-caption" style="display:block">« À 22 heures,</span></div>
+      <div id="st29" class="clip st" data-start="34.11" data-duration="1.02" data-track-index="5"><span id="st29-t" class="da-caption" style="display:block">depuis ma cabane,</span></div>
+      <div id="st30" class="clip st" data-start="35.13" data-duration="0.50" data-track-index="5"><span id="st30-t" class="da-caption" style="display:block">je l&#x27;ai vu</span></div>
+      <div id="st31" class="clip st" data-start="35.63" data-duration="2.45" data-track-index="5"><span id="st31-t" class="da-caption" style="display:block">lire sous sa <em>lampe. »</em></span></div>
+      </div>
+      <div id="fx-grain" data-layout-ignore></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#fond-img", {"scale": 1.0}, {"scale": 1.08, "duration": 43.27, "ease": "none"}, 0.000);
+      tl.fromTo("#pluie", {"backgroundPosition": "0px 0px"}, {"backgroundPosition": "-11250px 60578px", "duration": 43.27, "ease": "none"}, 0.000);
+      tl.fromTo("#hk0", {"opacity": 0, "scale": 1.8, "rotation": 4}, {"opacity": 1, "scale": 1, "rotation": 0, "duration": 0.22, "ease": "power3.out"}, 0.000);
+      tl.fromTo("#hk1", {"opacity": 0, "scale": 1.8, "rotation": -4}, {"opacity": 1, "scale": 1, "rotation": 0, "duration": 0.22, "ease": "back.out(1.6)"}, 0.410);
+      tl.fromTo("#hk2", {"opacity": 0, "scale": 1.8, "rotation": 4}, {"opacity": 1, "scale": 1, "rotation": 0, "duration": 0.22, "ease": "back.out(1.6)"}, 1.170);
+      tl.fromTo("#hook-in", {"scale": 1}, {"scale": 1.1, "duration": 2.07, "ease": "power1.in"}, 0.000);
+      tl.fromTo("#s0-ban", {"opacity": 0, "scale": 1.6, "rotation": -6}, {"opacity": 1, "scale": 1, "rotation": -2, "duration": 0.25, "ease": "back.out(2)"}, 2.120);
+      tl.fromTo("#s0-card", {"opacity": 0, "x": 300, "rotation": 6}, {"opacity": 1, "x": 0, "rotation": -1.5, "duration": 0.35, "ease": "power3.out"}, 2.070);
+      tl.fromTo("#s0-img", {"scale": 1.0}, {"scale": 1.15, "duration": 7.26, "ease": "none"}, 2.070);
+      tl.fromTo("#s0-chrono", {"opacity": 0, "scale": 2}, {"opacity": 1, "scale": 1, "duration": 0.25, "ease": "back.out(2)"}, 4.410);
+      tl.fromTo("#s0-card", {"opacity": 1}, {"opacity": 0.25, "duration": 0.25, "ease": "power2.out", "immediateRender": false}, 6.290);
+      tl.fromTo("#s0-det", {"opacity": 0, "scale": 2.2}, {"opacity": 1, "scale": 1, "duration": 0.3, "ease": "back.out(1.8)"}, 6.390);
+      tl.fromTo("#s1-ban", {"opacity": 0, "scale": 1.6, "rotation": -6}, {"opacity": 1, "scale": 1, "rotation": -2, "duration": 0.25, "ease": "back.out(2)"}, 9.380);
+      tl.fromTo("#s1-c0", {"opacity": 0, "x": 320, "rotation": 7}, {"opacity": 1, "x": 0, "rotation": -1.5, "duration": 0.35, "ease": "power3.out"}, 9.330);
+      tl.fromTo("#s1-i0", {"scale": 1.0, "x": 0, "y": 0}, {"scale": 1.12, "x": 0, "y": 0, "duration": 6.02, "ease": "none"}, 9.330);
+      tl.fromTo("#s1-i0", {"scale": 1.12, "x": 0, "y": 0}, {"scale": 1.8, "x": 36, "y": -194, "duration": 0.35, "ease": "power3.out", "immediateRender": false}, 12.690);
+      tl.fromTo("#s1-i0", {"scale": 1.8, "x": 36, "y": -194}, {"scale": 1.95, "x": 36, "y": -194, "duration": 2.31, "ease": "none", "immediateRender": false}, 13.040);
+      tl.fromTo("#s1-ce0-0", {"strokeDashoffset": 1}, {"strokeDashoffset": 0, "duration": 0.5, "ease": "power2.inOut"}, 13.090);
+      tl.fromTo("#s1-c1", {"opacity": 0, "x": 320, "rotation": 7}, {"opacity": 1, "x": 0, "rotation": 0.5, "duration": 0.35, "ease": "power3.out"}, 15.350);
+      tl.fromTo("#s1-i1", {"scale": 1.0, "x": 0, "y": 0}, {"scale": 1.12, "x": 0, "y": 0, "duration": 1.84, "ease": "none"}, 15.350);
+      tl.fromTo("#s1-i1", {"scale": 1.12, "x": 0, "y": 0}, {"scale": 1.8, "x": 344, "y": 49, "duration": 0.35, "ease": "power3.out", "immediateRender": false}, 16.590);
+      tl.fromTo("#s1-i1", {"scale": 1.8, "x": 344, "y": 49}, {"scale": 1.95, "x": 344, "y": 49, "duration": 0.5, "ease": "none", "immediateRender": false}, 16.940);
+      tl.fromTo("#s1-ce1-0", {"strokeDashoffset": 1}, {"strokeDashoffset": 0, "duration": 0.5, "ease": "power2.inOut"}, 16.990);
+      tl.fromTo("#s1-c2", {"opacity": 0, "x": 320, "rotation": 7}, {"opacity": 1, "x": 0, "rotation": 2.5, "duration": 0.35, "ease": "power3.out"}, 17.190);
+      tl.fromTo("#s1-i2", {"scale": 1.0, "x": 0, "y": 0}, {"scale": 1.12, "x": 0, "y": 0, "duration": 1.54, "ease": "none"}, 17.190);
+      tl.fromTo("#s1-i2", {"scale": 1.12, "x": 0, "y": 0}, {"scale": 2.4, "x": -602, "y": -115, "duration": 0.35, "ease": "power3.out", "immediateRender": false}, 18.110);
+      tl.fromTo("#s1-i2", {"scale": 2.4, "x": -602, "y": -115}, {"scale": 2.55, "x": -602, "y": -115, "duration": 0.5, "ease": "none", "immediateRender": false}, 18.460);
+      tl.fromTo("#s1-ce2-0", {"strokeDashoffset": 1}, {"strokeDashoffset": 0, "duration": 0.5, "ease": "power2.inOut"}, 18.510);
+      tl.fromTo("#s1-c3", {"opacity": 0, "x": 320, "rotation": 7}, {"opacity": 1, "x": 0, "rotation": 4.5, "duration": 0.35, "ease": "power3.out"}, 18.730);
+      tl.fromTo("#s1-i3", {"scale": 1.0, "x": 0, "y": 0}, {"scale": 1.12, "x": 0, "y": 0, "duration": 3.26, "ease": "none"}, 18.730);
+      tl.fromTo("#s1-i3", {"scale": 1.12, "x": 0, "y": 0}, {"scale": 1.4, "x": 14, "y": -67, "duration": 0.35, "ease": "power3.out", "immediateRender": false}, 19.940);
+      tl.fromTo("#s1-i3", {"scale": 1.4, "x": 14, "y": -67}, {"scale": 1.5499999999999998, "x": 14, "y": -67, "duration": 1.7, "ease": "none", "immediateRender": false}, 20.290);
+      tl.fromTo("#s1-ce3-0", {"strokeDashoffset": 1}, {"strokeDashoffset": 0, "duration": 0.5, "ease": "power2.inOut"}, 20.340);
+      tl.fromTo("#s2-ban", {"opacity": 0, "scale": 1.6, "rotation": -6}, {"opacity": 1, "scale": 1, "rotation": -2, "duration": 0.25, "ease": "back.out(2)"}, 22.040);
+      tl.fromTo("#s2-c0", {"opacity": 0, "y": 260, "rotation": 8}, {"opacity": 0.55, "y": 0, "rotation": -2, "duration": 0.35, "ease": "back.out(1.4)"}, 21.990);
+      tl.fromTo("#s2-c0", {"opacity": 0.55, "scale": 1}, {"opacity": 1, "scale": 1.1, "duration": 0.22, "ease": "back.out(2)", "immediateRender": false}, 22.880);
+      tl.fromTo("#s2-b0", {"opacity": 0, "scale": 0.4}, {"opacity": 1, "scale": 1, "duration": 0.22, "ease": "back.out(2)"}, 23.280);
+      tl.fromTo("#s2-c0", {"opacity": 1, "scale": 1.1}, {"opacity": 0.55, "scale": 1, "duration": 0.2, "ease": "power2.out", "immediateRender": false}, 27.490);
+      tl.fromTo("#s2-b0", {"opacity": 1}, {"opacity": 0, "duration": 0.15, "ease": "power2.out", "immediateRender": false}, 27.490);
+      tl.fromTo("#s2-c1", {"opacity": 0, "y": 260, "rotation": 0}, {"opacity": 0.55, "y": 0, "rotation": 0, "duration": 0.35, "ease": "back.out(1.4)"}, 22.110);
+      tl.fromTo("#s2-c1", {"opacity": 0.55, "scale": 1}, {"opacity": 1, "scale": 1.1, "duration": 0.22, "ease": "back.out(2)", "immediateRender": false}, 27.490);
+      tl.fromTo("#s2-b1", {"opacity": 0, "scale": 0.4}, {"opacity": 1, "scale": 1, "duration": 0.22, "ease": "back.out(2)"}, 27.890);
+      tl.fromTo("#s2-c1", {"opacity": 1, "scale": 1.1}, {"opacity": 0.55, "scale": 1, "duration": 0.2, "ease": "power2.out", "immediateRender": false}, 32.370);
+      tl.fromTo("#s2-b1", {"opacity": 1}, {"opacity": 0, "duration": 0.15, "ease": "power2.out", "immediateRender": false}, 32.370);
+      tl.fromTo("#s2-c2", {"opacity": 0, "y": 260, "rotation": -8}, {"opacity": 0.55, "y": 0, "rotation": 2, "duration": 0.35, "ease": "back.out(1.4)"}, 22.230);
+      tl.fromTo("#s2-c2", {"opacity": 0.55, "scale": 1}, {"opacity": 1, "scale": 1.1, "duration": 0.22, "ease": "back.out(2)", "immediateRender": false}, 32.370);
+      tl.fromTo("#s2-b2", {"opacity": 0, "scale": 0.4}, {"opacity": 1, "scale": 1, "duration": 0.22, "ease": "back.out(2)"}, 32.770);
+      tl.fromTo("#s3-ban", {"opacity": 0, "scale": 1.6, "rotation": -6}, {"opacity": 1, "scale": 1, "rotation": -2, "duration": 0.25, "ease": "back.out(2)"}, 36.900);
+      tl.fromTo("#s3-q", {"opacity": 0, "scale": 2}, {"opacity": 1, "scale": 1, "duration": 0.28, "ease": "back.out(1.8)"}, 36.850);
+      tl.fromTo("#s3-m", {"opacity": 0, "y": 40}, {"opacity": 1, "y": 0, "duration": 0.3, "ease": "back.out(1.6)"}, 37.200);
+      tl.fromTo("#s3-cta", {"opacity": 0, "scale": 1.6}, {"opacity": 1, "scale": 1, "duration": 0.25, "ease": "back.out(2)"}, 38.800);
+      tl.fromTo("#s3-cta", {"scale": 1}, {"scale": 1.07, "duration": 0.4, "ease": "sine.inOut", "immediateRender": false}, 39.400);
+      tl.fromTo("#s3-cta", {"scale": 1.07}, {"scale": 1, "duration": 0.4, "ease": "sine.inOut", "immediateRender": false}, 39.800);
+      tl.fromTo("#s3-cta", {"scale": 1}, {"scale": 1.07, "duration": 0.4, "ease": "sine.inOut", "immediateRender": false}, 40.200);
+      tl.fromTo("#s3-cta", {"scale": 1.07}, {"scale": 1, "duration": 0.4, "ease": "sine.inOut", "immediateRender": false}, 40.600);
+      tl.fromTo("#s3-cta", {"scale": 1}, {"scale": 1.07, "duration": 0.4, "ease": "sine.inOut", "immediateRender": false}, 41.000);
+      tl.fromTo("#s3-cta", {"scale": 1.07}, {"scale": 1, "duration": 0.4, "ease": "sine.inOut", "immediateRender": false}, 41.400);
+      tl.fromTo("#s3-logo", {"opacity": 0}, {"opacity": 1, "duration": 0.4, "ease": "power2.out"}, 39.400);
+      tl.fromTo("#chr-in", {"opacity": 0, "y": -30}, {"opacity": 1, "y": 0, "duration": 0.25, "ease": "back.out(2)"}, 9.450);
+      tl.fromTo("#chr-n", {"innerText": 30}, {"innerText": 0, "snap": {"innerText": 1}, "duration": 27.4, "ease": "none"}, 9.450);
+      tl.fromTo("#chr-in", {"color": "#101113"}, {"color": "#9e2929", "duration": 0.5, "ease": "power2.out", "immediateRender": false}, 30.850);
+      tl.fromTo("#ar-explique", {"opacity": 1}, {"opacity": 0, "duration": 0.18, "ease": "power2.out"}, 9.300);
+      tl.fromTo("#ar-reflechit", {"opacity": 0}, {"opacity": 1, "duration": 0.18, "ease": "power2.out"}, 9.300);
+      tl.fromTo("#medaillon", {"scale": 1, "rotation": -3}, {"scale": 1.06, "rotation": -1, "duration": 0.15, "ease": "power2.out"}, 9.300);
+      tl.fromTo("#medaillon", {"scale": 1.06, "rotation": -1}, {"scale": 1, "rotation": -3, "duration": 0.3, "ease": "back.out(2)", "immediateRender": false}, 9.450);
+      tl.fromTo("#ar-reflechit", {"opacity": 1}, {"opacity": 0, "duration": 0.18, "ease": "power2.out", "immediateRender": false}, 21.960);
+      tl.fromTo("#ar-designe", {"opacity": 0}, {"opacity": 1, "duration": 0.18, "ease": "power2.out"}, 21.960);
+      tl.fromTo("#medaillon", {"scale": 1, "rotation": -3}, {"scale": 1.06, "rotation": -1, "duration": 0.15, "ease": "power2.out", "immediateRender": false}, 21.960);
+      tl.fromTo("#medaillon", {"scale": 1.06, "rotation": -1}, {"scale": 1, "rotation": -3, "duration": 0.3, "ease": "back.out(2)", "immediateRender": false}, 22.110);
+      tl.fromTo("#ar-designe", {"opacity": 1}, {"opacity": 0, "duration": 0.18, "ease": "power2.out", "immediateRender": false}, 36.820);
+      tl.fromTo("#ar-reflechit", {"opacity": 0}, {"opacity": 1, "duration": 0.18, "ease": "power2.out", "immediateRender": false}, 36.820);
+      tl.fromTo("#medaillon", {"scale": 1, "rotation": -3}, {"scale": 1.06, "rotation": -1, "duration": 0.15, "ease": "power2.out", "immediateRender": false}, 36.820);
+      tl.fromTo("#medaillon", {"scale": 1.06, "rotation": -1}, {"scale": 1, "rotation": -3, "duration": 0.3, "ease": "back.out(2)", "immediateRender": false}, 36.970);
+      tl.fromTo("#ar-reflechit", {"opacity": 1}, {"opacity": 0, "duration": 0.18, "ease": "power2.out", "immediateRender": false}, 38.650);
+      tl.fromTo("#ar-designe", {"opacity": 0}, {"opacity": 1, "duration": 0.18, "ease": "power2.out", "immediateRender": false}, 38.650);
+      tl.fromTo("#medaillon", {"scale": 1, "rotation": -3}, {"scale": 1.06, "rotation": -1, "duration": 0.15, "ease": "power2.out", "immediateRender": false}, 38.650);
+      tl.fromTo("#medaillon", {"scale": 1.06, "rotation": -1}, {"scale": 1, "rotation": -3, "duration": 0.3, "ease": "back.out(2)", "immediateRender": false}, 38.800);
+      tl.fromTo("#medaillon", {"opacity": 0, "x": -300, "rotation": -12}, {"opacity": 1, "x": 0, "rotation": -3, "duration": 0.4, "ease": "back.out(1.5)", "immediateRender": false}, 0.000);
+      tl.fromTo("#st0-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 2.19);
+      tl.fromTo("#st1-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 2.79);
+      tl.fromTo("#st2-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 4.15);
+      tl.fromTo("#st3-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 5.00);
+      tl.fromTo("#st4-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 9.45);
+      tl.fromTo("#st5-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 10.20);
+      tl.fromTo("#st6-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 11.18);
+      tl.fromTo("#st7-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 12.25);
+      tl.fromTo("#st8-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 13.29);
+      tl.fromTo("#st9-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 14.61);
+      tl.fromTo("#st10-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 15.45);
+      tl.fromTo("#st11-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 16.15);
+      tl.fromTo("#st12-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 17.52);
+      tl.fromTo("#st13-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 18.83);
+      tl.fromTo("#st14-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 19.23);
+      tl.fromTo("#st15-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 20.70);
+      tl.fromTo("#st16-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 22.11);
+      tl.fromTo("#st17-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 22.98);
+      tl.fromTo("#st18-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 24.18);
+      tl.fromTo("#st19-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 24.57);
+      tl.fromTo("#st20-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 25.35);
+      tl.fromTo("#st21-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 25.98);
+      tl.fromTo("#st22-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 26.72);
+      tl.fromTo("#st23-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 28.25);
+      tl.fromTo("#st24-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 29.17);
+      tl.fromTo("#st25-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 30.15);
+      tl.fromTo("#st26-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 30.60);
+      tl.fromTo("#st27-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 31.75);
+      tl.fromTo("#st28-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 33.31);
+      tl.fromTo("#st29-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 34.11);
+      tl.fromTo("#st30-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 35.13);
+      tl.fromTo("#st31-t", {opacity: 0, scale: 1.35}, {opacity: 1, scale: 1, duration: 0.16, ease: "back.out(2)"}, 35.63);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

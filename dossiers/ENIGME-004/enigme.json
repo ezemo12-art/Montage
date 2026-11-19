@@ -1,0 +1,71 @@
+{
+  "titre": "Énigme 004 — La panne du manoir",
+  "format": "enquete",
+  "script": "script.txt",
+  "voix": "voix.mp3",
+  "transcription": "transcript.json",
+  "queue": 2.0,
+  "mots_cles": ["meurtre", "30", "détail", "d'orage", "bougies", "whisky.", "pendule", "glaçons", "lampe.", "coupable ?"],
+  "images": {
+    "biblio": "images/bibliotheque.png",
+    "bureau": "images/bureau.png",
+    "pendule": "images/pendule.png",
+    "cuisiniere": "images/cuisiniere.png",
+    "neveu": "images/neveu.png",
+    "jardinier": "images/jardinier.png",
+    "a_explique": "archiviste/poses/archi-explique.png",
+    "a_designe": "archiviste/poses/archi-designe.png",
+    "a_reflechit": "archiviste/poses/archi-reflechit.png"
+  },
+  "fond": {"image": "biblio", "flou": 8, "voile": 0.3, "lumiere": 1.35, "decor": "pluie"},
+  "hook": {
+    "lignes": [
+      {"texte": "T'es un"},
+      {"texte": "enquêteur", "mot": "enquêteur", "accent": "ambre"},
+      {"texte": "ou nul à chier ?", "mot": "ou nul", "accent": "rouge"}
+    ]
+  },
+  "segments": [
+    {"type": "ouverture", "ancre": "Un meurtre vient", "bandeau": "Meurtre", "image": "biblio",
+     "chrono_mot": "30 secondes", "detail_mot": "Attention"},
+    {"type": "scene", "ancre": "Nuit d'orage", "bandeau": "Le crime",
+     "images": [
+       {"image": "biblio",
+        "zooms": [{"mot": "retrouvé mort", "echelle": 1.8, "dx": 36, "dy": -194, "cercle": [430, 248, 220, 130]}]},
+       {"image": "bureau", "mot": "Sur son bureau",
+        "zooms": [{"mot": "bougies", "echelle": 1.8, "dx": 344, "dy": 49, "cercle": [396, 235, 180, 150]}]},
+       {"image": "bureau", "mot": "et son verre",
+        "zooms": [{"mot": "whisky", "echelle": 2.4, "dx": -602, "dy": -115, "cercle": [464, 242, 210, 180]}]},
+       {"image": "pendule", "mot": "Au mur",
+        "zooms": [{"mot": "s'est arrêtée", "echelle": 1.4, "dx": 14, "dy": -67, "cercle": [430, 200, 300, 260]}]}
+     ]},
+    {"type": "suspects", "ancre": "Trois suspects", "bandeau": "Les suspects",
+     "suspects": [
+       {"nom": "La cuisinière", "image": "cuisiniere", "ancre": "La cuisinière", "bulle": "« Whisky servi à 21 h, puis au lit »"},
+       {"nom": "Le neveu", "image": "neveu", "ancre": "Le neveu", "bulle": "« 23 h : les glaçons n'avaient pas fondu ! »"},
+       {"nom": "Le jardinier", "image": "jardinier", "ancre": "Le jardinier", "bulle": "« À 22 h, il lisait sous sa lampe »"}
+     ]},
+    {"type": "question", "ancre": "Alors qui est", "bandeau": "Temps écoulé", "texte": "Qui est le coupable ?",
+     "rappel": [["cuisiniere", "La cuisinière"], ["neveu", "Le neveu"], ["jardinier", "Le jardinier"]],
+     "cta_ancre": "Si tu trouves", "cta": "Explique comment en commentaire"}
+  ],
+  "chrono_depart": "Nuit d'orage",
+  "sons": [
+    {"fichier": "sons/orage.mp3", "mot": "Nuit d'orage", "decalage": -0.3, "volume": 0.6},
+    {"fichier": "sons/pierres.mp3", "mot": "verre de whisky", "decalage": 0.5, "volume": 0.5},
+    {"fichier": "sons/pierres.mp3", "mot": "Les glaçons", "decalage": 0.2, "volume": 0.6}
+  ],
+  "nappe": "nappe-enquete.mp3",
+  "volume_nappe": 0.16,
+  "archiviste": {
+    "poses": {"explique": "a_explique", "designe": "a_designe", "reflechit": "a_reflechit"},
+    "sequence": [
+      {"pose": "explique"},
+      {"mot": "Nuit d'orage", "pose": "reflechit"},
+      {"mot": "Trois suspects", "pose": "designe"},
+      {"mot": "Alors qui est", "pose": "reflechit"},
+      {"mot": "Si tu trouves", "pose": "designe"}
+    ]
+  },
+  "solution": "Le jardinier. La pendule est ÉLECTRIQUE (câble branché à la prise) : arrêtée à 21 h 40, elle marque la coupure de courant due à l'orage — d'où les bougies allumées. Elle indique encore 21 h 40 à 23 h : le courant n'est jamais revenu. À 22 h, aucune lampe ne pouvait éclairer Edgar : le jardinier ment. Pièges : la pendule n'est pas l'heure du crime (la cuisinière n'est pas forcément la dernière à l'avoir vu vivant) et les « glaçons » sont des pierres à whisky grises, qui ne fondent jamais (le neveu ne prouve rien)."
+}
