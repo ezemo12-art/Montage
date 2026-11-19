@@ -13,7 +13,7 @@ les « glaçons ») · Le coupable est le seul qui a l'air d'un simple témoin �
 > **pierres à whisky** grises… qui ne fondent jamais. T'étais tombé dans lequel ? 👇
 
 ## Légende
-« T'es un enquêteur ou nul à chier ? 🕵️‍♂️ Orage, panne de courant, 3 suspects… 97 % accusent le mauvais.
+« T'es un enquêteur ou nul à chier ? 🕵️‍♂️ Orage, panne de courant, 3 suspects… presque tout le monde accuse le mauvais.
 Explique comment en commentaire 👇 »
 Hashtags : #enigme #énigme #quiestlecoupable #enquete #cassetete #dossier00
 
