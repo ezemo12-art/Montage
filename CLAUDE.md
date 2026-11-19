@@ -16,6 +16,11 @@
 > **After EVERY riddle video, end the chat reply with the solution, ready to copy and pin** (user request,
 > 19/11): a « Réponse à épingler » block at the very bottom of the message, written as the pinned comment.
 >
+> **Credits (user decision, 19/11): ElevenLabs credits are low → keep them for the VOICE (~920 credits / video) and
+> at most 1–2 sound effects; make images in Blender first** (characters, clue objects, places: `blender/toonkit.py`,
+> examples `blender/enigme004.py`). Default background = the reusable generic `bibliotheque/fonds/bureau-enquete.png`
+> (applied automatically by `scripts/enigme.py`); reuse `bibliotheque/sons/` before generating any sound.
+>
 > **Use ALL the tools the user gave, never stop at one (user reminder, 19/11).** Checked 19/11/2026:
 > - Images: ElevenLabs (daily cap, resets each day) → Runway (credits) → **local, unlimited**: the
 >   `anthropic-skills:blender-video-3d` skill (Blender 4.0 installable with apt here) for 3D scenes and

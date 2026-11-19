@@ -30,6 +30,8 @@ from engine.style import DA_CSS  # noqa: E402
 CLI = ["node", str(ROOT / ".claude/skills/hyperframes/scripts/plugin-cli.mjs")]
 ENV = dict(os.environ, HYPERFRAMES_TELEMETRY="0", DO_NOT_TRACK="1")
 SONS = ROOT / "bibliotheque" / "sons"
+# Fond générique réutilisable (Blender, blender/fond_bureau_enquete.py) : réglages validés pour la lisibilité du texte
+FOND_DEFAUT = {"image": "bibliotheque/fonds/bureau-enquete.png", "flou": 11, "voile": 0.4, "lumiere": 1.35}
 
 
 def E(t):
@@ -105,11 +107,12 @@ def horloge(i, x, y, taille, h, m, total, tl):
 def theme_fond(sp, d, out, tl, total):
     """Fond en rapport avec l'énigme : image du lieu floutée et éclaircie (lisibilité) + décor animé.
     "fond": {"image": "<clé images>", "flou": 7, "voile": 0.5, "decor": "horloges"}"""
-    f = sp.get("fond")
+    f = sp.get("fond", FOND_DEFAUT)  # sans clé "fond" : bureau d'enquête générique ; "fond": false pour l'ancien papier
     if not f:
         return "", ""
     from PIL import Image, ImageEnhance, ImageFilter
-    src = Image.open(d / sp["images"][f["image"]]).convert("RGB")
+    chemin = sp["images"].get(f["image"], f["image"])  # image de l'épisode, ou fond générique de bibliotheque/fonds/
+    src = Image.open(ROOT / chemin if chemin.startswith(("archiviste/", "bibliotheque/")) else d / chemin).convert("RGB")
     w, h = src.size
     k = max(1080 / w, 1920 / h)
     src = src.resize((round(w * k), round(h * k)), Image.LANCZOS)

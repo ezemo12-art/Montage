@@ -54,6 +54,7 @@ La phrase finale demande le **comment**, pas seulement le nom : ça donne des co
 - **Fond EN RAPPORT AVEC L'ÉNIGME, jamais neutre (demande du 19/11/2026)** : le lieu du crime (atelier d'horloger,
   chalet, prison…) en plein écran, flouté, éclairci et réchauffé par un voile ivoire/ambre pour rester lisible,
   avec un léger push-in, + un décor animé du thème quand c'est possible (ex. horloges qui tic-taquent `"decor": "horloges"`, pluie d'orage `"decor": "pluie"`, jamais de flash).
+  Par défaut : le fond générique « bureau d'enquête » (`bibliotheque/fonds/`, réutilisé d'une vidéo à l'autre).
   Moteur : clé `"fond"` de enigme.json (`image`, `flou`, `voile`, `lumiere`, `decor`) ; exemple ENIGME-003.
 - **Images = « photos d'enquête »** : cartes à bord blanc légèrement inclinées, ombre portée ; personnages et
   objets colorés, lumineux, atypiques.
