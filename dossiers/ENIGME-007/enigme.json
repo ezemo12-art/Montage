@@ -1,0 +1,65 @@
+{
+  "titre": "Énigme 007 — Chambre 312",
+  "format": "esprit-criminel",
+  "script": "script.txt",
+  "voix": "voix.mp3",
+  "transcription": "transcript.json",
+  "queue": 2.0,
+  "mots_cles": ["criminel ?", "30", "détail", "complet.", "312,", "Toc,", "rose", "ascenseur.", "sécurité."],
+  "images": {
+    "hotel": "images/hotel.png",
+    "couloir": "images/couloir.png",
+    "porte": "images/porte.png",
+    "laurent": "images/laurent.png",
+    "homme": "images/homme.png",
+    "a_explique": "archiviste/poses/archi-explique.png",
+    "a_designe": "archiviste/poses/archi-designe.png",
+    "a_reflechit": "archiviste/poses/archi-reflechit.png"
+  },
+  "hook": {
+    "lignes": [
+      {"texte": "STOP.", "accent": "rouge"},
+      {"texte": "Penses-tu comme", "mot": "Penses-tu"},
+      {"texte": "un criminel ?", "mot": "un criminel", "accent": "ambre"}
+    ]
+  },
+  "segments": [
+    {"type": "ouverture", "ancre": "Tu as 30", "bandeau": "Esprit criminel", "image": "hotel",
+     "chrono_mot": "30 secondes", "detail_mot": "Attention"},
+    {"type": "scene", "ancre": "Grand Hôtel du Lac", "bandeau": "Chambre 312",
+     "images": [
+       {"image": "hotel",
+        "zooms": [{"mot": "affiche complet", "echelle": 1.6, "dx": -242, "dy": -145, "cercle": [430, 361, 170, 80]}]},
+       {"image": "couloir", "mot": "Chambre 312",
+        "zooms": [{"mot": "Madame Laurent vient", "echelle": 1.8, "dx": 131, "dy": 65, "cercle": [430, 250, 200, 190]}]},
+       {"image": "porte", "mot": "Toc",
+        "zooms": [{"mot": "une rose", "echelle": 1.8, "dx": -149, "dy": 41, "cercle": [430, 242, 110, 90]}]},
+       {"image": "couloir", "mot": "Il sourit",
+        "zooms": [{"mot": "l'ascenseur", "echelle": 1.6, "dx": -258, "dy": -11, "cercle": [785, 235, 120, 200]}]},
+       {"image": "porte", "mot": "Madame Laurent referme",
+        "zooms": [{"mot": "appelle aussitôt", "echelle": 1.8, "dx": 149, "dy": 121, "cercle": [430, 250, 150, 170]}]}
+     ],
+     "etiquettes": [{"texte": "23 h 00", "mot": "23 heures", "x": 130, "y": 372}]},
+    {"type": "question", "ancre": "Alors pourquoi", "bandeau": "Temps écoulé", "texte": "Pourquoi elle l'a dénoncé ?",
+     "rappel": [["laurent", "Mme Laurent"], ["homme", "L'homme à la rose"]],
+     "cta_ancre": "Si tu trouves", "cta": "Explique pourquoi en commentaire"}
+  ],
+  "chrono_depart": "Grand Hôtel du Lac",
+  "sons": [
+    {"fichier": "../ENIGME-003/sons/frappe.mp3", "mot": "Toc", "volume": 0.85},
+    {"fichier": "../../bibliotheque/sons/ding.mp3", "mot": "l'ascenseur", "decalage": 0.3, "volume": 0.35}
+  ],
+  "nappe": "nappe-enquete.mp3",
+  "volume_nappe": 0.16,
+  "archiviste": {
+    "poses": {"explique": "a_explique", "designe": "a_designe", "reflechit": "a_reflechit"},
+    "sequence": [
+      {"pose": "explique"},
+      {"mot": "Grand Hôtel du Lac", "pose": "reflechit"},
+      {"mot": "Il sourit", "pose": "designe"},
+      {"mot": "Alors pourquoi", "pose": "reflechit"},
+      {"mot": "Si tu trouves", "pose": "designe"}
+    ]
+  },
+  "solution": "Il a FRAPPÉ. Personne ne frappe à la porte de sa propre chambre : s'il croyait vraiment que c'était la sienne, il aurait sorti sa clé. Il frappait pour vérifier que la chambre était vide — un voleur de chambres d'hôtel. Si personne n'avait répondu, il serait entré."
+}

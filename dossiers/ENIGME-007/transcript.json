@@ -1,0 +1,638 @@
+[
+  {
+    "text": "Stop!",
+    "start": 0.17,
+    "end": 0.44,
+    "id": "w0"
+  },
+  {
+    "text": "Pense-tu",
+    "start": 0.9,
+    "end": 1.07,
+    "id": "w1"
+  },
+  {
+    "text": "comme",
+    "start": 1.07,
+    "end": 1.34,
+    "id": "w2"
+  },
+  {
+    "text": "un",
+    "start": 1.42,
+    "end": 1.46,
+    "id": "w3"
+  },
+  {
+    "text": "criminel?",
+    "start": 1.79,
+    "end": 2.2,
+    "id": "w4"
+  },
+  {
+    "text": "Tu",
+    "start": 2.2,
+    "end": 2.435,
+    "id": "w5"
+  },
+  {
+    "text": "as",
+    "start": 2.435,
+    "end": 2.67,
+    "id": "w6"
+  },
+  {
+    "text": "30",
+    "start": 2.67,
+    "end": 2.69,
+    "id": "w7"
+  },
+  {
+    "text": "secondes",
+    "start": 2.69,
+    "end": 3.06,
+    "id": "w8"
+  },
+  {
+    "text": "pour",
+    "start": 3.06,
+    "end": 3.19,
+    "id": "w9"
+  },
+  {
+    "text": "trouver",
+    "start": 3.39,
+    "end": 3.59,
+    "id": "w10"
+  },
+  {
+    "text": "ce",
+    "start": 3.66,
+    "end": 3.71,
+    "id": "w11"
+  },
+  {
+    "text": "qui",
+    "start": 3.71,
+    "end": 3.86,
+    "id": "w12"
+  },
+  {
+    "text": "cloche.",
+    "start": 3.86,
+    "end": 4.2,
+    "id": "w13"
+  },
+  {
+    "text": "Attention,",
+    "start": 4.56,
+    "end": 5.31,
+    "id": "w14"
+  },
+  {
+    "text": "un",
+    "start": 5.39,
+    "end": 5.42,
+    "id": "w15"
+  },
+  {
+    "text": "seul",
+    "start": 5.42,
+    "end": 5.59,
+    "id": "w16"
+  },
+  {
+    "text": "détail",
+    "start": 5.66,
+    "end": 5.97,
+    "id": "w17"
+  },
+  {
+    "text": "peut",
+    "start": 5.97,
+    "end": 6.18,
+    "id": "w18"
+  },
+  {
+    "text": "tout",
+    "start": 6.19,
+    "end": 6.41,
+    "id": "w19"
+  },
+  {
+    "text": "changer.",
+    "start": 6.41,
+    "end": 7,
+    "id": "w20"
+  },
+  {
+    "text": "Grand",
+    "start": 7.32,
+    "end": 7.34,
+    "id": "w21"
+  },
+  {
+    "text": "hôtel",
+    "start": 7.4,
+    "end": 7.59,
+    "id": "w22"
+  },
+  {
+    "text": "du",
+    "start": 7.67,
+    "end": 7.77,
+    "id": "w23"
+  },
+  {
+    "text": "lac,",
+    "start": 7.77,
+    "end": 8.12,
+    "id": "w24"
+  },
+  {
+    "text": "23",
+    "start": 8.19,
+    "end": 8.53,
+    "id": "w25"
+  },
+  {
+    "text": "heures.",
+    "start": 8.53,
+    "end": 9.1,
+    "id": "w26"
+  },
+  {
+    "text": "Ce",
+    "start": 9.1,
+    "end": 9.47,
+    "id": "w27"
+  },
+  {
+    "text": "soir,",
+    "start": 9.47,
+    "end": 9.59,
+    "id": "w28"
+  },
+  {
+    "text": "l'hôtel",
+    "start": 9.68,
+    "end": 10.02,
+    "id": "w29"
+  },
+  {
+    "text": "affiche",
+    "start": 10.19,
+    "end": 10.51,
+    "id": "w30"
+  },
+  {
+    "text": "complet.",
+    "start": 10.51,
+    "end": 11,
+    "id": "w31"
+  },
+  {
+    "text": "Chambre",
+    "start": 11.3,
+    "end": 11.39,
+    "id": "w32"
+  },
+  {
+    "text": "312,",
+    "start": 11.47,
+    "end": 11.99,
+    "id": "w33"
+  },
+  {
+    "text": "Madame",
+    "start": 12.19,
+    "end": 12.32,
+    "id": "w34"
+  },
+  {
+    "text": "Laurent",
+    "start": 12.32,
+    "end": 12.71,
+    "id": "w35"
+  },
+  {
+    "text": "vient",
+    "start": 12.71,
+    "end": 12.98,
+    "id": "w36"
+  },
+  {
+    "text": "de",
+    "start": 12.99,
+    "end": 13.1,
+    "id": "w37"
+  },
+  {
+    "text": "rentrer.",
+    "start": 13.1,
+    "end": 13.51,
+    "id": "w38"
+  },
+  {
+    "text": "Toc,",
+    "start": 14,
+    "end": 14.3,
+    "id": "w39"
+  },
+  {
+    "text": "toc,",
+    "start": 14.35,
+    "end": 15,
+    "id": "w40"
+  },
+  {
+    "text": "toc.",
+    "start": 15,
+    "end": 15.8,
+    "id": "w41"
+  },
+  {
+    "text": "Elle",
+    "start": 15.8,
+    "end": 16.32,
+    "id": "w42"
+  },
+  {
+    "text": "ouvre.",
+    "start": 16.32,
+    "end": 16.64,
+    "id": "w43"
+  },
+  {
+    "text": "Devant",
+    "start": 17,
+    "end": 17.09,
+    "id": "w44"
+  },
+  {
+    "text": "elle,",
+    "start": 17.17,
+    "end": 17.45,
+    "id": "w45"
+  },
+  {
+    "text": "un",
+    "start": 17.48,
+    "end": 17.56,
+    "id": "w46"
+  },
+  {
+    "text": "homme",
+    "start": 17.89,
+    "end": 17.94,
+    "id": "w47"
+  },
+  {
+    "text": "en",
+    "start": 17.94,
+    "end": 18.07,
+    "id": "w48"
+  },
+  {
+    "text": "costume,",
+    "start": 18.07,
+    "end": 18.7,
+    "id": "w49"
+  },
+  {
+    "text": "une",
+    "start": 18.7,
+    "end": 18.85,
+    "id": "w50"
+  },
+  {
+    "text": "rose",
+    "start": 18.85,
+    "end": 19.05,
+    "id": "w51"
+  },
+  {
+    "text": "à",
+    "start": 19.05,
+    "end": 19.1,
+    "id": "w52"
+  },
+  {
+    "text": "la",
+    "start": 19.1,
+    "end": 19.14,
+    "id": "w53"
+  },
+  {
+    "text": "boutonnière.",
+    "start": 19.19,
+    "end": 19.89,
+    "id": "w54"
+  },
+  {
+    "text": "Oh,",
+    "start": 19.89,
+    "end": 20.37,
+    "id": "w55"
+  },
+  {
+    "text": "pardon",
+    "start": 20.37,
+    "end": 20.62,
+    "id": "w56"
+  },
+  {
+    "text": "madame!",
+    "start": 20.62,
+    "end": 21.29,
+    "id": "w57"
+  },
+  {
+    "text": "Je",
+    "start": 21.29,
+    "end": 21.45,
+    "id": "w58"
+  },
+  {
+    "text": "me",
+    "start": 21.45,
+    "end": 21.61,
+    "id": "w59"
+  },
+  {
+    "text": "suis",
+    "start": 21.61,
+    "end": 21.77,
+    "id": "w60"
+  },
+  {
+    "text": "trompé,",
+    "start": 21.77,
+    "end": 22.1,
+    "id": "w61"
+  },
+  {
+    "text": "je",
+    "start": 22.1,
+    "end": 22.16,
+    "id": "w62"
+  },
+  {
+    "text": "croyais",
+    "start": 22.2,
+    "end": 22.55,
+    "id": "w63"
+  },
+  {
+    "text": "que",
+    "start": 22.55,
+    "end": 22.69,
+    "id": "w64"
+  },
+  {
+    "text": "c'était",
+    "start": 22.75,
+    "end": 23.05,
+    "id": "w65"
+  },
+  {
+    "text": "ma",
+    "start": 23.05,
+    "end": 23.13,
+    "id": "w66"
+  },
+  {
+    "text": "chambre.",
+    "start": 23.18,
+    "end": 23.69,
+    "id": "w67"
+  },
+  {
+    "text": "Il",
+    "start": 23.69,
+    "end": 24.15,
+    "id": "w68"
+  },
+  {
+    "text": "sourit,",
+    "start": 24.15,
+    "end": 24.44,
+    "id": "w69"
+  },
+  {
+    "text": "regarde",
+    "start": 24.44,
+    "end": 24.98,
+    "id": "w70"
+  },
+  {
+    "text": "sa",
+    "start": 24.98,
+    "end": 25.09,
+    "id": "w71"
+  },
+  {
+    "text": "montre",
+    "start": 25.17,
+    "end": 25.59,
+    "id": "w72"
+  },
+  {
+    "text": "et",
+    "start": 25.6,
+    "end": 25.7,
+    "id": "w73"
+  },
+  {
+    "text": "repart",
+    "start": 25.7,
+    "end": 25.99,
+    "id": "w74"
+  },
+  {
+    "text": "vers",
+    "start": 25.99,
+    "end": 26.11,
+    "id": "w75"
+  },
+  {
+    "text": "l'ascenseur.",
+    "start": 26.18,
+    "end": 26.89,
+    "id": "w76"
+  },
+  {
+    "text": "Madame",
+    "start": 27.37,
+    "end": 27.5,
+    "id": "w77"
+  },
+  {
+    "text": "Laurent",
+    "start": 27.55,
+    "end": 27.7,
+    "id": "w78"
+  },
+  {
+    "text": "referme",
+    "start": 28.09,
+    "end": 28.29,
+    "id": "w79"
+  },
+  {
+    "text": "la",
+    "start": 28.37,
+    "end": 28.47,
+    "id": "w80"
+  },
+  {
+    "text": "porte",
+    "start": 28.47,
+    "end": 28.73,
+    "id": "w81"
+  },
+  {
+    "text": "et",
+    "start": 28.78,
+    "end": 28.87,
+    "id": "w82"
+  },
+  {
+    "text": "appelle",
+    "start": 28.87,
+    "end": 29.27,
+    "id": "w83"
+  },
+  {
+    "text": "aussitôt",
+    "start": 29.27,
+    "end": 29.73,
+    "id": "w84"
+  },
+  {
+    "text": "la",
+    "start": 29.76,
+    "end": 29.84,
+    "id": "w85"
+  },
+  {
+    "text": "sécurité.",
+    "start": 29.84,
+    "end": 30.59,
+    "id": "w86"
+  },
+  {
+    "text": "Il",
+    "start": 30.59,
+    "end": 30.8,
+    "id": "w87"
+  },
+  {
+    "text": "n'est",
+    "start": 30.8,
+    "end": 31.02,
+    "id": "w88"
+  },
+  {
+    "text": "pas",
+    "start": 31.02,
+    "end": 31.2,
+    "id": "w89"
+  },
+  {
+    "text": "entré,",
+    "start": 31.2,
+    "end": 31.62,
+    "id": "w90"
+  },
+  {
+    "text": "il",
+    "start": 31.69,
+    "end": 31.74,
+    "id": "w91"
+  },
+  {
+    "text": "n'a",
+    "start": 31.74,
+    "end": 31.89,
+    "id": "w92"
+  },
+  {
+    "text": "rien",
+    "start": 31.97,
+    "end": 32.16,
+    "id": "w93"
+  },
+  {
+    "text": "volé.",
+    "start": 32.16,
+    "end": 32.6,
+    "id": "w94"
+  },
+  {
+    "text": "Alors,",
+    "start": 32.92,
+    "end": 33.09,
+    "id": "w95"
+  },
+  {
+    "text": "pourquoi",
+    "start": 33.09,
+    "end": 33.35,
+    "id": "w96"
+  },
+  {
+    "text": "l'hôtel",
+    "start": 33.73,
+    "end": 34.15,
+    "id": "w97"
+  },
+  {
+    "text": "dénoncé?",
+    "start": 34.15,
+    "end": 34.9,
+    "id": "w98"
+  },
+  {
+    "text": "Si",
+    "start": 34.9,
+    "end": 35.085,
+    "id": "w99"
+  },
+  {
+    "text": "tu",
+    "start": 35.085,
+    "end": 35.27,
+    "id": "w100"
+  },
+  {
+    "text": "trouves,",
+    "start": 35.27,
+    "end": 35.53,
+    "id": "w101"
+  },
+  {
+    "text": "explique-nous",
+    "start": 35.53,
+    "end": 36.15,
+    "id": "w102"
+  },
+  {
+    "text": "pourquoi",
+    "start": 36.15,
+    "end": 36.54,
+    "id": "w103"
+  },
+  {
+    "text": "en",
+    "start": 36.54,
+    "end": 36.63,
+    "id": "w104"
+  },
+  {
+    "text": "commentaire.",
+    "start": 36.68,
+    "end": 37.24,
+    "id": "w105"
+  }
+]
